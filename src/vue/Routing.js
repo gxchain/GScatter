@@ -148,7 +148,8 @@ export class Routing {
     static isRestricted(routeName) {
         return ![
             RouteNames.ENTRY,
-            RouteNames.LOAD_FROM_BACKUP
+            RouteNames.LOAD_FROM_BACKUP,
+            RouteNames.LANGUAGE,
         ].includes(routeName)
     }
 

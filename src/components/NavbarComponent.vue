@@ -1,6 +1,6 @@
 <template>
     <nav :class="navState()">
-        <figure class="logo" v-if="showLogo()">Scatter</figure>
+        <figure class="logo" v-if="showLogo()">GXChain</figure>
         <section class="breadcrumb" v-else>
             <figure class="icon" v-on:click="back">
                 <i class="fa fa-chevron-left"></i>
@@ -37,9 +37,16 @@
             },
             navState(){
                 switch(this.$route.name){
-                    case RouteNames.ENTRY: if(this.scatter.settings.hasEncryptionKey) return 'locked';
-                                           else return 'no-chain';
-                    case RouteNames.MAIN_MENU: return 'main-menu-nav';
+                    case RouteNames.ENTRY:
+                        if(this.scatter.settings.hasEncryptionKey) {
+                            return 'locked';
+                        } else{
+                            return 'no-chain';
+                        }
+                        break;
+                    case RouteNames.MAIN_MENU:
+                        return 'main-menu-nav';
+                        break;
                     default: return '';
                 }
             },
@@ -69,6 +76,7 @@
             },
             toggleSettings(){
                 if(this.$route.name === RouteNames.SETTINGS) this.back();
+                // else if(this.$route.name == RouteNames.ENTRY) this.$router.push({name:RouteNames.LANGUAGE});
                 else this.$router.push({name:RouteNames.SETTINGS})
             }
         },
@@ -143,6 +151,13 @@
                 color:#656565;
                 width:100%;
                 text-align:center;
+            }
+
+            .settings-button {
+                position: absolute;
+                top:0px;
+                right:20px;
+                z-index:99;
             }
         }
 

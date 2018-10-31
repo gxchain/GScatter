@@ -18,6 +18,7 @@ export default class KeyPair {
 
     static blockchain(publicKey){
         if(publicKey.indexOf('EOS') !== -1) return Blockchains.EOS;
+        if(publicKey.indexOf('GXC') !== -1) return Blockchains.GXC;
         if(publicKey.indexOf('0x') !== -1 && publicKey.length === 42) return Blockchains.ETH;
         return null;
     }
@@ -29,6 +30,8 @@ export default class KeyPair {
     isEncrypted(){ switch(this.blockchain) {
         // EOS private keys are 51 chars long
         case Blockchains.EOS: return this.privateKey.length > 51;
+        // GXC private keys are 51 chars long
+        case Blockchains.GXC: return this.privateKey.length > 51;
         // ETH private keys are 64 chars long
         case Blockchains.ETH: return this.privateKey.length > 64;
     }}
