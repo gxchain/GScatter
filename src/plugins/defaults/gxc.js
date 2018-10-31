@@ -41,7 +41,7 @@ export default class GXC extends Plugin {
                 'node11.gxb.io',
                 443,
                 Blockchains.GXC,
-                'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+                '4f7d07969c446f8342033acb3ab2ae5044cbe0fde93db02de75bd17fa8fd84b8'
             ));
         });
     }

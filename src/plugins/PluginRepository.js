@@ -16,9 +16,9 @@ class PluginRepositorySingleton {
     }
 
     loadPlugins(){
+        this.plugins.push(new GXC());
         this.plugins.push(new EOS());
         this.plugins.push(new ETH());
-        this.plugins.push(new GXC());
     }
 
     signatureProviders(){
