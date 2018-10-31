@@ -193,6 +193,11 @@ export default {
         Certifique-se de salvar o seu em algum lugar seguro. É a única maneira de recuperar o acesso ao seu
         Scatter e descriptografar suas informações privadas se você esquecer sua senha.
     `,
+    [KEYS.MNEMONIC_Wrote]:`I Wrote It Down`,
+
+    [KEYS.ONBOARDING_Title]:`Welcome to Use`,
+    [KEYS.ONBOARDING_Desc1]:`The developer team holds no liability towards your digital assets. It is your responsibility to constantly make sure your computer is free of malware. We have taken every measure in our capabilities to ensure that this software is safe to use as intended however your computer itself is your worst enemy and should be treated as such.`,
+    [KEYS.ONBOARDING_Desc2]:`By using this software you are relinquishing any ability to take legal actions against the developer team and recognize yourself as the sole legal owner of your own wallet instance, your keys, and your data.`,
 
     [KEYS.ERROR_MustSelectItem]:`Você deve selecionar um item.`,
 

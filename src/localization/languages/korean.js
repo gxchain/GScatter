@@ -212,6 +212,11 @@ export default {
         니모닉을 반드시 안전한 곳에 보관하십시오. 
 		암호를 잊어 버린 경우 스캐터에 대한 권한을 복구하고 개인 정보를 해독 할 수 있는 유일한 방법입니다.
 	`,
+    [KEYS.MNEMONIC_Wrote]:`I Wrote It Down`,
+
+    [KEYS.ONBOARDING_Title]:`Welcome to Use`,
+    [KEYS.ONBOARDING_Desc1]:`The developer team holds no liability towards your digital assets. It is your responsibility to constantly make sure your computer is free of malware. We have taken every measure in our capabilities to ensure that this software is safe to use as intended however your computer itself is your worst enemy and should be treated as such.`,
+    [KEYS.ONBOARDING_Desc2]:`By using this software you are relinquishing any ability to take legal actions against the developer team and recognize yourself as the sole legal owner of your own wallet instance, your keys, and your data.`,
 
     [KEYS.ERROR_MustSelectItem]:`항목을 선택해야합니다.`,
 

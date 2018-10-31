@@ -16,7 +16,7 @@
                 <section class="mnemonic">
                     <figure class="word" v-for="word in mnemonicAsArray()">{{word}}</figure>
                 </section>
-                <btn text="I wrote it down" v-on:clicked="goToFirstIdentity" margined="true"></btn>
+                <btn :text="locale(langKeys.MNEMONIC_Wrote)" v-on:clicked="goToFirstIdentity" margined="true"></btn>
             </section>
         </section>
 

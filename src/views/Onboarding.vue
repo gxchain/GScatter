@@ -3,15 +3,12 @@
 
         <section v-if="step == 0">
             <section class="white-bg">
-                <figure class="title">Welcome to Scatter!</figure>
+                <figure class="title"> {{locale(langKeys.ONBOARDING_Title)}}</figure>
                 <figure class="breaker"></figure>
                 <figure class="description">
-                    The Scatter team holds no liability towards your digital assets. It is your responsibility to constantly make sure your
-                    computer is free of malware. We have taken every measure in our capabilities to ensure that Scatter is safe to use
-                    as intended however your computer itself is your worst enemy and should be treated as such.
+                    {{locale(langKeys.ONBOARDING_Desc1)}}
                     <br><br>
-                    By using Scatter you are relinquishing any ability to take legal actions against the Scatter team
-                    and recognize yourself as the sole legal owner of your own Scatter instance, your keys, and your data.
+                    {{locale(langKeys.ONBOARDING_Desc2)}}
                 </figure>
             </section>
             <section class="p20">

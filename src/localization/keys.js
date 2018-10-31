@@ -106,9 +106,11 @@ export const HISTORIES_Note = 'hists_note';
 export const MNEMONIC_Header = 'mnem_head';
 export const MNEMONIC_Description = 'mnem_desc';
 export const MNEMONIC_Note = 'mnem_note';
+export const MNEMONIC_Wrote = 'mnem_wrote';
 
-
-
+export const ONBOARDING_Title = 'onboard_title';
+export const ONBOARDING_Desc1 = 'onboard_desc1';
+export const ONBOARDING_Desc2 = 'onboard_desc2';
 
 export const SETTINGSMENU_Networks = 'sm_net';
 export const SETTINGSMENU_Keypairs = 'sm_keys';

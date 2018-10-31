@@ -51,8 +51,8 @@ export default {
     [KEYS.BUTTON_SetAsDefaultLocation]:'设置为缺省地址',
     [KEYS.BUTTON_RemoveLocation]:'删除地址信息',
     [KEYS.BUTTON_ChangePassword]:'更改密码',
-    [KEYS.BUTTON_DestroyScatter]:'删除 Scatter',
-    [KEYS.BUTTON_CreateNewScatter]:'创建新的 Scatter',
+    [KEYS.BUTTON_DestroyScatter]:'删除钱包',
+    [KEYS.BUTTON_CreateNewScatter]:'创建新的钱包',
     [KEYS.BUTTON_LoadFromBackup]:'从备份中恢复',
     [KEYS.BUTTON_Unlock]:'解锁',
     [KEYS.BUTTON_ExportScatter]:'导出 Scatter',
@@ -217,8 +217,14 @@ export default {
         请一定要保存在安全的地方。如果您忘记了密码，
         这是恢复对 Scatter 的访问和解密您的个人信息的唯一途径。
     `,
+    [KEYS.MNEMONIC_Wrote]:`我记录下来了`,
 
-    [KEYS.ERROR_MustSelectItem]:`请选择 You must select an item.`,
+
+    [KEYS.ONBOARDING_Title]:`欢迎使用`,
+    [KEYS.ONBOARDING_Desc1]:`此软件的开发团队没有责任保证您的资产绝对不丢失，你有责任不断确保你的电脑没有恶意软件。我们已采取各种措施来确保插件的使用安全。请知道，最大的安全隐患是你的计算机本身。`,
+    [KEYS.ONBOARDING_Desc2]:`通过使用本软件，您将放弃对开发团队采取法律行动的任何权利，并将自己视为您自己的钱包、密钥和数据的唯一合法所有者。`,
+
+    [KEYS.ERROR_MustSelectItem]:`必选项.`,
 
     [KEYS.ALERT_Type]:(type) => {
         switch(type){

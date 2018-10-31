@@ -197,6 +197,11 @@ export default {
         Asegúrate de guardar el tuyo en un lugar seguro. Es la única forma de recuperar 
         el acceso a tu Scatter y desencriptar tu información privada si olvidas tu contraseña.
     `,
+    [KEYS.MNEMONIC_Wrote]:`I Wrote It Down`,
+
+    [KEYS.ONBOARDING_Title]:`Welcome to Use`,
+    [KEYS.ONBOARDING_Desc1]:`The developer team holds no liability towards your digital assets. It is your responsibility to constantly make sure your computer is free of malware. We have taken every measure in our capabilities to ensure that this software is safe to use as intended however your computer itself is your worst enemy and should be treated as such.`,
+    [KEYS.ONBOARDING_Desc2]:`By using this software you are relinquishing any ability to take legal actions against the developer team and recognize yourself as the sole legal owner of your own wallet instance, your keys, and your data.`,
 
     [KEYS.ERROR_MustSelectItem]:`Debes seleccionar un item.`,
 
@@ -410,7 +415,7 @@ export default {
         `Tu Scatter está desactualizado!`,
 
         /*{DOMAIN}*/ `requiere que tengas una versión de Scatter más nueva que la instalada.`,
-    
+
         `Esto generalmente significa que se lanzó una nueva funcionalidad y una aplicación está tratando de usarla,
          pero no está actualmente incluida en la versión que tienes instalada.`,
 
