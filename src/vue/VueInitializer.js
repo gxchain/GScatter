@@ -63,11 +63,11 @@ export default class VueInitializer {
 
     setupVue(router) {
         const app = new Vue({router, store});
-        app.$mount('#gxchain');
+        app.$mount('#gscatter');
 
         // This removes the browser console's ability to
         // gain access to vuex store. ( for instance `scatter.__vue__.$store.state` )
-        // document.getElementById('gxchain').removeAttribute('id')
+        document.getElementById('gscatter').removeAttribute('id')
     }
 
 }

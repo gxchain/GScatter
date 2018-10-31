@@ -8,7 +8,7 @@ export default class Settings {
         this.networks = [];
         this.hasEncryptionKey = false;
         this.inactivityInterval = 0;
-        this.language = 'ENGLISH';
+        this.language = 'CHINESE';
     }
 
     static placeholder(){ return new Settings(); }

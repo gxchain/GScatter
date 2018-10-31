@@ -5,7 +5,7 @@ import {Blockchains} from './Blockchains';
 export default class KeyPair {
 
     constructor(){
-        this.blockchain = Blockchains.EOS;
+        this.blockchain = Blockchains.GXC;
         this.name = '';
         this.privateKey = '';
         this.publicKey = '';

@@ -1,6 +1,6 @@
 <template>
     <nav :class="navState()">
-        <figure class="logo" v-if="showLogo()">GXChain</figure>
+        <figure class="logo" v-if="showLogo()">GScatter</figure>
         <section class="breadcrumb" v-else>
             <figure class="icon" v-on:click="back">
                 <i class="fa fa-chevron-left"></i>
@@ -76,7 +76,7 @@
             },
             toggleSettings(){
                 if(this.$route.name === RouteNames.SETTINGS) this.back();
-                // else if(this.$route.name == RouteNames.ENTRY) this.$router.push({name:RouteNames.LANGUAGE});
+                else if(this.$route.name == RouteNames.ENTRY) this.$router.push({name:RouteNames.LANGUAGE});
                 else this.$router.push({name:RouteNames.SETTINGS})
             }
         },
