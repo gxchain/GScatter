@@ -20,19 +20,13 @@ export default class KeyPairService {
 
                 let publicKey = '';
 
-                BlockchainsArray.map(blockchainKV => {
-                    try {
-                        if(!publicKey.length) {
-                            const blockchain = blockchainKV.value;
-
-                            const plugin = PluginRepository.plugin(blockchain);
-                            if (plugin && plugin.validPrivateKey(keypair.privateKey)) {
-                                publicKey = plugin.privateToPublic(keypair.privateKey);
-                                keypair.blockchain = blockchain;
-                            }
-                        }
-                    } catch(e){}
-                });
+                try{
+                    const plugin = PluginRepository.plugin(keypair.blockchain);
+                    if (plugin && plugin.validPrivateKey(keypair.privateKey)) {
+                        publicKey = plugin.privateToPublic(keypair.privateKey);
+                        keypair.blockchain = blockchain;
+                    }
+                } catch(e){}
 
                 if(publicKey) keypair.publicKey = publicKey;
                 resolve(true);
@@ -67,5 +61,5 @@ export default class KeyPairService {
         scatter.keychain.keypairs.push(keypair);
         context[Actions.UPDATE_STORED_SCATTER](scatter).then(() => callback());
     }
-    
+
 }
