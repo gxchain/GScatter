@@ -19,6 +19,7 @@ import PluginRepository from './plugins/PluginRepository'
 import {Blockchains, BlockchainsArray} from './models/Blockchains'
 import {apis} from './util/BrowserApis';
 import migrate from './migrations/migrator'
+import GXCService from './services/GXCService'
 // Gets bound when a user logs into scatter
 // and unbound when they log out
 // Is not on the Background's scope to keep it private
@@ -77,6 +78,7 @@ export default class Background {
             case InternalMessageTypes.ABI_CACHE:                        Background.abiCache(sendResponse, message.payload); break;
             case InternalMessageTypes.SET_PROMPT:                       Background.setPrompt(sendResponse, message.payload); break;
             case InternalMessageTypes.GET_PROMPT:                       Background.getPrompt(sendResponse); break;
+            case InternalMessageTypes.ENCRYPT_MEMO:                       Background.encryptMemo(sendResponse,message.payload); break;
         }
     }
 
@@ -468,6 +470,16 @@ export default class Background {
         })
     }
 
+    /********************************************/
+    /*                 gxc extension            */
+    /********************************************/
+    static encryptMemo(sendResponse, payload){
+        this.lockGuard(sendResponse, async () => {
+            Background.load(scatter => {
+                GXCService.encryptMemo(payload, scatter, this, sendResponse); 
+            });
+        })
+    }
 }
 
 const background = new Background();

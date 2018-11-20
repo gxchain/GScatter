@@ -95,6 +95,7 @@ class Content {
             case NetworkMessageTypes.AUTHENTICATE:                      this.authenticate(nonSyncMessage); break;
             case NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS:         this.identityFromPermissions(nonSyncMessage); break;
             case NetworkMessageTypes.ABI_CACHE:                         this.abiCache(nonSyncMessage); break;
+            case NetworkMessageTypes.ENCRYPT_MEMO:                         this.enctryptMemo(nonSyncMessage); break;
             default:                                                    stream.send(nonSyncMessage.error(Error.maliciousEvent()), PairingTags.INJECTED)
         }
     }
@@ -166,6 +167,12 @@ class Content {
     authenticate(message){
         if(!isReady) return;
         InternalMessage.payload(InternalMessageTypes.AUTHENTICATE, message.payload)
+            .send().then(res => this.respond(message, res))
+    }
+
+    enctryptMemo(message){
+        if(!isReady) return;
+        InternalMessage.payload(InternalMessageTypes.ENCRYPT_MEMO, message.payload)
             .send().then(res => this.respond(message, res))
     }
 

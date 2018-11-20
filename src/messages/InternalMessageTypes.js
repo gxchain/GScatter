@@ -19,3 +19,4 @@ export const AUTHENTICATE = 'authenticate';
 
 export const SET_PROMPT = 'setPrompt';
 export const GET_PROMPT = 'getPrompt';
+export const ENCRYPT_MEMO = 'encryptMemo';

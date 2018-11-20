@@ -1,14 +1,17 @@
 import Plugin from '../Plugin';
 import * as PluginTypes from '../PluginTypes';
-import {Blockchains} from '../../models/Blockchains';
+import { Blockchains } from '../../models/Blockchains';
 import Network from '../../models/Network';
 import Account from '../../models/Account';
 import AlertMsg from '../../models/alerts/AlertMsg';
 import * as Actions from '../../store/constants';
 import ObjectHelpers from '../../util/ObjectHelpers';
-import {GXClient} from 'gxclient';
-import {PrivateKey, Signature} from 'gxbjs';
+import { GXClient } from 'gxclient/es/index';
+import { PrivateKey, PublicKey, Signature } from 'gxbjs/es/index';
 import Error from "../../models/errors/Error";
+import { strippedHost } from '../../util/GenericTools'
+import { handleArgs } from './gxc/util'
+import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
@@ -27,7 +30,7 @@ export default class GXC extends Plugin {
     }
 
     returnableAccount(account) {
-        return {name: account.name, authority: account.authority};
+        return { name: account.name, authority: account.authority };
     }
 
     async getEndorsedNetwork() {
@@ -60,10 +63,10 @@ export default class GXC extends Plugin {
                         let results = [];
                         accounts.forEach(acc => {
                             if (acc.owner.key_auths.find(k => k[0] === publicKey)) {
-                                results.push({name: acc.name, authority: 'owner'});
+                                results.push({ name: acc.name, authority: 'owner' });
                             }
                             if (acc.active.key_auths.find(k => k[0] === publicKey)) {
-                                results.push({name: acc.name, authority: 'active'});
+                                results.push({ name: acc.name, authority: 'active' });
                             }
                         });
                         resolve(results);
@@ -158,14 +161,23 @@ export default class GXC extends Plugin {
         );
     }
 
+    // TODO
     signer(bgContext, payload, publicKey, callback) {
         bgContext.publicToPrivate(privateKey => {
             if (!privateKey) {
                 callback(null);
                 return false;
             }
-            let sig = Signature.sign(payload.data, PrivateKey.fromWif(privateKey)).toString('hex');
-            callback(sig);
+            console.log(new Buffer(payload.transaction.tr_buffer))
+            var buf = Buffer.concat([new Buffer(payload.chain_id, "hex"), new Buffer(payload.transaction.tr_buffer)])
+            var private_key = PrivateKey.fromWif(privateKey);
+            var public_key = private_key.toPublicKey();
+            var sig = Signature.signBuffer(
+                buf,
+                private_key,
+                public_key
+            );
+            callback(sig.toBuffer());
         }, publicKey);
     }
 
@@ -175,23 +187,83 @@ export default class GXC extends Plugin {
         throwIfNoIdentity = args[1];
 
         return (network) => {
-
             network = Network.fromJson(network);
             if (!network.isValid()) throw Error.noNetwork();
+            const httpEndpoint = `${network.protocol}://${network.hostport()}`;
 
-            return {
-                vote: function (account_ids, options) {
-                    console.log('vote', arguments);
-                },
-                transfer: function (from, to, amount, options) {
-                    console.log('transfer', arguments);
-                },
-                contract: function (contract_name, method, params, options) {
-                    console.log('contract', arguments);
+            const chainId = network.hasOwnProperty('chainId') && network.chainId.length ? network.chainId : _options.chainId;
+            network.chainId = chainId;
+
+            // proxy
+            return proxy({}, {
+                get: (ins, method) => {
+                    return async (...args) => {
+                        const signProvider = async (tr, chain_id) => {
+                            throwIfNoIdentity();
+
+                            let payload = { transaction: tr, chain_id }
+
+                            // Friendly formatting
+                            payload.messages = await requestParser(tr, network);
+
+                            // TODO add requiredFields
+                            payload = Object.assign(payload, { domain: strippedHost(), network });
+                            const result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload);
+
+                            // No signature
+                            if (!result) return null;
+
+                            if (result.hasOwnProperty('signatures')) {
+                                // Returning only the signatures
+                                return result.signatures.map(sig => new Buffer(sig));
+                            }
+
+                            // 通过message发回，会变成普通对象，所以必须处理一下
+                            return result.map(sig => new Buffer(sig));
+                        }
+
+                        const ext = {
+                            network,
+                            domain: strippedHost()
+                        }
+
+                        args = await handleArgs(method, args, messageSender, ext);
+
+                        // TODO 改wss
+                        var client = new GXClient("", "1.2.256", `wss://${network.hostport()}`, signProvider)
+                        return client[method].apply(client, args)
+                    }
                 }
-            };
+            })
+            // return {
+            //     vote: function (account_ids, options) {
+            //         console.log('vote', arguments);
+            //     },
+            //     transfer: function (from, to, amount, options) {
+            //         console.log('transfer', arguments);
+            //     },
+            //     contract: function (contract_name, method, params, options) {
+            //         console.log('contract', arguments);
+            //     }
+            // };
         };
     }
-
-
 }
+
+// 用于构造在prompt中需要展示的数据结构
+const requestParser = async (tr, network) => {
+    return [{
+        code: '测试',
+        data: {
+            yes: 123,
+            no: 888
+        },
+        name: '操作名称',
+        // 注意auth格式
+        authorization: [{
+            actor: "lzydophin94",
+            permission: "active"
+        }],
+        ricardian: 'riririiririr'
+    }]
+};

@@ -9,3 +9,4 @@ export const REQUEST_ARBITRARY_SIGNATURE = 'requestArbitrarySignature';
 export const REQUEST_ADD_NETWORK = 'requestAddNetwork';
 export const REQUEST_VERSION_UPDATE = 'requestVersionUpdate';
 export const AUTHENTICATE = 'authenticate';
+export const ENCRYPT_MEMO = 'encryptMemo';
