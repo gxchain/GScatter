@@ -13,14 +13,14 @@ function buildRet(code, data, type, ricardian, account) {
 }
 
 const handlerMap = {}
-handlerMap.transfer = async (tr, network, account, originalArgs) => {
+handlerMap.transfer = async (tr, network, account, originalArgs, client) => {
     var data = {}
     const ops = tr.operations[0][1]
     data.from = account.name
     data.to = originalArgs[0]
     data.memo = originalArgs[1]
-    data.amount = await getAmountDescription(ops.amount)
-    data.fee = await getFeeDescription(ops.fee)
+    data.amount = await getAmountDescription(client, ops.amount)
+    data.fee = await getFeeDescription(client, ops.fee)
 
     return {
         code : '无',
@@ -30,9 +30,9 @@ handlerMap.transfer = async (tr, network, account, originalArgs) => {
     }
 }
 
-const buildDisplayMessages = async (tr, network, account, originalArgs, method) => {
+const buildDisplayMessages = async (tr, network, account, originalArgs, method, client) => {
     const handler = handlerMap[method] || function () { }
-    const { code, data, type, ricardian } = await handler(tr, network, account, originalArgs);
+    const { code, data, type, ricardian } = await handler(tr, network, account, originalArgs, client);
     return buildRet(code, data, type, ricardian, account);
 };
 

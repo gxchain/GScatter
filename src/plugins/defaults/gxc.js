@@ -13,6 +13,7 @@ import { strippedHost } from '../../util/GenericTools'
 import handleArgs from './gxc/util/handleArgs'
 import buildDisplayMessages from './gxc/util/buildDisplayMessages'
 import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
+import {cloneDeep} from 'lodash'
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
@@ -204,7 +205,7 @@ export default class GXC extends Plugin {
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }
 
                             // build prompt display messages
-                            payload.messages = await buildDisplayMessages(tr, network, account, args, method);
+                            payload.messages = await buildDisplayMessages(tr, network, account, cloneDeep(args), method, client);
 
                             // TODO add requiredFields
                             payload = Object.assign(payload, { domain: strippedHost(), network });
@@ -227,7 +228,7 @@ export default class GXC extends Plugin {
                             domain: strippedHost()
                         }
 
-                        const handledArgs = await handleArgs(method, args.concat([]), messageSender, ext);
+                        const handledArgs = await handleArgs(method, cloneDeep(args), messageSender, ext);
 
                         var client = new GXClient("", "", `${network.fullhost().replace("https://", "wss://").replace("http://", "ws://")}`, signProvider);
                         await client.updateAccount(account.name);
