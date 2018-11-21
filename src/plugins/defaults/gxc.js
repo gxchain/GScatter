@@ -168,8 +168,7 @@ export default class GXC extends Plugin {
                 callback(null);
                 return false;
             }
-            console.log(new Buffer(payload.transaction.tr_buffer))
-            var buf = Buffer.concat([new Buffer(payload.chain_id, "hex"), new Buffer(payload.transaction.tr_buffer)])
+            var buf = Buffer.concat([new Buffer(payload.chain_id, "hex"), new Buffer(payload.tr_buffer)])
             var private_key = PrivateKey.fromWif(privateKey);
             var public_key = private_key.toPublicKey();
             var sig = Signature.signBuffer(
@@ -201,7 +200,7 @@ export default class GXC extends Plugin {
                         const signProvider = async (tr, chain_id) => {
                             throwIfNoIdentity();
 
-                            let payload = { transaction: tr, chain_id }
+                            let payload = { tr_buffer: tr.tr_buffer, chain_id }
 
                             // Friendly formatting
                             payload.messages = await requestParser(tr, network);
