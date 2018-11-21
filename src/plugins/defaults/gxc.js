@@ -10,7 +10,8 @@ import { GXClient } from 'gxclient/es/index';
 import { PrivateKey, PublicKey, Signature } from 'gxbjs/es/index';
 import Error from "../../models/errors/Error";
 import { strippedHost } from '../../util/GenericTools'
-import { handleArgs } from './gxc/util'
+import handleArgs from './gxc/util/handleArgs'
+import buildDisplayMessages from './gxc/util/buildDisplayMessages'
 import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
 
 let networkGetter = new WeakMap();
@@ -185,7 +186,7 @@ export default class GXC extends Plugin {
         messageSender = args[0];
         throwIfNoIdentity = args[1];
 
-        return (network) => {
+        return (network, account) => {
             network = Network.fromJson(network);
             if (!network.isValid()) throw Error.noNetwork();
             const httpEndpoint = `${network.protocol}://${network.hostport()}`;
@@ -202,8 +203,8 @@ export default class GXC extends Plugin {
 
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }
 
-                            // Friendly formatting
-                            payload.messages = await requestParser(tr, network);
+                            // build prompt display messages
+                            payload.messages = await buildDisplayMessages(tr, network, account, args, method);
 
                             // TODO add requiredFields
                             payload = Object.assign(payload, { domain: strippedHost(), network });
@@ -226,11 +227,12 @@ export default class GXC extends Plugin {
                             domain: strippedHost()
                         }
 
-                        args = await handleArgs(method, args, messageSender, ext);
+                        const handledArgs = await handleArgs(method, args.concat([]), messageSender, ext);
 
-                        // TODO 改wss
-                        var client = new GXClient("", "1.2.256", `wss://${network.hostport()}`, signProvider)
-                        return client[method].apply(client, args)
+                        var client = new GXClient("", "", `${network.fullhost().replace("https://", "wss://").replace("http://", "ws://")}`, signProvider);
+                        await client.updateAccount(account.name);
+
+                        return client[method].apply(client, handledArgs)
                     }
                 }
             })
@@ -248,21 +250,3 @@ export default class GXC extends Plugin {
         };
     }
 }
-
-// 用于构造在prompt中需要展示的数据结构
-const requestParser = async (tr, network) => {
-    return [{
-        code: '测试',
-        data: {
-            yes: 123,
-            no: 888
-        },
-        name: '操作名称',
-        // 注意auth格式
-        authorization: [{
-            actor: "lzydophin94",
-            permission: "active"
-        }],
-        ricardian: 'riririiririr'
-    }]
-};

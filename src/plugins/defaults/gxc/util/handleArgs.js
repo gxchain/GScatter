@@ -1,6 +1,6 @@
 import { PrivateKey, PublicKey, Signature, TransactionHelper } from 'gxbjs/es/index';
 const methodArgsHandleMap = {}
-import * as NetworkMessageTypes from '../../../messages/NetworkMessageTypes'
+import * as NetworkMessageTypes from '../../../../messages/NetworkMessageTypes'
 
 methodArgsHandleMap.transfer = async (args, messageSender, ext) => {
     var memoStr = args[1];
@@ -53,8 +53,10 @@ methodArgsHandleMap.transfer = async (args, messageSender, ext) => {
     return args;
 }
 
-export const handleArgs = async (method, args, messageSender, ext) => {
+const handleArgs = async (method, args, messageSender, ext) => {
     var handler = methodArgsHandleMap[method] || function (args) { return args };
 
     return await handler(args, messageSender, ext);
 }
+
+export default handleArgs;
