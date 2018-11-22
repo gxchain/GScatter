@@ -14,6 +14,7 @@ import handleArgs from './gxc/util/handleArgs'
 import buildDisplayMessages from './gxc/util/buildDisplayMessages'
 import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
 import {cloneDeep} from 'lodash'
+import {getWsAddress} from './gxc/util/util'
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
@@ -59,7 +60,7 @@ export default class GXC extends Plugin {
     importAccount(keypair, network, context, accountSelected) {
         const getAccountsFromPublicKey = (publicKey, network) => {
             return new Promise((resolve, reject) => {
-                let client = new GXClient("", "", `wss://${network.hostport()}`);
+                let client = new GXClient("", "", `${getWsAddress(network)}`);
                 client.getAccountByPublicKey(publicKey).then(account_ids => {
                     client._query("get_objects", [account_ids]).then(accounts => {
                         let results = [];
@@ -142,7 +143,7 @@ export default class GXC extends Plugin {
     }
 
     async getBalances(account, network) {
-        let client = new GXClient("", "", `wss://${network.hostport()}`);
+        let client = new GXClient("", "", `${getWsAddress(network)}`);
         return client.getAccountBalances(account.name).then(balances => {
             return client._query("get_objects", [balances.map(b => b.asset_id)]).then(assets => {
                 let result = balances.map(b => {
@@ -229,7 +230,7 @@ export default class GXC extends Plugin {
 
                         const handledArgs = await handleArgs(method, cloneDeep(args), messageSender, ext);
 
-                        var client = new GXClient("", `${account.name}`, `${network.fullhost().replace("https://", "wss://").replace("http://", "ws://")}`, signProvider);
+                        var client = new GXClient("", `${account.name}`, `${getWsAddress(network)}`, signProvider);
 
                         return client[method].apply(client, handledArgs)
                     }
