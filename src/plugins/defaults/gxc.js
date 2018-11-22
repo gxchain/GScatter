@@ -199,9 +199,8 @@ export default class GXC extends Plugin {
             return proxy({}, {
                 get: (ins, method) => {
                     return async (...args) => {
+                        throwIfNoIdentity();
                         const signProvider = async (tr, chain_id) => {
-                            throwIfNoIdentity();
-
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }
 
                             // build prompt display messages
