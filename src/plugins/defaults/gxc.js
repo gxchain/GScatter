@@ -236,17 +236,6 @@ export default class GXC extends Plugin {
                     }
                 }
             })
-            // return {
-            //     vote: function (account_ids, options) {
-            //         console.log('vote', arguments);
-            //     },
-            //     transfer: function (from, to, amount, options) {
-            //         console.log('transfer', arguments);
-            //     },
-            //     contract: function (contract_name, method, params, options) {
-            //         console.log('contract', arguments);
-            //     }
-            // };
         };
     }
 }

@@ -30,6 +30,26 @@ handlerMap.transfer = async (tr, network, account, originalArgs, client) => {
     }
 }
 
+handlerMap.callContract = async (tr, network, account, originalArgs, client) => {
+    var data = {}
+    const ops = tr.operations[0][1]
+    data.fee = await getFeeDescription(client, ops.fee)
+    data.from = account.name
+    data.contractName = originalArgs[0]
+    data.methodName = originalArgs[1]
+    data.params = JSON.stringify(originalArgs[2])
+    if(!!originalArgs[3]){
+        data.carryAmount = originalArgs[3]
+    }
+
+    return {
+        code : data.contractName,
+        type: '合约调用',
+        ricardian: '合约ricardian',
+        data: data
+    }
+}
+
 const buildDisplayMessages = async (tr, network, account, originalArgs, method, client) => {
     const handler = handlerMap[method] || function () { }
     const { code, data, type, ricardian } = await handler(tr, network, account, originalArgs, client);

@@ -1,7 +1,7 @@
 import VueInitializer from './vue/VueInitializer';
-import {Routing} from './vue/Routing';
+import { Routing } from './vue/Routing';
 import * as Actions from './store/constants'
-import {RouteNames} from './vue/Routing'
+import { RouteNames } from './vue/Routing'
 import Prompt from './models/prompts/Prompt'
 import PromptBase from './prompts/PromptBase.vue'
 import Network from './models/Network'
@@ -15,11 +15,11 @@ import SelectComponent from './components/SelectComponent.vue'
 import KeyValue from './components/KeyValue.vue'
 import InternalMessage from './messages/InternalMessage'
 import * as InternalMessageTypes from './messages/InternalMessageTypes'
-import {apis} from './util/BrowserApis';
+import { apis } from './util/BrowserApis';
 
 class PromptWindow {
 
-    constructor(){
+    constructor() {
         let prompt = window.data || apis.extension.getBackgroundPage().notification || null;
 
         // TODO: Pair prompt with a checksum from the state store so that
@@ -31,25 +31,23 @@ class PromptWindow {
         prompt = Prompt.fromJson(prompt);
 
         const components = [
-            {tag:'prompt-base', vue:PromptBase},
-            {tag:'btn', vue:ButtonComponent},
-            {tag:'search', vue:SearchComponent},
-            {tag:'cin', vue:InputComponent},
-            {tag:'sel', vue:SelectComponent},
-            {tag:'alert', vue:Alert},
-            {tag:'key-value', vue:KeyValue},
+            { tag: 'prompt-base', vue: PromptBase },
+            { tag: 'btn', vue: ButtonComponent },
+            { tag: 'search', vue: SearchComponent },
+            { tag: 'cin', vue: InputComponent },
+            { tag: 'sel', vue: SelectComponent },
+            { tag: 'alert', vue: Alert },
+            { tag: 'key-value', vue: KeyValue },
         ];
 
         const routes = Routing.routes(true);
         const middleware = (to, next, store) => next();
 
-        setTimeout(()=>{
-            new VueInitializer(routes, components, middleware, (router, store) => {
-                debugger
-                store.dispatch(Actions.PUSH_PROMPT, prompt);
-                router.push({name:prompt.routeName()});
-            });
-        },5000)
+        new VueInitializer(routes, components, middleware, (router, store) => {
+            debugger
+            store.dispatch(Actions.PUSH_PROMPT, prompt);
+            router.push({ name: prompt.routeName() });
+        });
     }
 
 }
