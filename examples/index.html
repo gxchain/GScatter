@@ -11,10 +11,6 @@
 <button onclick="logout()">Forget Identity</button>
 <button onclick="transfer()">Transfer</button>
 <button onclick="contract()">Contract</button>
-<button onclick="multi()">Multi</button>
-<button onclick="fc()">Test FC</button>
-<button onclick="hookTransfer()">Hook Transfer</button>
-<button onclick="donate()">Donate</button>
 
 <a href="scatter://transfer?payload=safetransfer/0/eos/aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906/ramdeathtest">
     <button>Donate with Deep Link</button>
@@ -56,28 +52,12 @@
         });
     };
 
-    window.hookTransfer = () => {
-        
-    };
-
-    window.donate = () => {
-        
-    };
-
     window.contract = () => {
         gxc.callContract('lzydododo','hi', {user:'lzy'} ,0 ,true).then(trx => {
             console.log(`succcccc`,trx);
         }).catch(error => {
             console.error(error);
         });
-    }
-
-    window.multi = () => {
-        
-    }
-
-    window.fc = () => {
-        
     }
 
 </script>
