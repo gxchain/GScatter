@@ -230,8 +230,7 @@ export default class GXC extends Plugin {
 
                         const handledArgs = await handleArgs(method, cloneDeep(args), messageSender, ext);
 
-                        var client = new GXClient("", "", `${network.fullhost().replace("https://", "wss://").replace("http://", "ws://")}`, signProvider);
-                        await client.updateAccount(account.name);
+                        var client = new GXClient("", `${account.name}`, `${network.fullhost().replace("https://", "wss://").replace("http://", "ws://")}`, signProvider);
 
                         return client[method].apply(client, handledArgs)
                     }

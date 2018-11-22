@@ -1,5 +1,5 @@
 import {getCurrentAccount} from '../util/util';
-import {PrivateKey, Aes} from 'gxbjs';
+import {PrivateKey, Aes} from 'gxbjs/es/index';
 export default class GXCService {
 
     /***

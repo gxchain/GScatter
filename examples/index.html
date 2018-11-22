@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Tester</title>
+    <script src="./scatterjs-core.min.js"></script>
+</head>
+<body>
+
+<button onclick="login()">Get Identity</button>
+<button onclick="logout()">Forget Identity</button>
+<button onclick="transfer()">Transfer</button>
+<button onclick="contract()">Contract</button>
+<button onclick="multi()">Multi</button>
+<button onclick="fc()">Test FC</button>
+<button onclick="hookTransfer()">Hook Transfer</button>
+<button onclick="donate()">Donate</button>
+
+<a href="scatter://transfer?payload=safetransfer/0/eos/aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906/ramdeathtest">
+    <button>Donate with Deep Link</button>
+</a>
+
+<script>
+    const network = {
+    blockchain:'gxc',
+    protocol:'https',
+    host:'testnet.gxchain.org',
+    port:443,
+    chainId:'c2af30ef9340ff81fd61654295e98a1ff04b23189748f86727d0b26b40bb0ff4'
+}
+
+    let scatter, gxc;
+
+    ScatterJS.scatter.connect('exampleApp').then(connected => {
+        if(!connected) return false;
+        scatter = ScatterJS.scatter;
+        // gxc = scatter.gxc(network);
+    });
+
+    window.login = async () => {
+        await scatter.suggestNetwork(network);
+        await scatter.getIdentity({accounts:[network]})
+        const account = scatter.identity.accounts.find(x => x.blockchain === 'gxc');
+        gxc = scatter.gxc(network,account);
+    };
+
+    window.logout = () => {
+        scatter.forgetIdentity();
+    };
+
+    window.transfer = async () => {
+        gxc.transfer('youxiu123','memo info', '1 GXC' ,true).then(trx => {
+            console.log(`succcccc`,trx);
+        }).catch(error => {
+            console.error(error);
+        });
+    };
+
+    window.hookTransfer = () => {
+        
+    };
+
+    window.donate = () => {
+        
+    };
+
+    window.contract = () => {
+        
+    }
+
+    window.multi = () => {
+        
+    }
+
+    window.fc = () => {
+        
+    }
+
+</script>
+</body>
+</html>
