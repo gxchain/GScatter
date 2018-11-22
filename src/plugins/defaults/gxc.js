@@ -200,6 +200,7 @@ export default class GXC extends Plugin {
             return proxy({}, {
                 get: (ins, method) => {
                     return async (...args) => {
+                        let handledArgs;
                         throwIfNoIdentity();
                         const signProvider = async (tr, chain_id) => {
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }
@@ -228,7 +229,11 @@ export default class GXC extends Plugin {
                             domain: strippedHost()
                         }
 
-                        const handledArgs = await handleArgs(method, cloneDeep(args), messageSender, ext);
+                        try{
+                            handledArgs = await handleArgs(method, cloneDeep(args), messageSender, ext);
+                        }catch(err){
+                            throw err;
+                        }
 
                         var client = new GXClient("", `${account.name}`, `${getWsAddress(network)}`, signProvider);
 

@@ -6,7 +6,8 @@ export const ErrorCodes = {
     TIMED_OUT:408,
     LOCKED:423,
     UPGRADE_REQUIRED:426,
-    TOO_MANY_REQUESTS:429
+    TOO_MANY_REQUESTS:429,
+    ENCRYPT_MEMO_ERROR: 430
 };
 
 export default class Error {
@@ -59,6 +60,14 @@ export default class Error {
             ErrorTypes.MALICIOUS,
             "Do not use a `keyProvider` with a Scatter. Use a `signProvider` and return only signatures to this object. A malicious person could retrieve your keys otherwise.",
             ErrorCodes.NO_SIGNATURE
+        )
+    }
+
+    static encryptMemoError(message){
+        return new Error(
+            ErrorTypes.ENCRYPT_MEMO_ERROR,
+            message,
+            ErrorCodes.ENCRYPT_MEMO_ERROR
         )
     }
 

@@ -1,5 +1,6 @@
 import {getCurrentAccount} from '../util/util';
 import {PrivateKey, Aes} from 'gxbjs/es/index';
+import Error from '../models/errors/Error';
 export default class GXCService {
 
     /***
@@ -14,17 +15,25 @@ export default class GXCService {
         // TODO error handler
         const publicKey = getCurrentAccount(scatter, domain, network).publicKey;
         context.publicToPrivate(privateKey => {
+            let message
             if (!privateKey) {
                 sendResponse(null);
                 return false;
             }
 
-            sendResponse(Aes.encrypt_with_checksum(
-                PrivateKey.fromWif(privateKey),
-                toPublic,
-                nonce,
-                new Buffer(memo, "utf-8")
-            ));
+            try{
+                message = Aes.encrypt_with_checksum(
+                    PrivateKey.fromWif(privateKey),
+                    toPublic,
+                    nonce,
+                    new Buffer(memo, "utf-8")
+                )
+            }catch(err){
+                sendResponse(Error.encryptMemoError(err.message));
+                return;
+            }
+
+            sendResponse(message);
         }, publicKey);
     }
 }
