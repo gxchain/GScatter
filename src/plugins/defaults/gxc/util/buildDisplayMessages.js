@@ -1,4 +1,6 @@
 import {getAmountDescription, getFeeDescription} from './chainUtil'
+import Error from '../../../../models/errors/Error';
+
 function buildRet(code, data, type, ricardian, account) {
     return [{
         code,
@@ -52,7 +54,13 @@ handlerMap.callContract = async (tr, network, account, originalArgs, client) => 
 
 const buildDisplayMessages = async (tr, network, account, originalArgs, method, client) => {
     const handler = handlerMap[method] || function () { }
-    const { code, data, type, ricardian } = await handler(tr, network, account, originalArgs, client);
+    let ret
+    try{
+        ret = await handler(tr, network, account, originalArgs, client);
+    }catch(err){
+        throw Error.buildDisplayMessageError(err.message)
+    }
+    const { code, data, type, ricardian } = ret
     return buildRet(code, data, type, ricardian, account);
 };
 

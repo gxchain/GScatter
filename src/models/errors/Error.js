@@ -7,7 +7,8 @@ export const ErrorCodes = {
     LOCKED:423,
     UPGRADE_REQUIRED:426,
     TOO_MANY_REQUESTS:429,
-    ENCRYPT_MEMO_ERROR: 430
+    ENCRYPT_MEMO_ERROR: 430,
+    BUILD_DISPLAY_MESSAGE_ERROR: 431
 };
 
 export default class Error {
@@ -68,6 +69,14 @@ export default class Error {
             ErrorTypes.ENCRYPT_MEMO_ERROR,
             message,
             ErrorCodes.ENCRYPT_MEMO_ERROR
+        )
+    }
+
+    static buildDisplayMessageError(message){
+        return new Error(
+            ErrorTypes.BUILD_DISPLAY_MESSAGE_ERROR,
+            message,
+            ErrorCodes.BUILD_DISPLAY_MESSAGE_ERROR
         )
     }
 
