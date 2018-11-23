@@ -13,8 +13,8 @@ import { strippedHost } from '../../util/GenericTools'
 import handleArgs from './gxc/util/handleArgs'
 import buildDisplayMessages from './gxc/util/buildDisplayMessages'
 import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
-import {cloneDeep} from 'lodash'
-import {getWsAddress, isMethodNeedIdentity} from './gxc/util/util'
+import { cloneDeep } from 'lodash'
+import { getWsAddress, isMethodNeedIdentity } from './gxc/util/util'
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
@@ -40,7 +40,7 @@ export default class GXC extends Plugin {
         return new Promise((resolve, reject) => {
             resolve(new Network(
                 'GXChain Mainnet', 'https',
-                'node11.gxb.io',
+                'node1.gxb.io',
                 443,
                 Blockchains.GXC,
                 '4f7d07969c446f8342033acb3ab2ae5044cbe0fde93db02de75bd17fa8fd84b8'
@@ -201,7 +201,7 @@ export default class GXC extends Plugin {
                 get: (ins, method) => {
                     return async (...args) => {
                         let handledArgs;
-                        if(isMethodNeedIdentity(method)){
+                        if (isMethodNeedIdentity(method)) {
                             throwIfNoIdentity();
                         }
                         const signProvider = async (tr, chain_id) => {
@@ -231,13 +231,13 @@ export default class GXC extends Plugin {
                             domain: strippedHost()
                         }
 
-                        try{
+                        try {
                             handledArgs = await handleArgs(method, cloneDeep(args), messageSender, ext);
-                        }catch(err){
+                        } catch (err) {
                             throw err;
                         }
 
-                        var client = new GXClient("", `${account.name}`, `${getWsAddress(network)}`, signProvider);
+                        var client = new GXClient("", account.name ? account.name : '', `${getWsAddress(network)}`, signProvider);
 
                         return client[method].apply(client, handledArgs)
                     }

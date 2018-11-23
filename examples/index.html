@@ -12,6 +12,7 @@
 <button onclick="transfer()">Transfer</button>
 <button onclick="contract()">Contract</button>
 <button onclick="generateKey()">Generate Key</button>
+<button onclick="queryAccount()">Query Account By Name</button>
 
 <script>
     const network = {
@@ -61,6 +62,11 @@
     window.generateKey = async () => {
         const key = await gxc.generateKey()
         console.log(key)
+    }
+
+    window.queryAccount = async () => {
+        const account = await gxc.getAccount('lzydophin94')
+        console.log(account)
     }
 </script>
 </body>
