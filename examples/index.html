@@ -11,10 +11,7 @@
 <button onclick="logout()">Forget Identity</button>
 <button onclick="transfer()">Transfer</button>
 <button onclick="contract()">Contract</button>
-
-<a href="scatter://transfer?payload=safetransfer/0/eos/aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906/ramdeathtest">
-    <button>Donate with Deep Link</button>
-</a>
+<button onclick="generateKey()">Generate Key</button>
 
 <script>
     const network = {
@@ -30,7 +27,8 @@
     ScatterJS.scatter.connect('exampleApp').then(connected => {
         if(!connected) return false;
         scatter = ScatterJS.scatter;
-        // gxc = scatter.gxc(network);
+        // when user not login, you could use api which not need identity, like generateKey
+        gxc = scatter.gxc(network);
     });
 
     window.login = async () => {
@@ -60,6 +58,10 @@
         });
     }
 
+    window.generateKey = async () => {
+        const key = await gxc.generateKey()
+        console.log(key)
+    }
 </script>
 </body>
 </html>

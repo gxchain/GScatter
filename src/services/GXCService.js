@@ -12,8 +12,14 @@ export default class GXCService {
      */
     static encryptMemo(payload, scatter, context, sendResponse) {
         const {domain, network, memo, toPublic, nonce} = payload;
-        // TODO error handler
-        const publicKey = getCurrentAccount(scatter, domain, network).publicKey;
+        let publicKey;
+        try{
+            publicKey = getCurrentAccount(scatter, domain, network).publicKey;
+        }catch(err){
+            sendResponse(err);
+            return;
+        }
+        
         context.publicToPrivate(privateKey => {
             let message
             if (!privateKey) {

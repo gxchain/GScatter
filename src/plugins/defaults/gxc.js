@@ -14,7 +14,7 @@ import handleArgs from './gxc/util/handleArgs'
 import buildDisplayMessages from './gxc/util/buildDisplayMessages'
 import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
 import {cloneDeep} from 'lodash'
-import {getWsAddress} from './gxc/util/util'
+import {getWsAddress, isMethodNeedIdentity} from './gxc/util/util'
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
@@ -188,7 +188,7 @@ export default class GXC extends Plugin {
         messageSender = args[0];
         throwIfNoIdentity = args[1];
 
-        return (network, account) => {
+        return (network, account = {}) => {
             network = Network.fromJson(network);
             if (!network.isValid()) throw Error.noNetwork();
             const httpEndpoint = `${network.protocol}://${network.hostport()}`;
@@ -201,7 +201,9 @@ export default class GXC extends Plugin {
                 get: (ins, method) => {
                     return async (...args) => {
                         let handledArgs;
-                        throwIfNoIdentity();
+                        if(isMethodNeedIdentity(method)){
+                            throwIfNoIdentity();
+                        }
                         const signProvider = async (tr, chain_id) => {
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }
 
