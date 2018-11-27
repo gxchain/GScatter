@@ -188,7 +188,7 @@ export default class GXC extends Plugin {
         messageSender = args[0];
         throwIfNoIdentity = args[1];
 
-        return (network, account = {}) => {
+        return (network) => {
             network = Network.fromJson(network);
             if (!network.isValid()) throw Error.noNetwork();
             const httpEndpoint = `${network.protocol}://${network.hostport()}`;
@@ -203,8 +203,26 @@ export default class GXC extends Plugin {
                         let handledArgs;
                         if (isMethodNeedIdentity(method)) {
                             throwIfNoIdentity();
-                            return;
                         }
+
+                        let identity
+                        let account
+                        // 获取permission identity
+                        try{
+                            identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, { domain: strippedHost() });
+                        }catch(err){
+                            // 不存在identity
+                            if(err == null){
+                                identity = null
+                            }
+                        }
+                        
+                        if(!!identity){
+                            account = identity.accounts[0];
+                        }else{
+                            account = {}
+                        }
+
                         const signProvider = async (tr, chain_id) => {
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }
 
