@@ -1,3 +1,3 @@
 
-export const INJECTED = 'injected';
-export const SCATTER = 'scatter';
+export const INJECTED = 'ginjected';
+export const SCATTER = 'gscatter';

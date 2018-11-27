@@ -49,7 +49,7 @@ class Content {
             // Dispatching the loaded event to the web application.
             isReady = true;
 
-            document.dispatchEvent(new CustomEvent("scatterLoaded"));
+            document.dispatchEvent(new CustomEvent("gscatterLoaded"));
         })
     }
 

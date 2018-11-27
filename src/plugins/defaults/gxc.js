@@ -203,6 +203,7 @@ export default class GXC extends Plugin {
                         let handledArgs;
                         if (isMethodNeedIdentity(method)) {
                             throwIfNoIdentity();
+                            return;
                         }
                         const signProvider = async (tr, chain_id) => {
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }

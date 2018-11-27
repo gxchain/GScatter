@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>gscatter测试页面</title>
-    <script src="./scatterjs-core.min.js"></script>
+    <script src="./gscatterjs-core.min.js"></script>
 </head>
 <body>
 
@@ -23,24 +23,24 @@
     chainId:'c2af30ef9340ff81fd61654295e98a1ff04b23189748f86727d0b26b40bb0ff4'
 }
 
-    let scatter, gxc;
+    let gscatter, gxc;
 
-    ScatterJS.scatter.connect('exampleApp').then(connected => {
+    GScatterJS.gscatter.connect('exampleApp').then(connected => {
         if(!connected) return false;
-        scatter = ScatterJS.scatter;
+        gscatter = GScatterJS.gscatter;
         // when user not login, you could use api which not need identity, like generateKey
-        gxc = scatter.gxc(network);
+        gxc = gscatter.gxc(network);
     });
 
     window.login = async () => {
-        await scatter.suggestNetwork(network);
-        await scatter.getIdentity({accounts:[network]})
-        const account = scatter.identity.accounts.find(x => x.blockchain === 'gxc');
-        gxc = scatter.gxc(network,account);
+        await gscatter.suggestNetwork(network);
+        await gscatter.getIdentity({accounts:[network]})
+        const account = gscatter.identity.accounts.find(x => x.blockchain === 'gxc');
+        gxc = gscatter.gxc(network,account);
     };
 
     window.logout = () => {
-        scatter.forgetIdentity();
+        gscatter.forgetIdentity();
     };
 
     window.transfer = async () => {
