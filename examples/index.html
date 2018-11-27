@@ -36,7 +36,7 @@
         await gscatter.suggestNetwork(network);
         await gscatter.getIdentity({accounts:[network]})
         const account = gscatter.identity.accounts.find(x => x.blockchain === 'gxc');
-        gxc = gscatter.gxc(network,account);
+        gxc = gscatter.gxc(network);
     };
 
     window.logout = () => {
