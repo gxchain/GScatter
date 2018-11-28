@@ -6,7 +6,8 @@ import Network from './models/Network'
 import IdGenerator from './util/IdGenerator';
 import PluginRepository from './plugins/PluginRepository';
 const ecc = require('eosjs-ecc');
-import {strippedHost} from './util/GenericTools'
+import { strippedHost } from './util/GenericTools'
+import semvercp from 'semver-compare'
 
 
 const throws = (msg) => {
@@ -18,7 +19,7 @@ const throws = (msg) => {
  * requests using browser messaging.
  */
 class DanglingResolver {
-    constructor(_id, _resolve, _reject){
+    constructor(_id, _resolve, _reject) {
         this.id = _id;
         this.resolve = _resolve;
         this.reject = _reject;
@@ -33,10 +34,10 @@ let resolvers = new WeakMap();
 let network = new WeakMap();
 let publicKey = new WeakMap();
 let currentVersion = new WeakMap();
-let requiredVersion = new WeakMap();
+let requiredVersion;
 
 const throwIfNoIdentity = () => {
-    if(!publicKey) throws('There is no identity with an account set on your Scatter instance.');
+    if (!publicKey) throws('There is no identity with an account set on your Scatter instance.');
 };
 
 
@@ -49,10 +50,10 @@ const locationHost = () => strippedHost();
  * them to the open promises. */
 const _subscribe = () => {
     stream.listenWith(msg => {
-        if(!msg || !msg.hasOwnProperty('type')) return false;
-        for(let i=0; i < resolvers.length; i++) {
+        if (!msg || !msg.hasOwnProperty('type')) return false;
+        for (let i = 0; i < resolvers.length; i++) {
             if (resolvers[i].id === msg.resolver) {
-                if(msg.type === 'error') resolvers[i].reject(msg.payload);
+                if (msg.type === 'error') resolvers[i].reject(msg.payload);
                 else resolvers[i].resolve(msg.payload);
                 resolvers = resolvers.slice(i, 1);
             }
@@ -70,7 +71,7 @@ const _send = (_type, _payload) => {
     return new Promise((resolve, reject) => {
 
         // Version requirements
-        if(!!requiredVersion && requiredVersion > currentVersion){
+        if (!!requiredVersion && semvercp(requiredVersion, currentVersion) === 1) {
             let message = new NetworkMessage(NetworkMessageTypes.REQUEST_VERSION_UPDATE, {}, -1);
             stream.send(message, PairingTags.SCATTER);
             reject(Error.requiresUpgrade());
@@ -97,8 +98,8 @@ const setupSigProviders = context => {
  */
 export default class Scatterdapp {
 
-    constructor(_stream, _options){
-        currentVersion = parseFloat(_options.version);
+    constructor(_stream, _options) {
+        currentVersion = _options.version;
         this.useIdentity(_options.identity);
         stream = _stream;
         resolvers = [];
@@ -108,7 +109,7 @@ export default class Scatterdapp {
         _subscribe();
     }
 
-    useIdentity(identity){
+    useIdentity(identity) {
         this.identity = identity;
         publicKey = identity ? identity.publicKey : '';
     }
@@ -116,10 +117,10 @@ export default class Scatterdapp {
     /***
      * Suggests the set network to the user's Scatter.
      */
-    suggestNetwork(network){
-        if(!Network.fromJson(network).isValid()) throws('The provided network is invalid.');
+    suggestNetwork(network) {
+        if (!Network.fromJson(network).isValid()) throws('The provided network is invalid.');
         return _send(NetworkMessageTypes.REQUEST_ADD_NETWORK, {
-            network:network
+            network: network
         });
     }
 
@@ -127,9 +128,9 @@ export default class Scatterdapp {
      * Gets an Identity from the user to use.
      * @param fields - You can specify required fields such as ['email', 'country', 'firstname']
      */
-    getIdentity(fields = {}){
+    getIdentity(fields = {}) {
         return _send(NetworkMessageTypes.GET_OR_REQUEST_IDENTITY, {
-            network:network,
+            network: network,
             fields
         }).then(async identity => {
             this.useIdentity(identity);
@@ -142,7 +143,7 @@ export default class Scatterdapp {
      * Returns a signature which can be used to self verify against the domain name
      * @returns {Promise.<T>}
      */
-    async authenticate(){
+    async authenticate() {
         throwIfNoIdentity();
 
         // TODO: Verify identity matches RIDL registration
@@ -152,9 +153,9 @@ export default class Scatterdapp {
         }, true).catch(err => err);
 
         // If the `signature` is an object, it's an error message
-        if(typeof signature === 'object') return signature;
+        if (typeof signature === 'object') return signature;
 
-        try { if(ecc.verify(signature, strippedHost(), publicKey)) return signature; }
+        try { if (ecc.verify(signature, strippedHost(), publicKey)) return signature; }
         catch (e) {
             this.identity = null;
             publicKey = '';
@@ -166,7 +167,7 @@ export default class Scatterdapp {
      * Signs out the identity.
      * @returns {Promise.<TResult>}
      */
-    forgetIdentity(){
+    forgetIdentity() {
         throwIfNoIdentity();
         return _send(NetworkMessageTypes.FORGET_IDENTITY, {}).then(() => {
             this.identity = null;
@@ -180,7 +181,7 @@ export default class Scatterdapp {
      * scatter requests will fail and notify the user of the reason.
      * @param _version
      */
-    requireVersion(_version){
+    requireVersion(_version) {
         requiredVersion = _version;
     }
 
@@ -191,7 +192,7 @@ export default class Scatterdapp {
      * @param whatfor
      * @param isHash - True if the data requires a hash signature
      */
-    getArbitrarySignature(publicKey, data, whatfor = '', isHash = false){
+    getArbitrarySignature(publicKey, data, whatfor = '', isHash = false) {
         return _send(NetworkMessageTypes.REQUEST_ARBITRARY_SIGNATURE, {
             publicKey,
             data,

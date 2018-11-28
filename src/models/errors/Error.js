@@ -80,4 +80,8 @@ export default class Error {
         )
     }
 
+    static signReject(){
+        return this.signatureError("sign_rejected", "User rejected the sign operation");
+    }
+
 }

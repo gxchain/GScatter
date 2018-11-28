@@ -214,6 +214,8 @@ export default class GXC extends Plugin {
                             // 不存在identity
                             if(err == null){
                                 identity = null
+                            }else{
+                                throw err
                             }
                         }
                         
@@ -225,13 +227,18 @@ export default class GXC extends Plugin {
 
                         const signProvider = async (tr, chain_id) => {
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }
+                            let result
 
                             // build prompt display messages
                             payload.messages = await buildDisplayMessages(tr, network, account, cloneDeep(args), method, client);
 
                             // TODO add requiredFields
                             payload = Object.assign(payload, { domain: strippedHost(), network });
-                            const result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload);
+                            try{
+                                result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload);
+                            }catch(err){
+                                throw Error.signReject();
+                            }
 
                             // No signature
                             if (!result) return null;

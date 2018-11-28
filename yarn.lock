@@ -234,7 +234,7 @@ async-eventemitter@^0.2.2:
   dependencies:
     async "^2.4.0"
 
-"async-eventemitter@github:ahultgren/async-eventemitter#fa06e39e56786ba541c180061dbf2c0a5bbf951c":
+async-eventemitter@ahultgren/async-eventemitter#fa06e39e56786ba541c180061dbf2c0a5bbf951c:
   version "0.2.3"
   resolved "https://codeload.github.com/ahultgren/async-eventemitter/tar.gz/fa06e39e56786ba541c180061dbf2c0a5bbf951c"
   dependencies:
@@ -897,8 +897,8 @@ binaryen@^37.0.0:
   resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-37.0.0.tgz#c392bc784b6d46da8fc918b1a4ed8257a0cd8b08"
 
 bindings@^1.2.1:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.3.0.tgz#b346f6ecf6a95f5a815c5839fc7cdb22502f1ed7"
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.3.1.tgz#21fc7c6d67c18516ec5aaa2815b145ff77b26ea5"
 
 bip39@^2.5.0:
   version "2.5.0"
@@ -2758,7 +2758,25 @@ gxbjs-ws@^1.1.22:
   dependencies:
     ws "^4.1.0"
 
-gxbjs@^1.2.89, gxbjs@^1.3.2:
+gxbjs@^1.2.89, gxbjs@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/gxbjs/-/gxbjs-1.3.3.tgz#198be39c0babf772f46becd20765e6faf656dbf8"
+  dependencies:
+    bigi "^1.4.1"
+    bs58 "^3.0.0"
+    bytebuffer "^5.0.0"
+    create-hash "^1.1.2"
+    create-hmac "^1.1.4"
+    crypto-js "^3.1.9-1"
+    deep-equal "^1.0.1"
+    ecurve "^1.0.2"
+    event-emitter "^0.3.4"
+    gxbjs-ws "^1.1.22"
+    immutable "^3.7.6"
+    secp256k1 "^3.3.0"
+    secure-random "^1.1.1"
+
+gxbjs@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/gxbjs/-/gxbjs-1.3.2.tgz#afb708389ebc11e9189cb963629cba7dbdbdef6d"
   dependencies:
@@ -2784,9 +2802,9 @@ gxbjs@^1.2.89, gxbjs@^1.3.2:
     gxbjs "^1.2.89"
     lodash "^4.17.10"
 
-gxclient@^1.3.9:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-1.4.5.tgz#a3cc1a85cce79078b739eede140929ccda56cbcb"
+gxclient@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-1.4.7.tgz#1b037d3ff281b132186be9654f25d21dafc022cd"
   dependencies:
     chalk "^2.4.1"
     commander "^2.17.1"
@@ -5248,6 +5266,10 @@ secure-random@^1.1.1:
 semaphore@>=1.0.1, semaphore@^1.0.3:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/semaphore/-/semaphore-1.1.0.tgz#aaad8b86b20fe8e9b32b16dc2ee682a8cd26a8aa"
+
+semver-compare@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
 
 "semver@2 || 3 || 4 || 5", semver@^5.3.0:
   version "5.6.0"

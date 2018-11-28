@@ -79,8 +79,8 @@
         </section>
 
         <section class="prompt-footer">
-
-            <section class="whitelist">
+            <!-- remove whitelist temp -->
+            <!-- <section class="whitelist">
                 <figure class="header">
                     {{locale(langKeys.REQUEST_SignatureWhitelist)[0]}}
                 </figure>
@@ -93,7 +93,7 @@
                     <b>{{locale(langKeys.REQUEST_SignatureWhitelist)[2]}}</b>
                     {{locale(langKeys.REQUEST_SignatureWhitelist)[3]}}
                 </figure>
-            </section>
+            </section> -->
 
             <section class="actions">
                 <btn :text="locale(langKeys.BUTTON_Deny)" v-on:clicked="denied"></btn>
@@ -478,7 +478,7 @@
 
             .actions {
                 width:150px;
-                float:left;
+                float:right;
             }
         }
     }
