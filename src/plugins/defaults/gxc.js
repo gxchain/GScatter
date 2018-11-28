@@ -15,6 +15,7 @@ import buildDisplayMessages from './gxc/util/buildDisplayMessages'
 import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
 import { cloneDeep } from 'lodash'
 import { getWsAddress, isMethodNeedIdentity } from './gxc/util/util'
+import { IdentityRequiredFields } from '../../models/Identity';
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
@@ -201,6 +202,7 @@ export default class GXC extends Plugin {
                 get: (ins, method) => {
                     return async (...args) => {
                         let handledArgs;
+                        let returnedFields;
                         if (isMethodNeedIdentity(method)) {
                             throwIfNoIdentity();
                         }
@@ -208,22 +210,28 @@ export default class GXC extends Plugin {
                         let identity
                         let account
                         // 获取permission identity
-                        try{
+                        try {
                             identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, { domain: strippedHost() });
-                        }catch(err){
+                        } catch (err) {
                             // 不存在identity
-                            if(err == null){
+                            if (err == null) {
                                 identity = null
-                            }else{
+                            } else {
                                 throw err
                             }
                         }
-                        
-                        if(!!identity){
+
+                        if (!!identity) {
                             account = identity.accounts[0];
-                        }else{
+                        } else {
                             account = {}
                         }
+
+                        let requiredFields = args.find(arg => arg.hasOwnProperty('requiredFields'));
+                        let hasRequireFields = false
+                        if (!!requiredFields) hasRequireFields = true
+                        requiredFields = IdentityRequiredFields.fromJson(requiredFields ? requiredFields.requiredFields : {});
+                        if (!requiredFields.isValid()) throw Error.malformedRequiredFields();
 
                         const signProvider = async (tr, chain_id) => {
                             let payload = { tr_buffer: tr.tr_buffer, chain_id }
@@ -233,17 +241,17 @@ export default class GXC extends Plugin {
                             payload.messages = await buildDisplayMessages(tr, network, account, cloneDeep(args), method, client);
 
                             // TODO add requiredFields
-                            payload = Object.assign(payload, { domain: strippedHost(), network });
-                            try{
-                                result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload);
-                            }catch(err){
-                                throw Error.signReject();
-                            }
+                            payload = Object.assign(payload, { domain: strippedHost(), network, requiredFields });
+
+                            result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload)
 
                             // No signature
                             if (!result) return null;
 
                             if (result.hasOwnProperty('signatures')) {
+                                // Holding onto the returned fields for the final result
+                                returnedFields = result.returnedFields;
+
                                 // Returning only the signatures
                                 return result.signatures.map(sig => new Buffer(sig));
                             }
@@ -265,7 +273,20 @@ export default class GXC extends Plugin {
 
                         var client = new GXClient("", account.name ? account.name : '', `${getWsAddress(network)}`, signProvider);
 
-                        return client[method].apply(client, handledArgs)
+                        let ret = client[method].apply(client, handledArgs)
+
+                        // some methods not return promise, like generateKey
+                        return ret.then ? ret.then(res => {
+                            // if method like `transfer  callContract  vote` has requiredFields
+                            if (!!hasRequireFields && isMethodNeedIdentity(method)) {
+                                return Object.assign({
+                                    transaction: res,
+                                    returnedFileds: returnedFields
+                                })
+                            } else {
+                                return res
+                            }
+                        }) : ret;
                     }
                 }
             })
