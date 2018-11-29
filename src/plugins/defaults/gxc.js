@@ -66,9 +66,10 @@ export default class GXC extends Plugin {
                     client._query("get_objects", [account_ids]).then(accounts => {
                         let results = [];
                         accounts.forEach(acc => {
-                            if (acc.owner.key_auths.find(k => k[0] === publicKey)) {
-                                results.push({ name: acc.name, authority: 'owner' });
-                            }
+                            // just provide active account, cause operation like transfer only make effect on active account
+                            // if (acc.owner.key_auths.find(k => k[0] === publicKey)) {
+                            //     results.push({ name: acc.name, authority: 'owner' });
+                            // }
                             if (acc.active.key_auths.find(k => k[0] === publicKey)) {
                                 results.push({ name: acc.name, authority: 'active' });
                             }
