@@ -18,11 +18,11 @@ const handlerMap = {}
 handlerMap.transfer = async (tr, network, account, originalArgs, client) => {
     var data = {}
     const ops = tr.operations[0][1]
+    data.fee = await getFeeDescription(client, ops.fee)
     data.from = account.name
     data.to = originalArgs[0]
     data.memo = originalArgs[1]
     data.amount = await getAmountDescription(client, ops.amount)
-    data.fee = await getFeeDescription(client, ops.fee)
 
     return {
         code : '无',
@@ -48,6 +48,21 @@ handlerMap.callContract = async (tr, network, account, originalArgs, client) => 
         code : data.contractName,
         type: '合约调用',
         ricardian: '合约ricardian',
+        data: data
+    }
+}
+
+handlerMap.vote = async (tr, network, account, originalArgs, client) => {
+    var data = {}
+    const ops = tr.operations[0][1]
+    data.fee = await getFeeDescription(client, ops.fee)
+    data.from = account.name
+    data.accounts = originalArgs[0].join(',')
+
+    return {
+        code : '无',
+        type: '投票',
+        ricardian: '投票投票',
         data: data
     }
 }
