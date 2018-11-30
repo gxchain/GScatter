@@ -201,6 +201,11 @@ export const REQUEST_ScatterIsLocked = 'req_scat_locked';
 export const REQUEST_UpdateVersion = 'req_updt_vers';
 
 
+export const GXC_TRANSFER_CODE = 'gxc_transfer_code';
+export const GXC_TRANSFER_TYPE = 'gxc_transfer_type';
+export const GXC_TRANSFER_RICARDIAN = 'gxc_transfer_ricardian';
+
+
 
 
 

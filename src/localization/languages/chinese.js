@@ -472,4 +472,8 @@ export default {
         `注意，我们让应用能够检查 Scatter 的版本，但它们有可能让你下载恶意程序，请确保从正确的地址下载 Scatter.`
     ],
 
+    // GXC
+    [KEYS.GXC_TRANSFER_CODE]:`无`,
+    [KEYS.GXC_TRANSFER_TYPE]:`转账`,
+    [KEYS.GXC_TRANSFER_RICARDIAN]:`开发者向您申请转账，请谨慎操作！`
 }

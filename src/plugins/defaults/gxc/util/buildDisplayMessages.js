@@ -1,5 +1,8 @@
-import {getAmountDescription, getFeeDescription} from './chainUtil'
+import { getAmountDescription, getFeeDescription } from './chainUtil'
 import Error from '../../../../models/errors/Error';
+// import { store } from '../../../../store/store';
+import { localized } from '../../../../localization/locales';
+import * as KEYS from '../../../../localization/keys';
 
 function buildRet(code, data, type, ricardian, account) {
     return [{
@@ -24,10 +27,20 @@ handlerMap.transfer = async (tr, network, account, originalArgs, client) => {
     data.memo = originalArgs[1]
     data.amount = await getAmountDescription(client, ops.amount)
 
+    console.log('lalallalal', store)
+
+    // TODO: cannot get language
+    // return {
+    //     code: localized(KEYS.GXC_TRANSFER_CODE, store.getters.language),
+    //     type: localized(KEYS.GXC_TRANSFER_TYPE, store.getters.language),
+    //     ricardian: localized(KEYS.GXC_TRANSFER_RICARDIAN, store.getters.language),
+    //     data: data
+    // }
+
     return {
-        code : '无',
+        code: '无',
         type: '转账',
-        ricardian: 'ririririri',
+        ricardian: '开发者向您申请转账，请谨慎操作！',
         data: data
     }
 }
@@ -40,14 +53,14 @@ handlerMap.callContract = async (tr, network, account, originalArgs, client) => 
     data.contractName = originalArgs[0]
     data.methodName = originalArgs[1]
     data.params = JSON.stringify(originalArgs[2])
-    if(!!originalArgs[3]){
+    if (!!originalArgs[3]) {
         data.carryAmount = originalArgs[3]
     }
 
     return {
-        code : data.contractName,
+        code: data.contractName,
         type: '合约调用',
-        ricardian: '合约ricardian',
+        ricardian: '开发者向您申请调用合约，请谨慎操作！',
         data: data
     }
 }
@@ -60,9 +73,9 @@ handlerMap.vote = async (tr, network, account, originalArgs, client) => {
     data.accounts = originalArgs[0].join(',')
 
     return {
-        code : '无',
+        code: '无',
         type: '投票',
-        ricardian: '投票投票',
+        ricardian: '开发者向您申请投票，请谨慎操作！',
         data: data
     }
 }
@@ -70,9 +83,9 @@ handlerMap.vote = async (tr, network, account, originalArgs, client) => {
 const buildDisplayMessages = async (tr, network, account, originalArgs, method, client) => {
     const handler = handlerMap[method] || function () { }
     let ret
-    try{
+    try {
         ret = await handler(tr, network, account, originalArgs, client);
-    }catch(err){
+    } catch (err) {
         throw Error.buildDisplayMessageError(err.message)
     }
     const { code, data, type, ricardian } = ret

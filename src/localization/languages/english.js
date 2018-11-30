@@ -470,6 +470,11 @@ export default {
          get you to download something. Make sure you always download Scatter from the proper location.`
     ],
 
+    // GXC
+    [KEYS.GXC_TRANSFER_CODE]:`None`,
+    [KEYS.GXC_TRANSFER_TYPE]:`Transfer`,
+    [KEYS.GXC_TRANSFER_RICARDIAN]:`Developer request transfer on you, careful operation!`
+
 }
 
 
