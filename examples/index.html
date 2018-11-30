@@ -2,72 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>gscatter测试页面</title>
+    <title>gscatter test page</title>
     <script src="./gscatterjs-core.min.js"></script>
 </head>
 <body>
 
-<button onclick="login()">Login</button>
-<button onclick="logout()">Logout</button>
-<button onclick="transfer()">Transfer</button>
-<button onclick="contract()">Contract</button>
-<button onclick="generateKey()">Generate Key</button>
-<button onclick="queryAccount()">Query Account By Name</button>
+    <h3 id="accountName"></h3>
+    <button onclick="login()">Login</button>
+    <button onclick="logout()">Logout</button>
+    <button onclick="transfer()">Transfer</button>
+    <button onclick="contract()">Call Contract</button>
+    <button onclick="vote()">Vote</button>
+    <button onclick="generateKey()">Generate Key</button>
+    <button onclick="queryAccount()">Query Account By Name</button>
 
-<script>
-    const network = {
-    blockchain:'gxc',
-    protocol:'https',
-    host:'testnet.gxchain.org',
-    port:443,
-    chainId:'c2af30ef9340ff81fd61654295e98a1ff04b23189748f86727d0b26b40bb0ff4'
-}
+    <script>
+        const network = {
+            blockchain: 'gxc',
+            protocol: 'https',
+            host: 'testnet.gxchain.org',
+            port: 443,
+            chainId: 'c2af30ef9340ff81fd61654295e98a1ff04b23189748f86727d0b26b40bb0ff4'
+        }
 
-    let gscatter, gxc;
+        const requiredFields = {
+            personal: ['firstname', 'lastname', 'email', 'birthdate']
+        };
 
-    GScatterJS.gscatter.connect('exampleApp').then(connected => {
-        if(!connected) return false;
-        gscatter = GScatterJS.gscatter;
-        // when user not login, you could use api which not need identity, like generateKey
-        gxc = gscatter.gxc(network);
-    });
+        const accountNameElem = document.getElementById('accountName')
 
-    window.login = async () => {
-        await gscatter.suggestNetwork(network);
-        await gscatter.getIdentity({accounts:[network]})
-        const account = gscatter.identity.accounts.find(x => x.blockchain === 'gxc');
-        gxc = gscatter.gxc(network);
-    };
+        let gscatter, gxc;
 
-    window.logout = () => {
-        gscatter.forgetIdentity();
-    };
+        function setAccountName(account) {
+            accountNameElem.innerText = account.name + ', welcome!'
+        }
 
-    window.transfer = async () => {
-        gxc.transfer('youxiu123','memo info', '1 GXC' ,true).then(trx => {
-            console.log(`succcccc`,trx);
-        }).catch(error => {
-            console.error(error);
+        function clearAccountName(account) {
+            accountNameElem.innerText = ''
+        }
+
+        GScatterJS.gscatter.connect('exampleApp').then(connected => {
+            if (!connected) return false;
+            let account
+            gscatter = GScatterJS.gscatter;
+            // require version, if user's plugin is less than the version, when operate, plugin will prompt a tips
+            // gscatter.requireVersion('9.9.9')
+
+            // when user not login, you could use api which not need identity, like generateKey
+            gxc = gscatter.gxc(network);
+
+            // if identity exist, means user has authorize the website and already unlock, you could display user info then
+            if(gscatter.identity){
+                account = gscatter.identity.accounts.find(x => x.blockchain === 'gxc');
+                setAccountName(account)
+            }
         });
-    };
 
-    window.contract = () => {
-        gxc.callContract('lzydododo','hi', {user:'lzy'} ,0 ,true).then(trx => {
-            console.log(`succcccc`,trx);
-        }).catch(error => {
-            console.error(error);
-        });
-    }
+        window.login = async () => {
+            try {
+                // if you want user add the network, you could call suggestNetwork, if user already has, nothing happen
+                await gscatter.suggestNetwork(network);
+            } catch (err) {
+                // user refuse or close the prompt window
+                console.error(err)
+                return;
+            }
 
-    window.generateKey = async () => {
-        const key = await gxc.generateKey()
-        console.log(key)
-    }
+            try {
+                // required fields, it will appear at gscatter.identity
+                await gscatter.getIdentity({ accounts: [network] })
+            } catch (err) {
+                // user refuse or close the prompt window
+                console.error(err)
+                return;
+            }
 
-    window.queryAccount = async () => {
-        const account = await gxc.getAccount('lzydophin94')
-        console.log(account)
-    }
-</script>
+            // you could get gscatter.identity.accounts because of { accounts: [network] } before
+            const account = gscatter.identity.accounts.find(x => x.blockchain === 'gxc');
+            setAccountName(account)
+            gxc = gscatter.gxc(network);
+        };
+
+        window.logout = () => {
+            try {
+                gscatter.forgetIdentity();
+                clearAccountName()
+            } catch (err) {
+                // no identity found
+                console.error(err)
+            }
+        };
+
+        window.transfer = async () => {
+            // if user don't have these requiredFields, the operation would be cancel, and go to catch area
+            gxc.transfer('youxiu123', 'memo info', '1 GXC', true, { requiredFields }).then(trx => {
+                console.log(`succcccc`, trx);
+            }).catch(error => {
+                console.error(error);
+            });
+        };
+
+        window.contract = () => {
+            gxc.callContract('lzydododo', 'hi', { user: 'lzy' }, 0, true).then(trx => {
+                console.log(`succcccc`, trx);
+            }).catch(error => {
+                console.error(error);
+            });
+        }
+
+        window.vote = () => {
+            gxc.vote(['math-wallet-test', 'gxc-pacific'], 'GXC', true).then(trx => {
+                console.log(`vote success`, trx);
+            }).catch(error => {
+                console.error(error);
+            });
+        }
+
+        window.generateKey = async () => {
+            const key = await gxc.generateKey()
+            console.log(key)
+        }
+
+        window.queryAccount = async () => {
+            const account = await gxc.getAccount('lzydophin94')
+            console.log(account)
+        }
+    </script>
 </body>
 </html>
