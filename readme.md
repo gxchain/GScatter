@@ -34,9 +34,3 @@ Chrome extension market, hasn't upload yet.
 
 ![img](./arch/images/extension-logo.png)
 
-
-
-
-
-## Usage
-
