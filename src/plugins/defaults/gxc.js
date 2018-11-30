@@ -19,7 +19,7 @@ import { IdentityRequiredFields } from '../../models/Identity';
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
-let throwIfNoIdentity = new WeakMap();
+// let throwIfNoIdentity = new WeakMap();
 
 const proxy = (dummy, handler) => new Proxy(dummy, handler);
 
@@ -188,7 +188,7 @@ export default class GXC extends Plugin {
     signatureProvider(...args) {
 
         messageSender = args[0];
-        throwIfNoIdentity = args[1];
+        // throwIfNoIdentity = args[1];
 
         return (network) => {
             network = Network.fromJson(network);
@@ -204,21 +204,21 @@ export default class GXC extends Plugin {
                     return async (...args) => {
                         let handledArgs;
                         let returnedFields;
-                        if (isMethodNeedIdentity(method)) {
-                            throwIfNoIdentity();
-                        }
+                        let identity;
+                        let account;
 
-                        let identity
-                        let account
-                        // 获取permission identity
-                        try {
-                            identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, { domain: strippedHost() });
-                        } catch (err) {
-                            // 不存在identity
-                            if (err == null) {
-                                identity = null
-                            } else {
-                                throw err
+                        // some methods need identity, like trnasfer
+                        if (isMethodNeedIdentity(method)) {
+                            // throwIfNoIdentity();
+                            try {
+                                identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, { domain: strippedHost() });
+                            } catch (err) {
+                                if (err == null) {
+                                    // identity not exist
+                                    throw Error.noIdentityError()
+                                } else {
+                                    throw err
+                                }
                             }
                         }
 
@@ -228,6 +228,7 @@ export default class GXC extends Plugin {
                             account = {}
                         }
 
+                        // requiredFields get and check
                         let requiredFields = args.find(arg => arg.hasOwnProperty('requiredFields'));
                         let hasRequireFields = false
                         if (!!requiredFields) hasRequireFields = true
@@ -241,7 +242,6 @@ export default class GXC extends Plugin {
                             // build prompt display messages
                             payload.messages = await buildDisplayMessages(tr, network, account, cloneDeep(args), method, client);
 
-                            // TODO add requiredFields
                             payload = Object.assign(payload, { domain: strippedHost(), network, requiredFields });
 
                             result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload)
