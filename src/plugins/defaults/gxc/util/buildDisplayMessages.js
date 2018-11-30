@@ -27,8 +27,6 @@ handlerMap.transfer = async (tr, network, account, originalArgs, client) => {
     data.memo = originalArgs[1]
     data.amount = await getAmountDescription(client, ops.amount)
 
-    console.log('lalallalal', store)
-
     // TODO: cannot get language
     // return {
     //     code: localized(KEYS.GXC_TRANSFER_CODE, store.getters.language),
