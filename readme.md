@@ -12,7 +12,7 @@ If you are a developer who want to develop dapp to interact with this extension,
 
 ### Way 1
 
-Chrome extension market, hasn't upload yet.
+Chrome extension market, click [here](https://chrome.google.com/webstore/detail/gscatter/lcpllopipaconkjoegbeingdedokekap) to install
 
 
 
