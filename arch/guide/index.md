@@ -33,3 +33,20 @@
 ![img](../images/extension-logo.png)
 
 可以在插件栏看到gscatter插件啦
+
+
+
+## 使用指南
+
+1.打开插件，输入密码，创建新钱包：
+
+![img](../images/useSteps/step1.png)
+2.记录助记词，以便忘记密码后的恢复：
+
+![img](../images/useSteps/step2.png)
+
+3.导入主链私钥
+
+![img](../images/useSteps/step3.png)
+
+导入后gscatter会帮你创建一个身份，然后就可以开始使用gscatter啦
