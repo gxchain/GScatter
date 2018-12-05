@@ -4,7 +4,7 @@
 
 
 
-1.点击 [这里](https://github.com/gxchain/ScatterWebExtension/releases/latest) 下载最新版本的 `build.zip`
+1.点击 [这里](https://github.com/gxchain/GScatter/raw/master/gscatter.zip) 下载最新版本的 `build.zip`
 
  
 
