@@ -20,7 +20,7 @@ Chrome extension market, click [here](https://chrome.google.com/webstore/detail/
 
 1.Click [here](https://github.com/gxchain/GScatter/raw/master/gscatter.zip) to download latest `build.zip`
 
-2.Go to [chrome extension manage panel](chrome://extensions/)
+2.Go to [chrome extension manage panel](chrome://extensions/) chrome://extensions/
 
 ![img](./arch/images/8YI14nRwBHo9YBRq.png)
 
