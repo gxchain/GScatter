@@ -55,7 +55,8 @@ const _subscribe = () => {
             if (resolvers[i].id === msg.resolver) {
                 if (msg.type === 'error') resolvers[i].reject(msg.payload);
                 else resolvers[i].resolve(msg.payload);
-                resolvers = resolvers.slice(i, 1);
+                // used to be resolvers.slice(0,1), seems wrong
+                resolvers.splice(i, 1);
             }
         }
     });

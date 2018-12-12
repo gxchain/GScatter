@@ -11,6 +11,7 @@ export default class NetworkMessage {
     }
 
     static placeholder(){ return new NetworkMessage(); }
+    // network message is json object, transfer to NetworkMessage object
     static fromJson(json){
         let p = Object.assign(this.placeholder(), json);
         return p;

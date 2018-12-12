@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import {mutations} from './mutations';
-import {actions} from './actions';
+import { mutations } from './mutations';
+import { actions } from './actions';
 
-import {IdentityRequiredFields} from '../models/Identity';
+import { IdentityRequiredFields } from '../models/Identity';
 
 Vue.use(Vuex);
 
@@ -24,6 +24,9 @@ const getters = {
     permissions: state => state.scatter.keychain.permissions,
     keypairs: state => state.scatter.keychain.keypairs,
     networks: state => state.scatter.settings.networks,
+    supportNetworks: (state, getters) => {
+        return getters.networks.filter(network => network.blockchain === 'gxc')
+    },
     histories: state => state.scatter.histories,
     autoLockInterval: state => state.scatter.settings.inactivityInterval,
     language: state => state.scatter.settings.language,

@@ -18,6 +18,7 @@ import HistoryView from '../views/HistoryView.vue'
 import KeyPairView from '../views/KeyPairView.vue'
 import LoadFromBackup from '../views/LoadFromBackup.vue'
 import KeyPairsView from '../views/KeyPairsView.vue'
+import RegisterAccountView from '../views/RegisterAccountView.vue'
 
 import * as PromptTypes from '../models/prompts/PromptTypes'
 import RequestIdentityPrompt from '../prompts/RequestIdentityPrompt.vue'
@@ -41,6 +42,7 @@ export const RouteNames = {
     IDENTITIES:'identities',
     IDENTITY:'identity',
     KEYS:'keys',
+    REGISTER_ACCOUNT: 'registerAccount',
     PERMISSIONS:'permissions',
     DOMAIN_PERMISSIONS:'domainPermissions',
     HISTORY:'history',
@@ -74,6 +76,7 @@ const RouteViews = {
     [RouteNames.IDENTITIES]:IdentitiesView,
     [RouteNames.IDENTITY]:IdentityView,
     [RouteNames.KEYS]:KeyPairsView,
+    [RouteNames.REGISTER_ACCOUNT]:RegisterAccountView,
     [RouteNames.PERMISSIONS]:PermissionsView,
     [RouteNames.DOMAIN_PERMISSIONS]:DomainPermissionView,
     [RouteNames.HISTORY]:HistoryView,

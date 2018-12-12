@@ -74,6 +74,7 @@ class Content {
         if(!isReady) return;
         if(!msg) return;
         if(!stream.synced && (!msg.hasOwnProperty('type') || msg.type !== 'sync')) {
+            // ASK: 发了有什么作用
             stream.send(nonSyncMessage.error(Error.maliciousEvent()), PairingTags.INJECTED);
             return;
         }

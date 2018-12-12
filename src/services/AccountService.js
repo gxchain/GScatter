@@ -32,4 +32,8 @@ export default class AccountService {
 
         })
     }
+
+    static registerAccount(keypair){
+        
+    }
 }
