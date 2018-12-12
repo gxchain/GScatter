@@ -37,7 +37,7 @@ let currentVersion = new WeakMap();
 let requiredVersion;
 
 const throwIfNoIdentity = () => {
-    if (!publicKey) throw Error.noIdentityError();
+    if (!publicKey) throw Error.noPermissionError();
 };
 
 

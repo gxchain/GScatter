@@ -9,7 +9,7 @@ export const ErrorCodes = {
     TOO_MANY_REQUESTS: 429,
     ENCRYPT_MEMO_ERROR: 430,
     BUILD_DISPLAY_MESSAGE_ERROR: 431,
-    NO_IDENTITY: 432,
+    NO_PERMISSION: 432,
     UN_DEF_ERROR: 433
 };
 
@@ -82,11 +82,11 @@ export default class Error {
         )
     }
 
-    static noIdentityError(msg = 'There is no identity found') {
+    static noPermissionError(msg = 'Haven\'t authorize yet' ) {
         return new Error(
-            ErrorTypes.NO_IDENTITY,
+            ErrorTypes.NO_PERMISSION,
             msg,
-            ErrorCodes.NO_IDENTITY
+            ErrorCodes.NO_PERMISSION
         )
     }
 }

@@ -268,7 +268,8 @@ export default class Background {
 
                 IdentityService.getOrRequestIdentity(domain, fields, scatter, (identity, fromPermission) => {
                     if(!identity){
-                        sendResponse(Error.noIdentityError('There is no matched identity found'));
+                        // 这种情况目前只可能是用户没选
+                        sendResponse(Error.noPermissionError());
                         return false;
                     }
 

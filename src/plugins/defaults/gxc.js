@@ -215,7 +215,7 @@ export default class GXC extends Plugin {
                             } catch (err) {
                                 if (err == null) {
                                     // identity not exist
-                                    throw Error.noIdentityError()
+                                    throw Error.noPermissionError()
                                 } else {
                                     throw err
                                 }
