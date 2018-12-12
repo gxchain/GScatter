@@ -11,7 +11,7 @@ import semvercp from 'semver-compare'
 
 
 const throws = (msg) => {
-    throw new Error(msg);
+    throw new Error(undefined, msg);
 };
 
 /***
@@ -37,7 +37,7 @@ let currentVersion = new WeakMap();
 let requiredVersion;
 
 const throwIfNoIdentity = () => {
-    if (!publicKey) throws('There is no identity with an account set on your Scatter instance.');
+    if (!publicKey) throw Error.noIdentityError();
 };
 
 

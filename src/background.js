@@ -268,7 +268,7 @@ export default class Background {
 
                 IdentityService.getOrRequestIdentity(domain, fields, scatter, (identity, fromPermission) => {
                     if(!identity){
-                        sendResponse(Error.signatureError("identity_rejected", "User rejected the provision of an Identity"));
+                        sendResponse(Error.noIdentityError('There is no matched identity found'));
                         return false;
                     }
 

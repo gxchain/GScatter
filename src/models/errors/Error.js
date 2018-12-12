@@ -9,12 +9,13 @@ export const ErrorCodes = {
     TOO_MANY_REQUESTS: 429,
     ENCRYPT_MEMO_ERROR: 430,
     BUILD_DISPLAY_MESSAGE_ERROR: 431,
-    NO_IDENTITY: 432
+    NO_IDENTITY: 432,
+    UN_DEF_ERROR: 433
 };
 
 export default class Error {
 
-    constructor(_type, _message, _code = ErrorCodes.LOCKED) {
+    constructor(_type = ErrorTypes.UN_DEF_ERROR, _message, _code = ErrorCodes.UN_DEF_ERROR) {
         this.type = _type;
         this.message = _message;
         this.code = _code;
@@ -81,10 +82,10 @@ export default class Error {
         )
     }
 
-    static noIdentityError() {
+    static noIdentityError(msg = 'There is no identity found') {
         return new Error(
             ErrorTypes.NO_IDENTITY,
-            'There is no identity with an account set on your Scatter instance.',
+            msg,
             ErrorCodes.NO_IDENTITY
         )
     }
