@@ -12,8 +12,8 @@
                 </figure>
             </section>
             <section class="p20">
-                <btn text="Start Basic Setup" :is-blue="true" v-on:clicked="stepToKeypair" margined="true"></btn>
-                <btn text="Skip Basic Setup" :is-red="true" v-on:clicked="finished" margined="true"></btn>
+                <btn :text="locale(langKeys.ONBOARDING_Import)" :is-blue="true" v-on:clicked="stepToKeypair" margined="true"></btn>
+                <btn :text="locale(langKeys.ONBOARDING_Reg)" :is-red="true" v-on:clicked="finished" margined="true"></btn>
             </section>
         </section>
 

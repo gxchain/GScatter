@@ -111,6 +111,9 @@ export const MNEMONIC_Wrote = 'mnem_wrote';
 export const ONBOARDING_Title = 'onboard_title';
 export const ONBOARDING_Desc1 = 'onboard_desc1';
 export const ONBOARDING_Desc2 = 'onboard_desc2';
+export const ONBOARDING_Import = 'onboard_import';
+export const ONBOARDING_Reg = 'onboard_reg';
+
 
 export const SETTINGSMENU_Networks = 'sm_net';
 export const SETTINGSMENU_Keypairs = 'sm_keys';
