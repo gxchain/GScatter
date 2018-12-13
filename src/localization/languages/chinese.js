@@ -74,7 +74,7 @@ export default {
 
     [KEYS.MAINMENU_Identities]:'身份',
     [KEYS.MAINMENU_Keys]:'密钥对',
-    [KEYS.MAINMENU_Permissions]:'权限',
+    [KEYS.MAINMENU_Permissions]:'授权管理',
     [KEYS.MAINMENU_History]:'事件',
     [KEYS.MAINMENU_Lock]:'锁定',
 
