@@ -79,21 +79,20 @@
         </section>
 
         <section class="prompt-footer">
-            <!-- remove whitelist temp -->
-            <!-- <section class="whitelist">
+            <section class="whitelist">
                 <figure class="header">
                     {{locale(langKeys.REQUEST_SignatureWhitelist)[0]}}
                 </figure>
                 <figure class="sub-header">
-                    <section class="checkbox">
-                        <cin :tag="(whitelisted) ? 'fa-check' : ''" :checkbox="true" v-on:untagged="toggleWhitelist"></cin>
+                    <section class="checkbox" :class="whitelisted?'':'light'">
+                        <cin :tag="(whitelisted) ? 'fa-check' : 'fa-check'" :checkbox="true" v-on:untagged="toggleWhitelist"></cin>
                     </section>
                     {{locale(langKeys.REQUEST_SignatureWhitelist)[1]}}
                     <br><br>
                     <b>{{locale(langKeys.REQUEST_SignatureWhitelist)[2]}}</b>
                     {{locale(langKeys.REQUEST_SignatureWhitelist)[3]}}
                 </figure>
-            </section> -->
+            </section>
 
             <section class="actions">
                 <btn :text="locale(langKeys.BUTTON_Deny)" v-on:clicked="denied"></btn>
@@ -454,6 +453,14 @@
                     width:56px;
                     float:left;
                     margin-right:15px;
+                    border-color:#54a7fc;
+                    &.light{
+                        .tag{
+                            border:none;
+                            background: transparent;
+                            color:#eee;
+                        }
+                    }
                 }
 
                 &:not(:last-child){
