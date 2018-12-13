@@ -268,7 +268,7 @@ export default class Background {
 
                 IdentityService.getOrRequestIdentity(domain, fields, scatter, (identity, fromPermission) => {
                     if(!identity){
-                        // 这种情况目前只可能是用户没选
+                        // 这种情况目前只可能是用户没选，没有匹配的identity这种情况不会报错
                         sendResponse(Error.noPermissionError());
                         return false;
                     }

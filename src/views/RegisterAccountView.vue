@@ -3,22 +3,28 @@
         <section class="panel">
             <figure class="header">{{locale(langKeys.KEYPAIR_Header)}}</figure>
             <figure class="sub-header">{{locale(langKeys.KEYPAIR_Description)}}</figure>
-            <figure class="sub-header" style="color:red; font-weight:bold; font-size:13px;">{{locale(langKeys.KEYPAIR_Important)}}</figure>
-            <sel :disabled="importing" :selected="supportNetworks[0]" :options="supportNetworks" :parser="(network) => network.name.length ? network.name : network.unique()" v-on:changed="selectNetwork"></sel>
-            <cin :placeholder="locale(langKeys.PLACEHOLDER_Name)" :text="keypair.name" v-on:changed="changed => bind(changed, 'name')"></cin>
-            <btn :text="locale(langKeys.BUTTON_GenerateKeyPair)" @click.native="generateKeyPair()" margined="true"></btn>
-            <btn :text="locale(langKeys.GENERIC_Save)" :is-blue="true" half="true" @click.native="saveKeyPair()" margined="true"></btn>
+            <figure class="sub-header" style="color:red; font-weight:bold; font-size:13px;">
+                {{locale(langKeys.KEYPAIR_Important)}}
+            </figure>
+            <sel :disabled="importing" :selected="supportNetworks[0]" :options="supportNetworks"
+                    :parser="(network) => network.name.length ? network.name : network.unique()"
+                    v-on:changed="selectNetwork"></sel>
+            <cin :placeholder="locale(langKeys.PLACEHOLDER_Name)" :text="name"
+                    v-on:changed="changed => name = changed"></cin>
+            <btn :text="注册账户" @click.native="registerAccount" margined="true"></btn>
+            <btn :text="locale(langKeys.GENERIC_Save)" :is-blue="true" half="true" @click.native="saveKeyPair()"
+                    margined="true"></btn>
             <btn :text="locale(langKeys.BUTTON_Copy)" half="true" @click.native="copyKeyPair()" margined="true"></btn>
         </section>
 
         <!-- INPUT FIELD USED FOR COPYING -->
-        <input tabindex="-1" type="text" ref="copier" class="copier" />
+        <input tabindex="-1" type="text" ref="copier" class="copier"/>
 
     </section>
 </template>
 
 <script>
-    import { mapActions, mapGetters, mapState } from 'vuex'
+    import {mapActions, mapGetters, mapState} from 'vuex'
     import * as Actions from '../store/constants';
     import {RouteNames} from '../vue/Routing'
     import Network from '../models/Network'
@@ -34,11 +40,15 @@
     import AccountService from '../services/AccountService'
 
     export default {
-        data(){ return {
-            blockchains:BlockchainsArray,
-            keypair:KeyPair.placeholder(),
-            isValid:false,
-        }},
+        data() {
+            return {
+                blockchains: BlockchainsArray,
+                keypair: KeyPair.placeholder(),
+                isValid: false,
+                name: '',
+                selectedNetwork: null
+            }
+        },
         computed: {
             ...mapState([
                 'scatter'
@@ -47,64 +57,31 @@
                 'supportNetworks'
             ])
         },
+        mounted() {
+            this.selectedNetwork = supportNetworks[0]
+        },
         methods: {
-            selectNetwork(){
-
+            selectNetwork(changed) {
+                this.selectedNetwork = changed
+                console.log(changed)
             },
-            bind(changed, field) { this.keypair[field] = changed.trim() },
-            blockchainChanged(blockchainObject){
-                const blockchain = blockchainObject.value;
-                const clearAndChange = () => {
-                    this.keypair.blockchain = blockchain;
-                    this.keypair.privateKey = '';
-                    this.keypair.publicKey = '';
-                };
-                if(this.keypair.privateKey.length){
-                    if(PluginRepository.plugin(this.keypair.blockchain).convertsTo().includes(blockchain)){
-                        this.keypair.privateKey =
-                            PluginRepository.plugin(blockchain)
-                                ['from_'+this.keypair.blockchain](this.keypair.privateKey);
-                    } else clearAndChange();
-                } else clearAndChange();
-            },
-            copyKeyPair(){
+            copyKeyPair() {
                 const copier = this.$refs.copier;
                 copier.value = `Private Key: ${this.keypair.privateKey} Public Key: ${this.keypair.publicKey}`;
                 copier.select();
                 document.execCommand("copy");
                 copier.value = '';
             },
-            async makePublicKey(){
-                setTimeout(async () => {
-                    if(this.keypair.privateKey.length < 50) return false;
+            async registerAccount() {
+                // gxclient register account
+                const keypair = await AccountService.registerAccount(this.name, this.selectedNetwork)
 
-                    // Special handling for malformatted ETH keypairs.
-                    if(this.keypair.privateKey.indexOf('0x') === 0)
-                        this.keypair.privateKey.replace('0x', '');
-
-                    this.isValid = false;
-
-                    await KeyPairService.makePublicKey(this.keypair);
-
-                    if(this.keypair.publicKey) this.isValid = true;
-                    else this[Actions.PUSH_ALERT](AlertMsg.InvalidPrivateKey());
-                }, 100)
             },
-            async generateKeyPair(){
-                this.keypair.publicKey = '';
-                this.keypair.privateKey = '';
-
-                await KeyPairService.generateKeyPair(this.keypair);
-
-                if(this.keypair.publicKey.length) this.isValid = true;
-            },
-            async registerAccount(){
-                await AccountService.registerAccount(this.keypair);
-            },
-            saveKeyPair(){
-                if(!this.isValid) return this[Actions.PUSH_ALERT](AlertMsg.InvalidPrivateKey());
+            saveKeyPair() {
+                // 将keypair存入
+                if (!this.isValid) return this[Actions.PUSH_ALERT](AlertMsg.InvalidPrivateKey());
                 KeyPairService.saveKeyPair(this.keypair, this, () => {
-                    this.$router.back();
+                    // push identity
                 })
             },
             ...mapActions([
@@ -115,39 +92,37 @@
     }
 </script>
 
-<style lang="scss">
+<style type="text/scss" lang="scss">
     .network {
-        font-family:'Open Sans', sans-serif;
-
-
+        font-family: 'Open Sans', sans-serif;
 
         .panel {
-            padding:20px;
+            padding: 20px;
 
-            &:not(:last-child){
-                border-bottom:1px solid #eaeaea;
+            &:not(:last-child) {
+                border-bottom: 1px solid #eaeaea;
             }
 
             .header {
-                color:#cecece;
-                font-size:11px;
-                padding-bottom:5px;
-                margin-top:-5px;
-                margin-bottom:10px;
-                border-bottom:1px solid #eaeaea;
+                color: #cecece;
+                font-size: 11px;
+                padding-bottom: 5px;
+                margin-top: -5px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #eaeaea;
             }
 
             .sub-header {
-                color:#aeaeae;
-                font-size:9px;
-                margin-bottom:20px;
+                color: #aeaeae;
+                font-size: 9px;
+                margin-bottom: 20px;
 
                 &.blue {
-                    color:blue;
+                    color: blue;
                 }
 
                 &.red {
-                    color:red;
+                    color: red;
                 }
             }
         }

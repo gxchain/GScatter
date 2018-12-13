@@ -58,6 +58,28 @@ export default class GXC extends Plugin {
         return true;
     }
 
+    async registerAccount(name, network){
+        const client = new GXClient('', '', `${getWsAddress(network)}`);
+
+        const keypair = client.generateKey()
+
+        const MAIN_NET = '4f7d07969c446f8342033acb3ab2ae5044cbe0fde93db02de75bd17fa8fd84b8'
+        const TEST_NET = 'c2af30ef9340ff81fd61654295e98a1ff04b23189748f86727d0b26b40bb0ff4'
+
+        // TODO: hard code
+        const faucetMap = {
+            [TEST_NET]:'https://testnet.faucet.gxb.io',
+            [MAIN_NET]:'https://opengateway.gxb.io'
+        }
+
+        try{
+
+        }catch(err){
+
+        }
+        await client.register(name,keypair.publicKey,keypair.publicKey,keypair.publicKey,faucet)
+    }
+
     importAccount(keypair, network, context, accountSelected) {
         const getAccountsFromPublicKey = (publicKey, network) => {
             return new Promise((resolve, reject) => {
