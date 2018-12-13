@@ -55,7 +55,7 @@ export default {
     [KEYS.BUTTON_CreateNewScatter]:'创建新的钱包',
     [KEYS.BUTTON_LoadFromBackup]:'从备份中恢复',
     [KEYS.BUTTON_Unlock]:'解锁',
-    [KEYS.BUTTON_ExportScatter]:'导出 Scatter',
+    [KEYS.BUTTON_ExportScatter]:'导出 GScatter',
     [KEYS.BUTTON_GenerateKeyPair]:'生成密钥对',
     [KEYS.BUTTON_Validate]:'验证',
     [KEYS.BUTTON_Copy]:'复制',
@@ -129,11 +129,11 @@ export default {
 
     [KEYS.HISTORIES_Header]:`没有需要显示的历史事件.`,
     [KEYS.HISTORIES_Description]:`
-        在此您能看到所有 Scatter 的事件列表.
-        但在您的 scatter 外的帐户上发生的事件不会显示.
+        在此您能看到所有 GScatter 的事件列表.
+        但在您的 GScatter 外的帐户上发生的事件不会显示.
      `,
     [KEYS.HISTORIES_Note]:`
-        注意：当从设置面板中的备份选项中导出您的 Scatter 数据时，不会备份这些事件。
+        注意：当从设置面板中的备份选项中导出您的 GScatter 数据时，不会备份这些事件。
         所以当您再次导入时，您的历史记录是空的。如果你想导出这些历史事件，
         将来您可以使用此面板中导航栏上的操作按钮来完成此操作。
     `,
@@ -148,7 +148,7 @@ export default {
 
     [KEYS.BACKUP_Header]:`导出加密备份`,
     [KEYS.BACKUP_Description]:`
-        导出您的 Scatter 后，您将可以将其导入其他设备。导出文件将被加密，
+        导出您的 GScatter 后，您将可以将其导入其他设备。导出文件将被加密，
         所以请注意备份你的助记符和密码。否则将不能导入。
         导出的文件中将只保留你的身份私钥，
         帐户中的其它所有私钥将不会导出。
@@ -156,7 +156,7 @@ export default {
 
     [KEYS.IMPORT_Header]:`导入加密的备份`,
     [KEYS.IMPORT_Description]:`
-        导入你的加密钥匙串文件将重建您的 Scatter 钥匙串，但是它不会导入您原有的网络
+        导入你的加密钥匙串文件将重建您的 GScatter 钥匙串，但是它不会导入您原有的网络
         或帐户设置
     `,
 
@@ -174,11 +174,11 @@ export default {
         需要这个网络上的帐号。
     `,
 
-    [KEYS.DESTROY_Header]:`销毁 Scatter`,
+    [KEYS.DESTROY_Header]:`销毁 GScatter`,
     [KEYS.DESTROY_Description]:`
-        您即将销毁您的整个 Scatter 钥匙串。恢复 Scatter 的唯一方法是
-        导入以前导出的 Scatter JSON 文件。 否则你将没有办法再使用你的身份。
-        请确保在着手这个操作前，已经从备份设置面板中导出了您的 Scatter。
+        您即将销毁您的整个 GScatter 钥匙串。恢复 GScatter 的唯一方法是
+        导入以前导出的 GScatter JSON 文件。 否则你将没有办法再使用你的身份。
+        请确保在着手这个操作前，已经从备份设置面板中导出了您的 GScatter。
     `,
 
     [KEYS.LANGUAGE_Header]:`选择语言`,
@@ -201,8 +201,8 @@ export default {
 
     [KEYS.LOCK_Header]:`自动锁定设置`,
     [KEYS.LOCK_Description]:`
-        自动锁定能为您自动锁定 Scatter，
-        这样你就不必在离开时记得锁定您的 Scatter。
+        自动锁定能为您自动锁定 GScatter，
+        这样你就不必在离开时记得锁定您的 GScatter。
     `,
     [KEYS.LOCK_Minute]:`分`,
     [KEYS.LOCK_Minutes]:`分`,
@@ -215,7 +215,7 @@ export default {
     [KEYS.MNEMONIC_Description]:`助记词是可以用来生成密钥的一组单词。`,
     [KEYS.MNEMONIC_Note]:`
         请一定要保存在安全的地方。如果您忘记了密码，
-        这是恢复对 Scatter 的访问和解密您的个人信息的唯一途径。
+        这是恢复对 GScatter 的访问和解密您的个人信息的唯一途径。
     `,
     [KEYS.MNEMONIC_Wrote]:`我记录下来了`,
 
@@ -279,7 +279,7 @@ export default {
         '未找到帐户',
 
         `没有找到与此私钥相关联的帐户。
-         如果您导入的不是 Scatter 生成的私钥，
+         如果您导入的不是 GScatter 生成的私钥，
          需要在导入前为这个私钥先建一个帐户`
 
     ],
@@ -318,7 +318,7 @@ export default {
     [KEYS.ALERT_RemovingEndorsedNetwork]:[
         '不能删除支撑网络',
 
-        `您不能删除 Scatter 的支撑网络。`
+        `您不能删除 GScatter 的支撑网络。`
     ],
     //2
     [KEYS.ALERT_NoIdentityWithProperties]:fields => [
@@ -335,7 +335,7 @@ export default {
     ],
     //2
     [KEYS.PROMPT_DestroyingScatter]:[
-        '销毁 Scatter',
+        '销毁 GScatter',
 
         '这是您最后一次检查备份的机会。'
     ],
@@ -409,11 +409,11 @@ export default {
 
     //3
     [KEYS.REQUEST_AddNetwork]:[
-        /*{DOMAIN}*/ '想要将他们的网络添加到 Scatter。',
+        /*{DOMAIN}*/ '想要将他们的网络添加到 GScatter。',
 
         '一些应用使用它们自己的网络。',
 
-        `应用决不会被允许访问您的 Scatter。
+        `应用决不会被允许访问您的 GScatter。
          通过此界面添加网络。
          仅是为了比在控制面板中手工添加更方便`
     ],
@@ -455,7 +455,7 @@ export default {
     ],
     //4
     [KEYS.REQUEST_ScatterIsLocked]:[
-        `Scatter 已锁定!`,
+        `GScatter 已锁定!`,
 
         `需要解锁才能进一步操作.`,
 
@@ -466,13 +466,13 @@ export default {
     ],
     //4
     [KEYS.REQUEST_UpdateVersion]:[
-        `Scatter 需要更新版本!`,
+        `GScatter 需要更新版本!`,
 
         /*{DOMAIN}*/ `要求使用更新后的版本.`,
 
         `使用的应用需要一个已经发布的新的功能，但是你安装的版本不支持.`,
 
-        `注意，我们让应用能够检查 Scatter 的版本，但它们有可能让你下载恶意程序，请确保从正确的地址下载 Scatter.`
+        `注意，我们让应用能够检查 GScatter 的版本，但它们有可能让你下载恶意程序，请确保从正确的地址下载 GScatter.`
     ],
 
     // GXC

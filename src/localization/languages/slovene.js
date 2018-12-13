@@ -45,11 +45,11 @@ export default {
     [KEYS.BUTTON_SetAsDefaultLocation]:'Izberi kot privzeto lokacijo',
     [KEYS.BUTTON_RemoveLocation]:'Izbriši lokacijo',
     [KEYS.BUTTON_ChangePassword]:'Zamenjaj geslo',
-    [KEYS.BUTTON_DestroyScatter]:'Uniči Scatter',
-    [KEYS.BUTTON_CreateNewScatter]:'Ustvari nov Scatter',
+    [KEYS.BUTTON_DestroyScatter]:'Uniči GScatter',
+    [KEYS.BUTTON_CreateNewScatter]:'Ustvari nov GScatter',
     [KEYS.BUTTON_LoadFromBackup]:'Naloži iz backup-a',
     [KEYS.BUTTON_Unlock]:'Odkleni',
-    [KEYS.BUTTON_ExportScatter]:'Izvozi Scatter',
+    [KEYS.BUTTON_ExportScatter]:'Izvozi GScatter',
     [KEYS.BUTTON_GenerateKeyPair]:'Generiraj ključa',
     [KEYS.BUTTON_Validate]:'Preveri',
     [KEYS.BUTTON_Copy]:'Kopiraj',
@@ -107,12 +107,12 @@ export default {
 
     [KEYS.HISTORIES_Header]:`Nimate dogodkov za prikaz.`,
     [KEYS.HISTORIES_Description]:`
-        Ko jih boste imeli, boste lahko videli seznam vseh dogodkov, ki potekajo skozi vaš Scatter.
-        Kar ne boste videli so dogodki, ki so se zgodili na vaših računih zunaj Scatter-ja.
+        Ko jih boste imeli, boste lahko videli seznam vseh dogodkov, ki potekajo skozi vaš GScatter.
+        Kar ne boste videli so dogodki, ki so se zgodili na vaših računih zunaj GScatter-ja.
      `,
     [KEYS.HISTORIES_Note]:`
-        Opomba: Če izvažate podatke iz Scatterja v nastavitvah, potem se tej dogodki ne bodo shranili.
-        Ko ponovno uvažate instanco Scatter-ja, bo vaša zgodovina zapisov prazna. Če v prihdonje želite 
+        Opomba: Če izvažate podatke iz GScatterja v nastavitvah, potem se tej dogodki ne bodo shranili.
+        Ko ponovno uvažate instanco GScatter-ja, bo vaša zgodovina zapisov prazna. Če v prihdonje želite 
         izvoziti svojo zgodovino lahko to storite z uporabo akcijskih gumbov v navigacijskem meniju.
     `,
 
@@ -126,7 +126,7 @@ export default {
 
     [KEYS.BACKUP_Header]:`Izvozi kriptirano varnostno kopijo`,
     [KEYS.BACKUP_Description]:`
-        Izvoz vašega Scatterja vam omogoča, da ga uvozite v druge naprave. Datoteka, ki jo izvozite bo še vedno šifrirana,
+        Izvoz vašega GScatterja vam omogoča, da ga uvozite v druge naprave. Datoteka, ki jo izvozite bo še vedno šifrirana,
         zato poskrbite, da boste imeli mnemonik ali geslo, sicer bo neuporabna. Zasebni ključi iz vaših računov bo tudi 
         pred izvozom odstranjen, edini zasebni ključi, ki bodo ostali v izvozu bo vaš osebni ključ.
     `,
@@ -146,9 +146,9 @@ export default {
          to omrežje boste morali imeti tudi račun tam.
     `,
 
-    [KEYS.DESTROY_Header]:`Uniči Scatter`,
+    [KEYS.DESTROY_Header]:`Uniči GScatter`,
     [KEYS.DESTROY_Description]:`
-        Ste pred uničenjem Scatter-ja. V kolikor bi želeli v bodoče pridobiti stare podatke,
+        Ste pred uničenjem GScatter-ja. V kolikor bi želeli v bodoče pridobiti stare podatke,
         morate le te izvoziti v JSON obliki. Izvoz je dostopen v varnostni kopiji (meni).
     `,
 
@@ -169,7 +169,7 @@ export default {
 
     [KEYS.LOCK_Header]:`Časovnik za samodejno zaklepanje`,
     [KEYS.LOCK_Description]:`
-        Samodejno zaklepanje Scatter aplikacije.
+        Samodejno zaklepanje GScatter aplikacije.
     `,
     [KEYS.LOCK_Minute]:`Minut`,
     [KEYS.LOCK_Minutes]:`Minut`,
@@ -222,7 +222,7 @@ export default {
         'Račun ne obstaja',
 
         `Za vnešeni zasebni ključ ne obstaja noben račun.
-         Če želite uvoziti ključ, ki ni bil generiran s pomočjo Scatter-ja
+         Če želite uvoziti ključ, ki ni bil generiran s pomočjo GScatter-ja
          potem morate najprej ustvariti račun in šele nato uvoziti zasebni ključ.`
     ],
     [KEYS.ALERT_PasswordsDoNotMatch]:[
@@ -269,7 +269,7 @@ export default {
     ],
 
     [KEYS.PROMPT_DestroyingScatter]:[
-        'Uničenje Scatter-ja',
+        'Uničenje GScatter-ja',
 
         'To je vaša zadnja možnost zato še enkrat preverite varnostno kopijo.'
     ],
@@ -320,11 +320,11 @@ export default {
 
 
     [KEYS.REQUEST_AddNetwork]:[
-        /*{DOMAIN}*/ 'želi dodati omrežje v vaš Scatter.',
+        /*{DOMAIN}*/ 'želi dodati omrežje v vaš GScatter.',
 
         'Nekatere aplikacije uporabljajo svoja omrežja.',
 
-        `Akcija ne bo omogočila nikakršnega dostopa do vašega Scatter računa. 
+        `Akcija ne bo omogočila nikakršnega dostopa do vašega GScatter računa. 
          Dodajanje omrežja preko te akcije samo olajša vnos omrežja, da ga ni
          potrebno ročno dodajati preko nastavitvenega panela.`
     ],
@@ -335,7 +335,7 @@ export default {
         elektronska pošta, ime, datum rojstca.`,
 
         `Če tudi posredujete dodatne podatke katere aplikacija ne zahteva,
-        tej ne bodo posredovane iz sistema Scatter.`,
+        tej ne bodo posredovane iz sistema GScatter.`,
 
         `Edina lastnost, ki se vedno posreduje je vaša identiteta (javni ključ in njegovo ime).`,
 
@@ -358,17 +358,17 @@ export default {
         `If you have multiple locations and a transaction requires a location you will always be prompted.`
     ],
     [KEYS.REQUEST_ScatterIsLocked]:[
-        `Scatter je zaklenjen!`,
-        `Preden pričnete uporabljati Scatter, ga morate najprej odkleniti`,
+        `GScatter je zaklenjen!`,
+        `Preden pričnete uporabljati GScatter, ga morate najprej odkleniti`,
         `Nikoli vas ne bomo povprašali ali prikazovali vnosne maske za prijavo.`,
-        `V kolikor opazite okno, ki od vas zahteva vnos gesla, gre lahko za prevaro! Scatter vedno odklenite na strani vtičnika.`
+        `V kolikor opazite okno, ki od vas zahteva vnos gesla, gre lahko za prevaro! GScatter vedno odklenite na strani vtičnika.`
     ],
     [KEYS.REQUEST_UpdateVersion]:[
-        `Scatter je potečen!`,
+        `GScatter je potečen!`,
         /*{DOMAIN}*/ `potrebuje za delovanje novejšo verzijo aplikacije kot jo imate nameščeno na vašem sistemu.`,
-        `To pomeni, da je verjetno zahtevana novejša funkcionalnost, ki jo vaša nameščena verzija programa Scatter še ne podpira.`,
+        `To pomeni, da je verjetno zahtevana novejša funkcionalnost, ki jo vaša nameščena verzija programa GScatter še ne podpira.`,
         `Opozorilo! Preverjanje posodobitev je prepuščena matični aplikaciji, ki vas lahko pripelje tudi na napačno stran,
-        zato se vedno prepričajte, da aplikacijo prenašate iz Scatter spletne strani.`
+        zato se vedno prepričajte, da aplikacijo prenašate iz GScatter spletne strani.`
     ],
 
 }
