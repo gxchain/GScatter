@@ -6,15 +6,15 @@ import Account from '../../models/Account';
 import AlertMsg from '../../models/alerts/AlertMsg';
 import * as Actions from '../../store/constants';
 import ObjectHelpers from '../../util/ObjectHelpers';
-import {GXClient} from 'gxclient/es/index';
-import {PrivateKey, PublicKey, Signature} from 'gxbjs/es/index';
+import GXClientFactory from 'gxclient/es/index';
+import {PrivateKey, Signature} from 'gxbjs/es/index';
 import Error from "../../models/errors/Error";
-import {strippedHost} from '../../util/GenericTools'
-import handleArgs from './gxc/util/handleArgs'
-import buildDisplayMessages from './gxc/util/buildDisplayMessages'
-import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
-import {cloneDeep} from 'lodash'
-import {getWsAddress, isMethodNeedIdentity} from './gxc/util/util'
+import {strippedHost} from '../../util/GenericTools';
+import handleArgs from './gxc/util/handleArgs';
+import buildDisplayMessages from './gxc/util/buildDisplayMessages';
+import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes';
+import {cloneDeep} from 'lodash';
+import {getWsAddress, isMethodNeedIdentity} from './gxc/util/util';
 import {IdentityRequiredFields} from '../../models/Identity';
 
 let networkGetter = new WeakMap();
@@ -61,44 +61,44 @@ export default class GXC extends Plugin {
     async registerAccount(name, network) {
         const client = new GXClient('', '', `${getWsAddress(network)}`);
 
-        const keypair = client.generateKey()
+        const keypair = client.generateKey();
 
-        const MAIN_NET = '4f7d07969c446f8342033acb3ab2ae5044cbe0fde93db02de75bd17fa8fd84b8'
-        const TEST_NET = 'c2af30ef9340ff81fd61654295e98a1ff04b23189748f86727d0b26b40bb0ff4'
+        const MAIN_NET = '4f7d07969c446f8342033acb3ab2ae5044cbe0fde93db02de75bd17fa8fd84b8';
+        const TEST_NET = 'c2af30ef9340ff81fd61654295e98a1ff04b23189748f86727d0b26b40bb0ff4';
 
         // TODO: hard code
         const faucetMap = {
             [TEST_NET]: 'https://testnet.faucet.gxchain.org',
             [MAIN_NET]: 'https://opengateway.gxb.io'
-        }
+        };
 
-        const faucet = faucetMap[network.chainId]
+        const faucet = faucetMap[network.chainId];
 
-        await client.register(name, keypair.publicKey, keypair.publicKey, keypair.publicKey, faucet)
+        await client.register(name, keypair.publicKey, keypair.publicKey, keypair.publicKey, faucet);
 
-        return keypair
+        return keypair;
     }
 
     importAccount(keypair, network, context, accountSelected) {
         const getAccountsFromPublicKey = (publicKey, network) => {
-            return new Promise((resolve, reject) => {
-                let client = new GXClient("", "", `${getWsAddress(network)}`);
-                client.getAccountByPublicKey(publicKey).then(account_ids => {
-                    client._query("get_objects", [account_ids]).then(accounts => {
-                        let results = [];
-                        accounts.forEach(acc => {
-                            // just provide active account, cause operation like transfer only make effect on active account
-                            // if (acc.owner.key_auths.find(k => k[0] === publicKey)) {
-                            //     results.push({ name: acc.name, authority: 'owner' });
-                            // }
-                            if (acc.active.key_auths.find(k => k[0] === publicKey)) {
-                                results.push({name: acc.name, authority: 'active'});
-                            }
-                        });
-                        resolve(results);
-                    });
-                }).catch(e => resolve([]));
+            let client = GXClientFactory.instance({
+                network: network.fullhost()
             });
+            return client.getAccountByPublicKey(publicKey).then(account_ids => {
+                client._query("get_objects", [account_ids]).then(accounts => {
+                    let results = [];
+                    accounts.forEach(acc => {
+                        // just provide active account, cause operation like transfer only make effect on active account
+                        // if (acc.owner.key_auths.find(k => k[0] === publicKey)) {
+                        //     results.push({ name: acc.name, authority: 'owner' });
+                        // }
+                        if (acc.active.key_auths.find(k => k[0] === publicKey)) {
+                            results.push({name: acc.name, authority: 'active'});
+                        }
+                    });
+                    return results;
+                });
+            }).catch(e => []);
         };
 
         getAccountsFromPublicKey(keypair.publicKey, network).then(accounts => {
@@ -166,14 +166,15 @@ export default class GXC extends Plugin {
     }
 
     async getBalances(account, network) {
-        let client = new GXClient("", "", `${getWsAddress(network)}`);
+        let client = GXClientFactory.instance({
+            network: network.fullhost()
+        });
         return client.getAccountBalances(account.name).then(balances => {
             return client._query("get_objects", [balances.map(b => b.asset_id)]).then(assets => {
                 let result = balances.map(b => {
                     let asset = assets.find(a => a.id === b.asset_id);
                     return [asset.symbol, b.amount / Math.pow(10, asset.precision)];
                 });
-                console.log(result);
                 return result;
             });
         });
@@ -194,7 +195,7 @@ export default class GXC extends Plugin {
                 callback(null);
                 return false;
             }
-            var buf = Buffer.concat([new Buffer(payload.chain_id, "hex"), new Buffer(payload.tr_buffer)])
+            var buf = Buffer.concat([new Buffer(payload.chain_id, "hex"), new Buffer(payload.tr_buffer)]);
             var private_key = PrivateKey.fromWif(privateKey);
             var public_key = private_key.toPublicKey();
             var sig = Signature.signBuffer(
@@ -236,9 +237,9 @@ export default class GXC extends Plugin {
                             } catch (err) {
                                 if (err == null) {
                                     // identity not exist
-                                    throw Error.noPermissionError()
+                                    throw Error.noPermissionError();
                                 } else {
-                                    throw err
+                                    throw err;
                                 }
                             }
                         }
@@ -246,26 +247,26 @@ export default class GXC extends Plugin {
                         if (!!identity) {
                             account = identity.accounts[0];
                         } else {
-                            account = {}
+                            account = {};
                         }
 
                         // requiredFields get and check
                         let requiredFields = args.find(arg => arg.hasOwnProperty('requiredFields'));
-                        let hasRequireFields = false
-                        if (!!requiredFields) hasRequireFields = true
+                        let hasRequireFields = false;
+                        if (!!requiredFields) hasRequireFields = true;
                         requiredFields = IdentityRequiredFields.fromJson(requiredFields ? requiredFields.requiredFields : {});
                         if (!requiredFields.isValid()) throw Error.malformedRequiredFields();
 
                         const signProvider = async (tr, chain_id) => {
-                            let payload = {tr_buffer: tr.tr_buffer, chain_id}
-                            let result
+                            let payload = {tr_buffer: tr.tr_buffer, chain_id};
+                            let result;
 
                             // build prompt display messages
                             payload.messages = await buildDisplayMessages(tr, network, account, cloneDeep(args), method, client);
 
                             payload = Object.assign(payload, {domain: strippedHost(), network, requiredFields});
 
-                            result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload)
+                            result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload);
 
                             // No signature
                             if (!result) return null;
@@ -280,12 +281,12 @@ export default class GXC extends Plugin {
 
                             // 通过message发回，会变成普通对象，所以必须处理一下
                             return result.map(sig => new Buffer(sig));
-                        }
+                        };
 
                         const ext = {
                             network,
                             domain: strippedHost()
-                        }
+                        };
 
                         try {
                             handledArgs = await handleArgs(method, cloneDeep(args), messageSender, ext);
@@ -293,9 +294,15 @@ export default class GXC extends Plugin {
                             throw err;
                         }
 
-                        var client = new GXClient("", account.name ? account.name : '', `${getWsAddress(network)}`, signProvider);
+                        // var client = new GXClient("", account.name ? account.name : '', `${getWsAddress(network)}`, signProvider);
 
-                        let ret = client[method].apply(client, handledArgs)
+                        var client = GXClientFactory.instance({
+                            account: account.name,
+                            network: network.fullhost(),
+                            signatureProvider: signProvider
+                        });
+
+                        let ret = client[method].apply(client, handledArgs);
 
                         // some methods not return promise, like generateKey
                         return ret.then ? ret.then(res => {
@@ -304,14 +311,14 @@ export default class GXC extends Plugin {
                                 return Object.assign({
                                     transaction: res,
                                     returnedFileds: returnedFields
-                                })
+                                });
                             } else {
-                                return res
+                                return res;
                             }
                         }) : ret;
-                    }
+                    };
                 }
-            })
+            });
         };
     }
 }
