@@ -67,6 +67,8 @@ export default {
     [KEYS.BUTTON_No]:'Non',
     [KEYS.BUTTON_UseSelectedAccount]:'Utiliser le Compte sélectionné',
     [KEYS.BUTTON_SelectIdentity]:'Choisir l\'Identité',
+    [KEYS.BUTTON_Selected]:'Selected',
+    [KEYS.BUTTON_NotSelected]:'Not Selected',
     [KEYS.BUTTON_ChangeName]:'Changer le Nom',
     [KEYS.BUTTON_ClaimIdentity]:'Revendiquer l\'Identité',
     [KEYS.BUTTON_RegisterIdentity]:'Enregistrer l\'Identité',

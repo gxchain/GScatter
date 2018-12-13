@@ -69,6 +69,8 @@ export default {
     [KEYS.BUTTON_No]:'No',
     [KEYS.BUTTON_UseSelectedAccount]:'Use Selected Account',
     [KEYS.BUTTON_SelectIdentity]:'Select Identity',
+    [KEYS.BUTTON_Selected]:'Selected',
+    [KEYS.BUTTON_NotSelected]:'Not Selected',
     [KEYS.BUTTON_ChangeName]:'Change Name',
     [KEYS.BUTTON_ClaimIdentity]:'Claim Identity',
     [KEYS.BUTTON_RegisterIdentity]:'Register Identity',
@@ -180,6 +182,10 @@ export default {
         importing an exported GScatter JSON. You will not be able to claim your identities otherwise. Make sure you 
         have exported your GScatter from the backup settings panel before hand.
     `,
+    [KEYS.DESTROY_Confirms]:[
+        'Destroying Scatter',
+        'This is your last chance to double check your backups.'
+    ],
 
     [KEYS.LANGUAGE_Header]:`Select your language`,
 
