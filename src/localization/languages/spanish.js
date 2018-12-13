@@ -62,7 +62,8 @@ export default {
     [KEYS.BUTTON_No]:'No',
     [KEYS.BUTTON_UseSelectedAccount]:'Usar Cuenta Seleccionada',
     [KEYS.BUTTON_SelectIdentity]:'Seleccionar Identidad',
-
+    [KEYS.BUTTON_Selected]:'Selected',
+    [KEYS.BUTTON_NotSelected]:'Not Selected',
     [KEYS.MAINMENU_Identities]:'Identidades',
     [KEYS.MAINMENU_Permissions]:'Permisos',
     [KEYS.MAINMENU_History]:'Historial',

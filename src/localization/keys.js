@@ -72,6 +72,8 @@ export const BUTTON_Yes = 'btn_yes';
 export const BUTTON_No = 'btn_no';
 export const BUTTON_UseSelectedAccount = 'btn_use_sel_acc';
 export const BUTTON_SelectIdentity = 'btn_sel_id';
+export const BUTTON_Selected = 'btn_selected';
+export const BUTTON_NotSelected = 'btn_not_selected';
 export const BUTTON_ChangeName = 'btn_change_name';
 export const BUTTON_ClaimIdentity = 'btn_claim_id';
 export const BUTTON_RegisterIdentity = 'btn_reg_id';
@@ -160,7 +162,7 @@ export const IMPORT_Description = 'import_desc';
 
 export const DESTROY_Header = 'destr_head';
 export const DESTROY_Description = 'destr_desc';
-
+export const DESTROY_Confirms = 'destr_confirms';
 
 
 export const ERROR_MustSelectItem = 'err_mst_sel_item';

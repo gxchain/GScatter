@@ -67,6 +67,8 @@ export default {
     [KEYS.BUTTON_No]:'아니오',
     [KEYS.BUTTON_UseSelectedAccount]:'선택한 계정 사용',
     [KEYS.BUTTON_SelectIdentity]:'신원인증 ID 선택',
+    [KEYS.BUTTON_Selected]:'Selected',
+    [KEYS.BUTTON_NotSelected]:'Not Selected',
     [KEYS.BUTTON_ChangeName]:'이름 변경',
     [KEYS.BUTTON_ClaimIdentity]:'신원인증 ID 요청',
     [KEYS.BUTTON_RegisterIdentity]:'신원인증 ID 등록',

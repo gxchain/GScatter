@@ -63,10 +63,12 @@ export default {
     [KEYS.BUTTON_Cancel]:'取消',
     [KEYS.BUTTON_Accept]:'接受',
     [KEYS.BUTTON_Deny]:'拒绝',
-    [KEYS.BUTTON_Yes]:'Yes',
-    [KEYS.BUTTON_No]:'No',
+    [KEYS.BUTTON_Yes]:'确定',
+    [KEYS.BUTTON_No]:'取消',
     [KEYS.BUTTON_UseSelectedAccount]:'使用选择的帐户',
     [KEYS.BUTTON_SelectIdentity]:'选择身份',
+    [KEYS.BUTTON_Selected]:'已选择',
+    [KEYS.BUTTON_NotSelected]:'未选择',
     [KEYS.BUTTON_ChangeName]:'更改名称',
     [KEYS.BUTTON_ClaimIdentity]:'身份认领',
     [KEYS.BUTTON_RegisterIdentity]:'身份注册',
@@ -74,7 +76,7 @@ export default {
 
     [KEYS.MAINMENU_Identities]:'身份',
     [KEYS.MAINMENU_Keys]:'密钥对',
-    [KEYS.MAINMENU_Permissions]:'权限',
+    [KEYS.MAINMENU_Permissions]:'授权管理',
     [KEYS.MAINMENU_History]:'事件',
     [KEYS.MAINMENU_Lock]:'锁定',
 
@@ -180,6 +182,10 @@ export default {
         导入以前导出的 GScatter JSON 文件。 否则你将没有办法再使用你的身份。
         请确保在着手这个操作前，已经从备份设置面板中导出了您的 GScatter。
     `,
+    [KEYS.DESTROY_Confirms]:[
+        `正在销毁GScatter`,
+        `请再一次确保你已经完成备份，销毁后恢复的唯一方式是备份文件`
+    ],
 
     [KEYS.LANGUAGE_Header]:`选择语言`,
 
@@ -444,10 +450,7 @@ export default {
     [KEYS.REQUEST_SignatureWhitelist]:[
         `你想把这个合约操作列入白名单吗？`,
 
-        `您可以将此操作列入白名单，下次您就不必再次手动授权。
-         每一个旁边有单选按钮的属性都将变得可以更改，这意味着您可以允许
-         此事务的某些属性的更改，并且仅当其他属性发生更改时，
-         不会被列入白名单。`,
+        `您可以将此操作列入白名单，下次您就不必再次手动授权。 每一个旁边有单选按钮的属性都将变得可以更改，这意味着您可以允许 此事务的某些属性的更改，并且仅当其他属性发生更改时，不会被列入白名单。`,
 
         `这包括所需的个人信息，并且对您的身份的更改不会删除权限。`,
 

@@ -67,6 +67,8 @@ export default {
     [KEYS.BUTTON_No]:'לא',
     [KEYS.BUTTON_UseSelectedAccount]:'השתמש בחשבון שנבחר',
     [KEYS.BUTTON_SelectIdentity]:'בחר זהות',
+    [KEYS.BUTTON_Selected]:'Selected',
+    [KEYS.BUTTON_NotSelected]:'Not Selected',
     [KEYS.BUTTON_ChangeName]:'שנה שם',
     [KEYS.BUTTON_ClaimIdentity]:'תבע זהות',
     [KEYS.BUTTON_RegisterIdentity]:'רשום זהות',

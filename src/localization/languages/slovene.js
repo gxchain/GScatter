@@ -61,7 +61,8 @@ export default {
     [KEYS.BUTTON_No]:'Ne',
     [KEYS.BUTTON_UseSelectedAccount]:'Uporabi izbrani račun',
     [KEYS.BUTTON_SelectIdentity]:'Izberi identiteto',
-
+    [KEYS.BUTTON_Selected]:'Selected',
+    [KEYS.BUTTON_NotSelected]:'Not Selected',
     [KEYS.MAINMENU_Identities]:'Identitete',
     [KEYS.MAINMENU_Permissions]:'Pravice',
     [KEYS.MAINMENU_History]:'Zgodovina',

@@ -137,8 +137,7 @@ export default class AlertMsg {
 
     static DestroyingScatter(){
         return new AlertMsg(AlertTypes.Prompt,
-            'Destroying Scatter',
-            'This is your last chance to double check your backups.'
+            ...locale(LANG_KEYS.DESTROY_Confirms)
         );
     }
 

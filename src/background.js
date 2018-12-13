@@ -477,7 +477,7 @@ export default class Background {
     static encryptMemo(sendResponse, payload){
         this.lockGuard(sendResponse, async () => {
             Background.load(scatter => {
-                GXCService.encryptMemo(payload, scatter, this, sendResponse); 
+                GXCService.encryptMemo(payload, scatter, this, sendResponse);
             });
         })
     }
