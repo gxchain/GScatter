@@ -58,7 +58,7 @@
             ])
         },
         mounted() {
-            this.selectedNetwork = supportNetworks[0]
+            this.selectedNetwork = this.supportNetworks[0]
         },
         methods: {
             selectNetwork(changed) {
@@ -75,7 +75,7 @@
             async registerAccount() {
                 // gxclient register account
                 const keypair = await AccountService.registerAccount(this.name, this.selectedNetwork)
-
+                console.log('kkkkppp', keypair)
             },
             saveKeyPair() {
                 // 将keypair存入

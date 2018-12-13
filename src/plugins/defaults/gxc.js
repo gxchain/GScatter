@@ -1,21 +1,21 @@
 import Plugin from '../Plugin';
 import * as PluginTypes from '../PluginTypes';
-import { Blockchains } from '../../models/Blockchains';
+import {Blockchains} from '../../models/Blockchains';
 import Network from '../../models/Network';
 import Account from '../../models/Account';
 import AlertMsg from '../../models/alerts/AlertMsg';
 import * as Actions from '../../store/constants';
 import ObjectHelpers from '../../util/ObjectHelpers';
-import { GXClient } from 'gxclient/es/index';
-import { PrivateKey, PublicKey, Signature } from 'gxbjs/es/index';
+import {GXClient} from 'gxclient/es/index';
+import {PrivateKey, PublicKey, Signature} from 'gxbjs/es/index';
 import Error from "../../models/errors/Error";
-import { strippedHost } from '../../util/GenericTools'
+import {strippedHost} from '../../util/GenericTools'
 import handleArgs from './gxc/util/handleArgs'
 import buildDisplayMessages from './gxc/util/buildDisplayMessages'
 import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes'
-import { cloneDeep } from 'lodash'
-import { getWsAddress, isMethodNeedIdentity } from './gxc/util/util'
-import { IdentityRequiredFields } from '../../models/Identity';
+import {cloneDeep} from 'lodash'
+import {getWsAddress, isMethodNeedIdentity} from './gxc/util/util'
+import {IdentityRequiredFields} from '../../models/Identity';
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
@@ -34,7 +34,7 @@ export default class GXC extends Plugin {
     }
 
     returnableAccount(account) {
-        return { name: account.name, authority: account.authority };
+        return {name: account.name, authority: account.authority};
     }
 
     async getEndorsedNetwork() {
@@ -58,7 +58,7 @@ export default class GXC extends Plugin {
         return true;
     }
 
-    async registerAccount(name, network){
+    async registerAccount(name, network) {
         const client = new GXClient('', '', `${getWsAddress(network)}`);
 
         const keypair = client.generateKey()
@@ -68,16 +68,15 @@ export default class GXC extends Plugin {
 
         // TODO: hard code
         const faucetMap = {
-            [TEST_NET]:'https://testnet.faucet.gxb.io',
-            [MAIN_NET]:'https://opengateway.gxb.io'
+            [TEST_NET]: 'https://testnet.faucet.gxchain.org',
+            [MAIN_NET]: 'https://opengateway.gxb.io'
         }
 
-        try{
+        const faucet = faucetMap[network.chainId]
 
-        }catch(err){
+        await client.register(name, keypair.publicKey, keypair.publicKey, keypair.publicKey, faucet)
 
-        }
-        await client.register(name,keypair.publicKey,keypair.publicKey,keypair.publicKey,faucet)
+        return keypair
     }
 
     importAccount(keypair, network, context, accountSelected) {
@@ -93,7 +92,7 @@ export default class GXC extends Plugin {
                             //     results.push({ name: acc.name, authority: 'owner' });
                             // }
                             if (acc.active.key_auths.find(k => k[0] === publicKey)) {
-                                results.push({ name: acc.name, authority: 'active' });
+                                results.push({name: acc.name, authority: 'active'});
                             }
                         });
                         resolve(results);
@@ -233,7 +232,7 @@ export default class GXC extends Plugin {
                         if (isMethodNeedIdentity(method)) {
                             // throwIfNoIdentity();
                             try {
-                                identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, { domain: strippedHost() });
+                                identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, {domain: strippedHost()});
                             } catch (err) {
                                 if (err == null) {
                                     // identity not exist
@@ -258,13 +257,13 @@ export default class GXC extends Plugin {
                         if (!requiredFields.isValid()) throw Error.malformedRequiredFields();
 
                         const signProvider = async (tr, chain_id) => {
-                            let payload = { tr_buffer: tr.tr_buffer, chain_id }
+                            let payload = {tr_buffer: tr.tr_buffer, chain_id}
                             let result
 
                             // build prompt display messages
                             payload.messages = await buildDisplayMessages(tr, network, account, cloneDeep(args), method, client);
 
-                            payload = Object.assign(payload, { domain: strippedHost(), network, requiredFields });
+                            payload = Object.assign(payload, {domain: strippedHost(), network, requiredFields});
 
                             result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload)
 
