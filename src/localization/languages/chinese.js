@@ -223,6 +223,9 @@ export default {
     [KEYS.ONBOARDING_Title]:`欢迎使用`,
     [KEYS.ONBOARDING_Desc1]:`此软件的开发团队没有责任保证您的资产绝对不丢失，你有责任不断确保你的电脑没有恶意软件。我们已采取各种措施来确保插件的使用安全。请知道，最大的安全隐患是你的计算机本身。`,
     [KEYS.ONBOARDING_Desc2]:`通过使用本软件，您将放弃对开发团队采取法律行动的任何权利，并将自己视为您自己的钱包、密钥和数据的唯一合法所有者。`,
+    [KEYS.ONBOARDING_Import]:`导入已有私钥`,
+    [KEYS.ONBOARDING_Reg]:`创建GXChain账户`,
+
 
     [KEYS.ERROR_MustSelectItem]:`必选项.`,
 
