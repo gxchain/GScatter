@@ -72,6 +72,8 @@ export default class GXC extends Plugin {
             [MAIN_NET]:'https://opengateway.gxb.io'
         }
 
+        const faucet = faucetMap[network.chainId]
+
         try{
 
         }catch(err){
