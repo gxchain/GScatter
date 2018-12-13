@@ -97,9 +97,6 @@
 
                 if(this.keypair.publicKey.length) this.isValid = true;
             },
-            async registerAccount(){
-                await AccountService.registerAccount(this.keypair);
-            },
             saveKeyPair(){
                 if(!this.isValid) return this[Actions.PUSH_ALERT](AlertMsg.InvalidPrivateKey());
                 KeyPairService.saveKeyPair(this.keypair, this, () => {

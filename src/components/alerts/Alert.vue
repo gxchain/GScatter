@@ -59,6 +59,15 @@
                 <btn :text="locale(langKeys.BUTTON_Accept)" is-blue="true" v-on:clicked="returnText"></btn>
             </section>
 
+            <!--Register Success-->
+            <section class="actions" v-if="alerts[0].type === alertTypes.RegisterSuc">
+                <!--点击复制-->
+                <btn :text="locale(langKeys.BUTTON_Copy)" v-on:clicked="copyKeyPair(alerts[0])"></btn>
+            </section>
+
+            <!-- INPUT FIELD USED FOR COPYING -->
+            <input tabindex="-1" type="text" ref="copier" class="copier" />
+
         </section>
 
     </section>
@@ -110,6 +119,17 @@
                 this[Actions.PULL_ALERT]();
                 this[Actions.PUSH_ALERT_RESULT]({text:this.returnedText});
             },
+            copyKeyPair(alert){
+                const keypair = alert.data
+                const copier = this.$refs.copier;
+                copier.value = `Private Key: ${keypair.privateKey} Public Key: ${keypair.publicKey}`;
+                copier.select();
+                document.execCommand("copy");
+                copier.value = '';
+
+                this[Actions.PULL_ALERT]();
+                this[Actions.PUSH_ALERT_RESULT]({accepted:true});
+            },
             ...mapActions([
                 Actions.PULL_ALERT,
                 Actions.PUSH_ALERT_RESULT,
@@ -119,6 +139,10 @@
 </script>
 
 <style lang="scss">
+    .copier{
+        position: absolute;
+        top:-9999px;
+    }
     .error {
         position:fixed;
         top:0; bottom:0;

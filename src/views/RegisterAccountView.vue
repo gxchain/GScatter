@@ -6,12 +6,12 @@
             <figure class="sub-header" style="color:red; font-weight:bold; font-size:13px;">
                 {{locale(langKeys.KEYPAIR_Important)}}
             </figure>
-            <sel :disabled="importing" :selected="supportNetworks[0]" :options="supportNetworks"
+            <sel :disabled="loading" :selected="supportNetworks[0]" :options="supportNetworks"
                     :parser="(network) => network.name.length ? network.name : network.unique()"
                     v-on:changed="selectNetwork"></sel>
             <cin :placeholder="locale(langKeys.PLACEHOLDER_Name)" :text="name"
                     v-on:changed="changed => name = changed"></cin>
-            <btn :text="注册账户" @click.native="registerAccount" margined="true"></btn>
+            <btn text="注册账户" @click.native="registerAccount" margined="true"></btn>
             <btn :text="locale(langKeys.GENERIC_Save)" :is-blue="true" half="true" @click.native="saveKeyPair()"
                     margined="true"></btn>
             <btn :text="locale(langKeys.BUTTON_Copy)" half="true" @click.native="copyKeyPair()" margined="true"></btn>
@@ -26,18 +26,15 @@
 <script>
     import {mapActions, mapGetters, mapState} from 'vuex'
     import * as Actions from '../store/constants';
-    import {RouteNames} from '../vue/Routing'
-    import Network from '../models/Network'
-    import Scatter from '../models/Scatter'
     import AlertMsg from '../models/alerts/AlertMsg'
-    import * as AlertTypes from '../models/alerts/AlertTypes'
-    import IdentityService from '../services/IdentityService'
-    import {BlockchainsArray, Blockchains} from '../models/Blockchains';
+    import {BlockchainsArray} from '../models/Blockchains';
     import KeyPair from '../models/KeyPair';
-    import ecc from 'eosjs-ecc';
-    import PluginRepository from '../plugins/PluginRepository'
     import KeyPairService from '../services/KeyPairService'
     import AccountService from '../services/AccountService'
+    import Identity from "../models/Identity";
+    import Account from "../models/Account";
+    import RIDLService from '../services/RIDLService';
+    import {ChainValidation} from 'gxbjs/es/index'
 
     export default {
         data() {
@@ -46,7 +43,8 @@
                 keypair: KeyPair.placeholder(),
                 isValid: false,
                 name: '',
-                selectedNetwork: null
+                selectedNetwork: null,
+                loading: false
             }
         },
         computed: {
@@ -73,15 +71,56 @@
                 copier.value = '';
             },
             async registerAccount() {
+                // validate name
+                const errMsg = ChainValidation.is_account_name_error(this.name)
+                if (errMsg) {
+                    this[Actions.PUSH_ALERT](AlertMsg.CommonError(new Error(errMsg), this.locale(this.langKeys.GXC_ACCOUNT_NAME_ERROR)));
+                    return;
+                }
+
                 // gxclient register account
-                const keypair = await AccountService.registerAccount(this.name, this.selectedNetwork)
-                console.log('kkkkppp', keypair)
+                let keypair
+                try {
+                    keypair = await AccountService.registerAccount(this.name, this.selectedNetwork)
+                } catch (err) {
+                    this[Actions.PUSH_ALERT](AlertMsg.CommonError(err));
+                    return;
+                }
+
+                this[Actions.PUSH_ALERT](AlertMsg.RegisterSuc(keypair));
+                this.keypair = KeyPair.fromJson({...keypair, name: this.name})
+                this.isValid = true
             },
             saveKeyPair() {
-                // 将keypair存入
-                if (!this.isValid) return this[Actions.PUSH_ALERT](AlertMsg.InvalidPrivateKey());
-                KeyPairService.saveKeyPair(this.keypair, this, () => {
-                    // push identity
+                // save keypair
+                if (!this.isValid) return this[Actions.PUSH_ALERT](AlertMsg.NotRigister());
+                this.loading = true;
+
+                KeyPairService.saveKeyPair(this.keypair, this, async () => {
+                    // create default identity
+                    const identity = Identity.placeholder()
+                    identity.initialize(this.scatter.hash).then(async () => {
+                        const identified = await RIDLService.identify(identity.publicKey)
+                        if (!identified) return null;
+                        identity.name = identified
+
+                        const account = Account.fromJson({
+                            keypairUnique: this.keypair.unique(),
+                            publicKey: this.keypair.publicKey,
+                            name: this.name,
+                            authority: 'active'
+                        })
+                        identity.setAccount(this.selectedNetwork, account)
+
+                        const scatter = this.scatter.clone();
+                        scatter.keychain.updateOrPushIdentity(identity);
+                        this[Actions.UPDATE_STORED_SCATTER](scatter);
+
+                        this.loading = false;
+                        this.$router.back();
+                    }).catch(err => {
+                        this.loading = false;
+                    })
                 })
             },
             ...mapActions([

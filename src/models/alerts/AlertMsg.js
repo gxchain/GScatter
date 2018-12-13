@@ -7,11 +7,12 @@ const locale = key => localized(key, store.getters.language);
 
 export default class AlertMsg {
 
-    constructor(_type, _header, _description, _list = []){
+    constructor(_type, _header, _description, _list = [], data = null){
         this.type = _type;
         this.header = _header;
         this.description = _description;
         this.list = _list;
+        this.data = data;
     }
 
 
@@ -211,4 +212,29 @@ export default class AlertMsg {
         );
     }
 
+    /***************************************/
+    /*            gxc custom           */
+    /***************************************/
+    static RegisterSuc(keypair){
+        return new AlertMsg(
+            AlertTypes.RegisterSuc,
+            ...locale(LANG_KEYS.GXC_REGISTER_SUC),
+            keypair
+        );
+    }
+
+    static NotRigister(){
+        return new AlertMsg(
+            AlertTypes.Error,
+            ...locale(LANG_KEYS.GXC_ALERT_NOT_REGISTER)
+        );
+    }
+
+    static CommonError(err, title = ''){
+        return new AlertMsg(
+            AlertTypes.Error,
+            title || locale(LANG_KEYS.ALERT_Type)(AlertTypes.Error),
+            err.message
+        );
+    }
 }

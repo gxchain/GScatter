@@ -209,6 +209,10 @@ export const REQUEST_UpdateVersion = 'req_updt_vers';
 export const GXC_TRANSFER_CODE = 'gxc_transfer_code';
 export const GXC_TRANSFER_TYPE = 'gxc_transfer_type';
 export const GXC_TRANSFER_RICARDIAN = 'gxc_transfer_ricardian';
+export const GXC_REGISTER_SUC = 'gxc_register_suc';
+export const GXC_ALERT_NOT_REGISTER = 'gxc_alert_not_register';
+export const GXC_ACCOUNT_NAME_ERROR = 'gxc_account_name_error';
+
 
 
 

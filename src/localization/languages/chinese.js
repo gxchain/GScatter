@@ -481,5 +481,16 @@ export default {
     // GXC
     [KEYS.GXC_TRANSFER_CODE]:`无`,
     [KEYS.GXC_TRANSFER_TYPE]:`转账`,
-    [KEYS.GXC_TRANSFER_RICARDIAN]:`开发者向您申请转账，请谨慎操作！`
+    [KEYS.GXC_TRANSFER_RICARDIAN]:`开发者向您申请转账，请谨慎操作！`,
+    [KEYS.GXC_REGISTER_SUC]: [
+        `注册成功`,
+        `请复制并保管好您的私钥。
+        当前只是在gxchain上注册了账户，如果要将账户保存在gscatter上，请随后点击保存。`,
+        ``
+    ],
+    [KEYS.GXC_ALERT_NOT_REGISTER]: [
+        `尚未注册`,
+        `请先注册账户`
+    ],
+    [KEYS.GXC_ACCOUNT_NAME_ERROR]: '账户名不符合规则'
 }
