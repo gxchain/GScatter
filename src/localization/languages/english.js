@@ -498,7 +498,8 @@ export default {
 
     [KEYS.REGISTER_HEADER]: 'Register',
     [KEYS.REGISTER_DESCRIPTION]: `Register GXChain account on selected network.
-    If you want to save account on GScatter, please click 'save' button after register.`
+    If you want to save account on GScatter, please click 'save' button after register.`,
+    [KEYS.REGISTER_TIPS]: 'No account？Please click GScatter logo to register on the main menu.'
 }
 
 

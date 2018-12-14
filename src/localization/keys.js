@@ -217,6 +217,7 @@ export const GXC_ACCOUNT_NAME_ERROR = 'gxc_account_name_error';
 
 export const REGISTER_HEADER = 'register_header';
 export const REGISTER_DESCRIPTION = 'register_description';
+export const REGISTER_TIPS = 'register_tips';
 
 
 

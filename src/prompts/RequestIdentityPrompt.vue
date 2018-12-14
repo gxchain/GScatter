@@ -92,6 +92,7 @@
                 <section class="nothing-here">
                     <figure class="header"><b>{{locale(langKeys.REQUEST_IdentityNoIdentities)[0]}}</b></figure>
                     <figure class="sub-header">{{locale(langKeys.REQUEST_IdentityNoIdentities)[1]}}</figure>
+                    <figure class="sub-header register-tip">{{locale(langKeys.REGISTER_TIPS)}}</figure>
                 </section>
             </section>
 
@@ -186,6 +187,10 @@
         .red {
 
         }
+    }
+
+    .register-tip{
+        color: #54a7fc !important;
     }
 
     .prompt-body {

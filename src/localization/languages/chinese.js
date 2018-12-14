@@ -443,10 +443,10 @@ export default {
     ],
     //2
     [KEYS.REQUEST_IdentityNoIdentities]:[
-        `您没有与此应用程序需要的字段匹配的标识信息。`,
+        `您没有与此应用程序需要的字段匹配的身份信息。`,
 
-        `如果您希望将身份用于此域，您将需要更新该标识并满足需求。
-         您可以在左侧面板上看到它还需要什么信息。`
+        `如果您想使用此应用程序，您需要更新身份中的信息。
+        您可以在左侧面板上看到该应用需要哪些信息。`
     ],
     //4
     [KEYS.REQUEST_SignatureWhitelist]:[
@@ -498,5 +498,6 @@ export default {
 
     [KEYS.REGISTER_HEADER]: '注册账户',
     [KEYS.REGISTER_DESCRIPTION]: `在选择的网络下注册GXChain账户。
-    如果想在GScatter中保存身份，请在注册后点击保存。`
+    如果想在GScatter中保存身份，请在注册后点击保存。`,
+    [KEYS.REGISTER_TIPS]: '没有账户？请点击GScatter图标到首页注册。'
 }
