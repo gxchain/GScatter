@@ -62,7 +62,7 @@
             <!--Register Success-->
             <section class="actions" v-if="alerts[0].type === alertTypes.RegisterSuc">
                 <!--点击复制-->
-                <btn :text="locale(langKeys.BUTTON_Copy)" v-on:clicked="copyKeyPair(alerts[0])"></btn>
+                <btn :text="locale(langKeys.BUTTON_Copy)" is-blue="true" v-on:clicked="copyKeyPair(alerts[0])"></btn>
             </section>
 
             <!-- INPUT FIELD USED FOR COPYING -->
@@ -122,7 +122,7 @@
             copyKeyPair(alert){
                 const keypair = alert.data
                 const copier = this.$refs.copier;
-                copier.value = `Private Key: ${keypair.privateKey} Public Key: ${keypair.publicKey}`;
+                copier.value = `Private Key: ${keypair.privateKey} \n Public Key: ${keypair.publicKey}`;
                 copier.select();
                 document.execCommand("copy");
                 copier.value = '';

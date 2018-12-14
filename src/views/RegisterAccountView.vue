@@ -1,20 +1,16 @@
 <template>
     <section class="network scroller">
         <section class="panel">
-            <figure class="header">{{locale(langKeys.KEYPAIR_Header)}}</figure>
-            <figure class="sub-header">{{locale(langKeys.KEYPAIR_Description)}}</figure>
-            <figure class="sub-header" style="color:red; font-weight:bold; font-size:13px;">
-                {{locale(langKeys.KEYPAIR_Important)}}
-            </figure>
+            <figure class="header">{{locale(langKeys.REGISTER_HEADER)}}</figure>
+            <figure class="sub-header">{{locale(langKeys.REGISTER_DESCRIPTION)}}</figure>
             <sel :disabled="loading" :selected="supportNetworks[0]" :options="supportNetworks"
                     :parser="(network) => network.name.length ? network.name : network.unique()"
                     v-on:changed="selectNetwork"></sel>
             <cin :placeholder="locale(langKeys.PLACEHOLDER_Name)" :text="name"
                     v-on:changed="changed => name = changed"></cin>
-            <btn text="注册账户" @click.native="registerAccount" margined="true"></btn>
-            <btn :text="locale(langKeys.GENERIC_Save)" :is-blue="true" half="true" @click.native="saveKeyPair()"
+            <btn :text="locale(langKeys.REGISTER_HEADER)" @click.native="registerAccount" margined="true"></btn>
+            <btn :text="locale(langKeys.GENERIC_Save)" :is-blue="true" @click.native="saveKeyPair()"
                     margined="true"></btn>
-            <btn :text="locale(langKeys.BUTTON_Copy)" half="true" @click.native="copyKeyPair()" margined="true"></btn>
         </section>
 
         <!-- INPUT FIELD USED FOR COPYING -->

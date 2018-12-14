@@ -71,6 +71,7 @@
                     case RouteNames.LANGUAGE: return 'Language';
                     case RouteNames.KEYPAIRS: return 'Key Pair';
                     case RouteNames.KEYS: return 'Key Pairs';
+                    case RouteNames.REGISTER_ACCOUNT: return 'Register';
                 }
                 return 'Undefined'
             },

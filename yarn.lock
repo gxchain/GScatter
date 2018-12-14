@@ -2758,6 +2758,12 @@ gxbjs-ws@^1.1.22:
   dependencies:
     ws "^4.1.0"
 
+gxbjs-ws@^1.1.23:
+  version "1.1.23"
+  resolved "https://registry.yarnpkg.com/gxbjs-ws/-/gxbjs-ws-1.1.23.tgz#69d21a750945157a066329422859d75c8f22cf5f"
+  dependencies:
+    ws "^4.1.0"
+
 gxbjs@^1.2.89:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/gxbjs/-/gxbjs-1.3.3.tgz#198be39c0babf772f46becd20765e6faf656dbf8"
@@ -2776,9 +2782,9 @@ gxbjs@^1.2.89:
     secp256k1 "^3.3.0"
     secure-random "^1.1.1"
 
-gxbjs@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/gxbjs/-/gxbjs-1.3.4.tgz#89f27c32cf744acc39dcba2f1af0419567e9f2fd"
+gxbjs@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/gxbjs/-/gxbjs-1.3.5.tgz#35360a048c427b081e0cc9e93d37d55e24c55fd2"
   dependencies:
     bigi "^1.4.1"
     bs58 "^3.0.0"
@@ -2789,7 +2795,7 @@ gxbjs@^1.3.4:
     deep-equal "^1.0.1"
     ecurve "^1.0.2"
     event-emitter "^0.3.4"
-    gxbjs-ws "^1.1.22"
+    gxbjs-ws "^1.1.23"
     immutable "^3.7.6"
     secp256k1 "^3.3.0"
     secure-random "^1.1.1"
@@ -2802,14 +2808,15 @@ gxbjs@^1.3.4:
     gxbjs "^1.2.89"
     lodash "^4.17.10"
 
-gxclient@^1.4.8:
-  version "1.4.8"
-  resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-1.4.8.tgz#d648d61505b9725cad2aea9d54dcf680ceffbb63"
+gxclient@^1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-1.5.5.tgz#456d473dab35cca60c4f2fb298e0718c211fe019"
   dependencies:
+    babel-runtime "^6.26.0"
     chalk "^2.4.1"
     commander "^2.17.1"
     debug "^3.1.0"
-    gxbjs "^1.3.4"
+    gxbjs "^1.3.5"
     gxc-frontend-base "github:gxchain/gxc-frontend-base"
     lodash "^4.17.11"
     superagent "^3.8.3"

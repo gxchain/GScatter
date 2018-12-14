@@ -30,7 +30,7 @@
             links:[
                 {route:RouteNames.IDENTITIES, name:this.locale(LANG_KEYS.MAINMENU_Identities), icon:'address-book'},
                 {route:RouteNames.KEYS, name:this.locale(LANG_KEYS.MAINMENU_Keys), icon:'key'},
-                {route:RouteNames.REGISTER_ACCOUNT, name:'reg', icon:'key'},
+                {route:RouteNames.REGISTER_ACCOUNT, name:this.locale(LANG_KEYS.MAINMENU_Register), icon:'user'},
                 {route:RouteNames.PERMISSIONS, name:this.locale(LANG_KEYS.MAINMENU_Permissions), icon:'shield'},
 //                {route:RouteNames.HISTORY, name:this.locale(LANG_KEYS.MAINMENU_History), icon:'history'},
                 {name:this.locale(LANG_KEYS.MAINMENU_Lock), icon:'lock'},

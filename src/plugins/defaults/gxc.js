@@ -59,7 +59,9 @@ export default class GXC extends Plugin {
     }
 
     async registerAccount(name, network) {
-        const client = new GXClient('', '', `${getWsAddress(network)}`);
+        const client = GXClientFactory.instance({
+            network: network.fullhost()
+        });
 
         const keypair = client.generateKey();
 
@@ -136,22 +138,30 @@ export default class GXC extends Plugin {
     }
 
     privateToPublic(privateKey) {
-        let client = new GXClient();
+        let client = GXClientFactory.instance({
+            network: ''
+        });
         return client.privateToPublic(privateKey);
     }
 
     validPrivateKey(privateKey) {
-        let client = new GXClient();
+        let client = GXClientFactory.instance({
+            network: ''
+        });
         return client.isValidPrivate(privateKey);
     }
 
     validPublicKey(publicKey) {
-        let client = new GXClient();
+        let client = GXClientFactory.instance({
+            network: ''
+        });
         return client.isValidPublic(publicKey);
     }
 
     randomPrivateKey() {
-        let client = new GXClient();
+        let client = GXClientFactory.instance({
+            network: ''
+        });
         return new Promise((resolve) => {
             resolve(client.generateKey().privateKey);
         });

@@ -1,6 +1,7 @@
 
 export const MAINMENU_Identities = 'mm_ids';
 export const MAINMENU_Keys = 'mm_keys';
+export const MAINMENU_Register = 'mm_register';
 export const MAINMENU_Permissions = 'mm_perm';
 export const MAINMENU_History = 'mm_hist';
 export const MAINMENU_Lock = 'mm_lock';
@@ -212,6 +213,9 @@ export const GXC_TRANSFER_RICARDIAN = 'gxc_transfer_ricardian';
 export const GXC_REGISTER_SUC = 'gxc_register_suc';
 export const GXC_ALERT_NOT_REGISTER = 'gxc_alert_not_register';
 export const GXC_ACCOUNT_NAME_ERROR = 'gxc_account_name_error';
+
+export const REGISTER_HEADER = 'register_header';
+export const REGISTER_DESCRIPTION = 'register_description';
 
 
 

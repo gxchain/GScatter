@@ -76,6 +76,7 @@ export default {
 
     [KEYS.MAINMENU_Identities]:'身份',
     [KEYS.MAINMENU_Keys]:'密钥对',
+    [KEYS.MAINMENU_Register]:'注册',
     [KEYS.MAINMENU_Permissions]:'授权管理',
     [KEYS.MAINMENU_History]:'事件',
     [KEYS.MAINMENU_Lock]:'锁定',
@@ -485,12 +486,16 @@ export default {
     [KEYS.GXC_REGISTER_SUC]: [
         `注册成功`,
         `请复制并保管好您的私钥。
-        当前只是在gxchain上注册了账户，如果要将账户保存在gscatter上，请随后点击保存。`,
+        目前仅仅是在GXChain上注册了账户，如果要将账户保存在GScatter上，请随后点击保存。`,
         ``
     ],
     [KEYS.GXC_ALERT_NOT_REGISTER]: [
         `尚未注册`,
         `请先注册账户`
     ],
-    [KEYS.GXC_ACCOUNT_NAME_ERROR]: '账户名不符合规则'
+    [KEYS.GXC_ACCOUNT_NAME_ERROR]: '账户名不符合规则',
+
+    [KEYS.REGISTER_HEADER]: '注册账户',
+    [KEYS.REGISTER_DESCRIPTION]: `在选择的网络下注册GXChain账户。
+    如果想在GScatter中保存身份，请在注册后点击保存。`
 }
