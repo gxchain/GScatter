@@ -239,18 +239,16 @@ export default class GXC extends Plugin {
                         let identity;
                         let account;
 
-                        // some methods need identity, like trnasfer
-                        if (isMethodNeedIdentity(method)) {
-                            // throwIfNoIdentity();
-                            try {
-                                identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, {domain: strippedHost()});
-                            } catch (err) {
-                                if (err == null) {
-                                    // identity not exist
+                        try {
+                            identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, {domain: strippedHost()});
+                        } catch (err) {
+                            // identity not exist
+                            if (err == null) {
+                                if(isMethodNeedIdentity(method)){
                                     throw Error.noPermissionError();
-                                } else {
-                                    throw err;
                                 }
+                            } else {
+                                throw err;
                             }
                         }
 
