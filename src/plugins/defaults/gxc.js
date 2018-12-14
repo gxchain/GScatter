@@ -87,7 +87,7 @@ export default class GXC extends Plugin {
                 network: network.fullhost()
             });
             return client.getAccountByPublicKey(publicKey).then(account_ids => {
-                client._query("get_objects", [account_ids]).then(accounts => {
+                return client._query("get_objects", [account_ids]).then(accounts => {
                     let results = [];
                     accounts.forEach(acc => {
                         // just provide active account, cause operation like transfer only make effect on active account

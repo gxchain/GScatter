@@ -31,6 +31,7 @@
     import Account from "../models/Account";
     import RIDLService from '../services/RIDLService';
     import {ChainValidation} from 'gxbjs/es/index'
+    import {RouteNames} from '../vue/Routing'
 
     export default {
         data() {
@@ -109,11 +110,12 @@
                         identity.setAccount(this.selectedNetwork, account)
 
                         const scatter = this.scatter.clone();
+                        scatter.meta.acceptedTerms = true;
                         scatter.keychain.updateOrPushIdentity(identity);
-                        this[Actions.UPDATE_STORED_SCATTER](scatter);
-
                         this.loading = false;
-                        this.$router.back();
+                        this[Actions.UPDATE_STORED_SCATTER](scatter).then(() => {
+                            this.$router.push({name: RouteNames.MAIN_MENU});
+                        })
                     }).catch(err => {
                         this.loading = false;
                     })

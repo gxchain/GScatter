@@ -13,7 +13,7 @@
             </section>
             <section class="p20">
                 <btn :text="locale(langKeys.ONBOARDING_Import)" :is-blue="true" v-on:clicked="stepToKeypair" margined="true"></btn>
-                <btn :text="locale(langKeys.ONBOARDING_Reg)" :is-red="true" v-on:clicked="finished" margined="true"></btn>
+                <btn :text="locale(langKeys.ONBOARDING_Reg)" :is-red="true" v-on:clicked="goToRegister" margined="true"></btn>
             </section>
         </section>
 
@@ -33,7 +33,7 @@
                 <cin type="password" :placeholder="locale(langKeys.PLACEHOLDER_PrivateKey)" @changed="makePublicKey" :text="keypair.privateKey" v-on:changed="changed => bind(changed, 'keypair.privateKey')"></cin>
 
                 <btn :text="`Import ${keypair.blockchain.toUpperCase()} Key Pair`" v-on:clicked="saveKeyPair" :is-blue="true" margined="true"></btn>
-                <btn text="No Blockchain" :is-red="true" v-on:clicked="finished" margined="true"></btn>
+                <btn text="Back" v-on:clicked="step--" margined="true"></btn>
             </section>
         </section>
 
@@ -127,6 +127,9 @@
                 scatter.meta.acceptedTerms = true;
                 this[Actions.UPDATE_STORED_SCATTER](scatter).then(() => this.step++);
                 this.$router.push({name:RouteNames.MAIN_MENU});
+            },
+            goToRegister(){
+                this.$router.push({name:RouteNames.REGISTER_ACCOUNT});
             },
             ...mapActions([
                 Actions.UPDATE_STORED_SCATTER,
