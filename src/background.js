@@ -266,7 +266,7 @@ export default class Background {
             Background.load(scatter => {
                 const {domain, fields} = payload;
 
-                IdentityService.getOrRequestIdentity(domain, fields, scatter, (identity, fromPermission) => {
+                IdentityService.getOrRequestIdentity(domain, fields, scatter, (identity, fromPermission, network) => {
                     if(!identity){
                         // 这种情况目前只可能是用户没选，没有匹配的identity这种情况不会报错
                         sendResponse(Error.noPermissionError());
@@ -283,6 +283,7 @@ export default class Background {
 
                         this.addPermissions([Permission.fromJson({
                             domain,
+                            network,
                             identity:identity.publicKey,
                             timestamp:+ new Date(),
                             fields,

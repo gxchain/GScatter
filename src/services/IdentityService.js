@@ -34,14 +34,15 @@ export default class IdentityService {
         // Possibly getting an Identity that has been synced with this application.
         const identityFromPermission = IdentityService.identityFromPermissionsOrNull(domain, scatter);
         let identity = identityFromPermission;
+        let network = fields.accounts && fields.accounts[0] || null
 
         const sendBackIdentity = id => {
             if(!id || id.hasOwnProperty('isError')){
-                callback(null, null);
+                callback(null, null, network);
                 return false;
             }
 
-            callback(id.asOnlyRequiredFields(fields), !!identityFromPermission);
+            callback(id.asOnlyRequiredFields(fields), !!identityFromPermission, network);
         };
 
         if(identity){
