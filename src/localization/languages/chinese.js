@@ -232,6 +232,7 @@ export default {
     [KEYS.ONBOARDING_Desc2]:`通过使用本软件，您将放弃对开发团队采取法律行动的任何权利，并将自己视为您自己的钱包、密钥和数据的唯一合法所有者。`,
     [KEYS.ONBOARDING_Import]:`导入已有私钥`,
     [KEYS.ONBOARDING_Reg]:`创建GXChain账户`,
+    [KEYS.ONBOARDING_SKIP]:`跳过引导`,
 
 
     [KEYS.ERROR_MustSelectItem]:`必选项.`,

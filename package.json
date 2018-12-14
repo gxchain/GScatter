@@ -24,7 +24,7 @@
     "ethereumjs-util": "^5.2.0",
     "extension-streams": "^1.0.7",
     "fcbuffer": "^2.2.1",
-    "gxclient": "^1.5.5",
+    "gxclient": "^1.5.6",
     "lodash": "^4.17.11",
     "ridl": "^0.1.0",
     "scrypt-async": "^2.0.0",

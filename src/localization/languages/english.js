@@ -231,6 +231,7 @@ export default {
     [KEYS.ONBOARDING_Desc2]:`By using this software you are relinquishing any ability to take legal actions against the developer team and recognize yourself as the sole legal owner of your own wallet instance, your keys, and your data.`,
     [KEYS.ONBOARDING_Import]:`Import Key`,
     [KEYS.ONBOARDING_Reg]:`Create GXChain Account`,
+    [KEYS.ONBOARDING_SKIP]:`Skip Guide`,
 
     [KEYS.ERROR_MustSelectItem]:`You must select an item.`,
 

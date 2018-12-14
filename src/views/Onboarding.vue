@@ -14,6 +14,7 @@
             <section class="p20">
                 <btn :text="locale(langKeys.ONBOARDING_Import)" :is-blue="true" v-on:clicked="stepToKeypair" margined="true"></btn>
                 <btn :text="locale(langKeys.ONBOARDING_Reg)" :is-red="true" v-on:clicked="goToRegister" margined="true"></btn>
+                <btn :text="locale(langKeys.ONBOARDING_SKIP)" v-on:clicked="finished" margined="true"></btn>
             </section>
         </section>
 
