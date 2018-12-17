@@ -11,6 +11,7 @@ import SelectComponent from './components/SelectComponent.vue'
 import NavActionsComponent from './components/NavActionsComponent.vue'
 import ViewBase from './views/ViewBase.vue'
 import Alert from './components/alerts/Alert.vue'
+import Keypair from './components/KeypairComponent.vue'
 
 class Popup {
 
@@ -24,6 +25,7 @@ class Popup {
             {tag:'sel', vue:SelectComponent},
             {tag:'alert', vue:Alert},
             {tag:'view-base', vue:ViewBase},
+            {tag:'keypair', vue:Keypair}
         ];
 
         const routes = Routing.routes();

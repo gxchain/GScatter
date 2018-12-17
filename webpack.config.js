@@ -7,6 +7,7 @@ const ZipPlugin = require('zip-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals')
 const Dotenv = require('dotenv-webpack');
+const ChromeExtensionReloader  = require('webpack-chrome-extension-reloader');
 
 console.log(process.env.SCATTER_ENV);
 
@@ -82,7 +83,8 @@ module.exports = {
         new Dotenv({
             path: './.env',
             safe: true
-        })
+        }),
+        new ChromeExtensionReloader()
     ].concat(productionPlugins),
     stats: { colors: true },
     devtool: 'source-map', //inline-

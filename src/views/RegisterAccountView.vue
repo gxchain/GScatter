@@ -14,6 +14,9 @@
         <section class="panel" v-else>
             <figure class="header">{{locale(langKeys.REGISTER_SUC_HEADER)}}</figure>
             <figure class="sub-header">{{locale(langKeys.REGISTER_SUC_DESCRIPTION)}}</figure>
+            <keypair :keypair="keypair"></keypair>
+            <btn :text="locale(langKeys.BUTTON_Copy)" :is-blue="true" @click.native="copyKeyPair()"
+                    margined="true"></btn>
             <btn :text="locale(langKeys.GENERIC_Save)" :is-blue="true" @click.native="saveKeyPair()"
                     margined="true"></btn>
         </section>
