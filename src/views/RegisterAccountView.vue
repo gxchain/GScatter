@@ -1,6 +1,6 @@
 <template>
     <section class="network scroller">
-        <section class="panel">
+        <section class="panel" v-if="step === 1">
             <figure class="header">{{locale(langKeys.REGISTER_HEADER)}}</figure>
             <figure class="sub-header">{{locale(langKeys.REGISTER_DESCRIPTION)}}</figure>
             <sel :disabled="loading" :selected="supportNetworks[0]" :options="supportNetworks"
@@ -9,6 +9,11 @@
             <cin :placeholder="locale(langKeys.PLACEHOLDER_Name)" :text="name"
                     v-on:changed="changed => name = changed"></cin>
             <btn :text="locale(langKeys.REGISTER_HEADER)" @click.native="registerAccount" margined="true"></btn>
+        </section>
+
+        <section class="panel" v-else>
+            <figure class="header">{{locale(langKeys.REGISTER_SUC_HEADER)}}</figure>
+            <figure class="sub-header">{{locale(langKeys.REGISTER_SUC_DESCRIPTION)}}</figure>
             <btn :text="locale(langKeys.GENERIC_Save)" :is-blue="true" @click.native="saveKeyPair()"
                     margined="true"></btn>
         </section>
@@ -41,7 +46,8 @@
                 isValid: false,
                 name: '',
                 selectedNetwork: null,
-                loading: false
+                loading: false,
+                step: 1
             }
         },
         computed: {
@@ -84,7 +90,11 @@
                     return;
                 }
 
-                this[Actions.PUSH_ALERT](AlertMsg.RegisterSuc(keypair));
+                this[Actions.PUSH_ALERT](AlertMsg.RegisterSuc(keypair)).then(ret => {
+                    if(ret.hasOwnProperty('accepted')){
+                        this.step ++;
+                    }
+                })
                 this.keypair = KeyPair.fromJson({...keypair, name: this.name})
                 this.isValid = true
             },

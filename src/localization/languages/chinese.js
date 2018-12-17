@@ -486,8 +486,7 @@ export default {
     [KEYS.GXC_TRANSFER_RICARDIAN]:`开发者向您申请转账，请谨慎操作！`,
     [KEYS.GXC_REGISTER_SUC]: [
         `注册成功`,
-        `请复制并保管好您的私钥。
-        目前仅仅是在GXChain上注册了账户，如果要将账户保存在GScatter上，请随后点击保存。`,
+        `请复制并保管好您的私钥，一旦丢失将无法找回。`,
         ``
     ],
     [KEYS.GXC_ALERT_NOT_REGISTER]: [
@@ -497,7 +496,8 @@ export default {
     [KEYS.GXC_ACCOUNT_NAME_ERROR]: '账户名不符合规则',
 
     [KEYS.REGISTER_HEADER]: '注册账户',
-    [KEYS.REGISTER_DESCRIPTION]: `在选择的网络下注册GXChain账户。
-    如果想在GScatter中保存身份，请在注册后点击保存。`,
-    [KEYS.REGISTER_TIPS]: '没有账户？请点击GScatter图标到首页注册。'
+    [KEYS.REGISTER_DESCRIPTION]: `在选择的网络下注册GXChain账户。`,
+    [KEYS.REGISTER_TIPS]: '没有账户？请点击GScatter图标到首页注册。',
+    [KEYS.REGISTER_SUC_HEADER]: '注册成功',
+    [KEYS.REGISTER_SUC_DESCRIPTION]: '点击保存，将账户保存在GScatter中。'
 }

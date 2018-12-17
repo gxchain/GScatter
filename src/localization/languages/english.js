@@ -486,8 +486,7 @@ export default {
     [KEYS.GXC_TRANSFER_RICARDIAN]:`Developer request transfer on you, careful operation!`,
     [KEYS.GXC_REGISTER_SUC]: [
         `Register Success`,
-        `Please copy and keep safe with your private key.
-        Currently you only register account on GXChain, if you want to save account on GScatter, please click 'save' button latter.`,
+        `Please copy and keep safe with your private key, if lost can not retrieve back.`,
         ``
     ],
     [KEYS.GXC_ALERT_NOT_REGISTER]: [
@@ -497,9 +496,10 @@ export default {
     [KEYS.GXC_ACCOUNT_NAME_ERROR]: 'Account Name Wrong',
 
     [KEYS.REGISTER_HEADER]: 'Register',
-    [KEYS.REGISTER_DESCRIPTION]: `Register GXChain account on selected network.
-    If you want to save account on GScatter, please click 'save' button after register.`,
-    [KEYS.REGISTER_TIPS]: 'No account？Please click GScatter logo to register on the main menu.'
+    [KEYS.REGISTER_DESCRIPTION]: `Register GXChain account on selected network.`,
+    [KEYS.REGISTER_TIPS]: 'No account？Please click GScatter logo to register on the main menu.',
+    [KEYS.REGISTER_SUC_HEADER]: 'Register Success',
+    [KEYS.REGISTER_SUC_DESCRIPTION]: `Click 'Save' button to save your account on GScatter.`
 }
 
 
