@@ -15,13 +15,13 @@ developer: lanhaoxiang@gxb.io liuzongyuan@gxb.io
 
 7.修复一系列bug:
 
-​	3.1 gxc api 多个同时调用导致websocket 连接问题
+​	7.1 gxc api 多个同时调用导致websocket 连接问题
 
-​	3.2 gxc api每次调用会新开websocket
+​	7.2 gxc api每次调用会新开websocket
 
-​	3.3 scatter首次setup后，第二次仍然会提示setup
+​	7.3 scatter首次setup后，第二次仍然会提示setup
 
-​	3.4 scatter身份授权下若有子授权，删除报错
+​	7.4 scatter身份授权下若有子授权，删除报错
 
 ​	...
 
