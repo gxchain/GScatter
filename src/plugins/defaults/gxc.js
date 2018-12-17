@@ -244,7 +244,7 @@ export default class GXC extends Plugin {
                         } catch (err) {
                             // identity not exist
                             if (err == null) {
-                                if(isMethodNeedIdentity(method)){
+                                if (isMethodNeedIdentity(method)) {
                                     throw Error.noPermissionError();
                                 }
                             } else {
@@ -310,20 +310,31 @@ export default class GXC extends Plugin {
                             signatureProvider: signProvider
                         });
 
-                        let ret = client[method].apply(client, handledArgs);
+                        let ret;
+                        try {
+                            ret = client[method].apply(client, handledArgs);
+                        } catch (err) {
+                            throw new Error(undefined, err.message, undefined, err)
+                        }
 
-                        // some methods not return promise, like generateKey
-                        return ret.then ? ret.then(res => {
-                            // if method like `transfer  callContract  vote` has requiredFields
-                            if (!!hasRequireFields && isMethodNeedIdentity(method)) {
-                                return Object.assign({
-                                    transaction: res,
-                                    returnedFileds: returnedFields
-                                });
-                            } else {
-                                return res;
-                            }
-                        }) : ret;
+                        if (ret.then) {
+                            return ret.then(res => {
+                                // if method like `transfer  callContract  vote` has requiredFields
+                                if (!!hasRequireFields && isMethodNeedIdentity(method)) {
+                                    return Object.assign({
+                                        transaction: res,
+                                        returnedFileds: returnedFields
+                                    });
+                                } else {
+                                    return res;
+                                }
+                            }).catch(err => {
+                                throw new Error(undefined, err.message, undefined, err)
+                            })
+                        }else{
+                            // some methods not return promise, like generateKey
+                            return ret
+                        }
                     };
                 }
             });

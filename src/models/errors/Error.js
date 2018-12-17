@@ -15,11 +15,12 @@ export const ErrorCodes = {
 
 export default class Error {
 
-    constructor(_type = ErrorTypes.UN_DEF_ERROR, _message, _code = ErrorCodes.UN_DEF_ERROR) {
+    constructor(_type = ErrorTypes.UN_DEF_ERROR, _message, _code = ErrorCodes.UN_DEF_ERROR, originalError) {
         this.type = _type;
         this.message = _message;
         this.code = _code;
         this.isError = true;
+        this.originalError = originalError;
     }
 
     static locked() {
