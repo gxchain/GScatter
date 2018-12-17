@@ -323,7 +323,7 @@ export default class GXC extends Plugin {
                                 if (!!hasRequireFields && isMethodNeedIdentity(method)) {
                                     return Object.assign({
                                         transaction: res,
-                                        returnedFileds: returnedFields
+                                        returnedFields: returnedFields
                                     });
                                 } else {
                                     return res;
