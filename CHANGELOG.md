@@ -1,4 +1,5 @@
 ## v0.0.4
+developer: lanhaoxiang@gxb.io liuzongyuan@gxb.io
 
 1.新增账户注册功能
 
