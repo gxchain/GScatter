@@ -2812,6 +2812,14 @@ gxbjs@^1.3.5:
     gxbjs "^1.2.89"
     lodash "^4.17.10"
 
+gxc-frontend-base@gxchain/gxc-frontend-base:
+  version "0.1.0"
+  resolved "https://codeload.github.com/gxchain/gxc-frontend-base/tar.gz/54382db388e32824aa4d3dc11690829d7f8a8d9d"
+  dependencies:
+    bytebuffer "^5.0.1"
+    gxbjs "^1.2.89"
+    lodash "^4.17.10"
+
 gxclient@^1.5.7:
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-1.5.7.tgz#5c3a769b9b1a4c5ecf3893c17ad4fc88082d0e99"

@@ -212,6 +212,8 @@ export const GXC_TRANSFER_CODE = 'gxc_transfer_code';
 export const GXC_TRANSFER_TYPE = 'gxc_transfer_type';
 export const GXC_TRANSFER_RICARDIAN = 'gxc_transfer_ricardian';
 export const GXC_REGISTER_SUC = 'gxc_register_suc';
+export const GXC_REGISTER_FAIL = 'gxc_register_fail';
+export const GXC_REGISTER_REPEAT = 'gxc_register_repeat';
 export const GXC_ALERT_NOT_REGISTER = 'gxc_alert_not_register';
 export const GXC_ACCOUNT_NAME_ERROR = 'gxc_account_name_error';
 
@@ -221,12 +223,16 @@ export const REGISTER_TIPS = 'register_tips';
 export const REGISTER_SUC_HEADER = 'register_suc_header';
 export const REGISTER_SUC_DESCRIPTION = 'register_suc_description';
 
-
-
-
-
-
-
+const gxcAccountErrorPrefix = 'gxc_account_error_';
+export const GXC_ACCOUNT_ERROR_EMPTY_NAME = `${gxcAccountErrorPrefix}empty_name`;
+export const GXC_ACCOUNT_ERROR_NAME_SHOULD_BE_LONGER = `${gxcAccountErrorPrefix}name_should_be_longer`;
+export const GXC_ACCOUNT_ERROR_NAME_SHOULD_BE_SHORTER = `${gxcAccountErrorPrefix}name_should_be_shorter`;
+export const GXC_ACCOUNT_ERROR_PREMIUM_NAME = `${gxcAccountErrorPrefix}premium_name`;
+export const GXC_ACCOUNT_ERROR_NAME_SHOULD_START_WITH_A_LETTER = `${gxcAccountErrorPrefix}name_should_start_with_a_letter`;
+export const GXC_ACCOUNT_ERROR_NAME_FORMAT_ERROR = `${gxcAccountErrorPrefix}name_format_error`;
+export const GXC_ACCOUNT_ERROR_NAME_ONE_DASH_ERROR = `${gxcAccountErrorPrefix}name_one_dash_error`;
+export const GXC_ACCOUNT_ERROR_NAME_END_ERROR = `${gxcAccountErrorPrefix}name_end_error`;
+export const GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER = `${gxcAccountErrorPrefix}name_segment_should_be_longer`;
 
 
 

@@ -489,6 +489,8 @@ export default {
         `Please copy and keep safe with your private key, if lost can not retrieve back.`,
         ``
     ],
+    [KEYS.GXC_REGISTER_FAIL]:`Register fail.`,
+    [KEYS.GXC_REGISTER_REPEAT]:`The account has been registered.`,
     [KEYS.GXC_ALERT_NOT_REGISTER]: [
         `Not Register`,
         `Please register first`
@@ -499,7 +501,17 @@ export default {
     [KEYS.REGISTER_DESCRIPTION]: `Register GXChain account on selected network.`,
     [KEYS.REGISTER_TIPS]: 'No account？Please click GScatter logo to register on the main menu.',
     [KEYS.REGISTER_SUC_HEADER]: 'Register Success',
-    [KEYS.REGISTER_SUC_DESCRIPTION]: `Click 'Save' button to save your account on GScatter.`
+    [KEYS.REGISTER_SUC_DESCRIPTION]: `Click 'Save' button to save your account on GScatter.`,
+
+    [KEYS.GXC_ACCOUNT_ERROR_EMPTY_NAME]: 'Account name should not be empty',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SHOULD_BE_LONGER]: `Account name be longer`,
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SHOULD_BE_SHORTER]: 'Account name be shorter',
+    [KEYS.GXC_ACCOUNT_ERROR_PREMIUM_NAME]: 'This is a premium name which is not supported by this faucet Please enter a regular name containing least one dash, a number or no vowels',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SHOULD_START_WITH_A_LETTER]: 'Each account segment should start with a letter',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_FORMAT_ERROR]: 'Each account segment should have only letters, digits, or dashes',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_ONE_DASH_ERROR]: 'Each account segment should have only one dash in a row',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_END_ERROR]: 'Each account segment should end with a letter or digit',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER]: 'Each account segment should be longer'
 }
 
 

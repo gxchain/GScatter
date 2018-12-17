@@ -489,6 +489,8 @@ export default {
         `请复制并保管好您的私钥，一旦丢失将无法找回。`,
         ``
     ],
+    [KEYS.GXC_REGISTER_FAIL]:`注册失败`,
+    [KEYS.GXC_REGISTER_REPEAT]:`该账户已注册`,
     [KEYS.GXC_ALERT_NOT_REGISTER]: [
         `尚未注册`,
         `请先注册账户`
@@ -499,5 +501,15 @@ export default {
     [KEYS.REGISTER_DESCRIPTION]: `在选择的网络下注册GXChain账户。`,
     [KEYS.REGISTER_TIPS]: '没有账户？请点击GScatter图标到首页注册。',
     [KEYS.REGISTER_SUC_HEADER]: '注册成功',
-    [KEYS.REGISTER_SUC_DESCRIPTION]: '点击保存，将账户保存在GScatter中。'
+    [KEYS.REGISTER_SUC_DESCRIPTION]: '点击保存，将账户保存在GScatter中。',
+
+    [KEYS.GXC_ACCOUNT_ERROR_EMPTY_NAME]: '账户名不可为空',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SHOULD_BE_LONGER]: `账户名至少3位`,
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SHOULD_BE_SHORTER]: '账户名过长',
+    [KEYS.GXC_ACCOUNT_ERROR_PREMIUM_NAME]: '你使用的是高级账户名,请选择其他名字，包含至少一个横杠、数字或者不含元音字母',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SHOULD_START_WITH_A_LETTER]: '账户名需以字母开头',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_FORMAT_ERROR]: '账户名只能是字母、数字和-的组合',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_ONE_DASH_ERROR]: '-只能使用一次',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_END_ERROR]: '账户名需要以字母或数字结尾',
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER]: '账户名过短，.分割的部分应超过3位'
 }

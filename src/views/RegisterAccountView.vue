@@ -38,7 +38,7 @@
     import Identity from "../models/Identity";
     import Account from "../models/Account";
     import RIDLService from '../services/RIDLService';
-    import {ChainValidation} from 'gxbjs/es/index'
+    import {validate_account_name} from 'gxc-frontend-base/src/script/util'
     import {RouteNames} from '../vue/Routing'
 
     export default {
@@ -78,9 +78,9 @@
             },
             async registerAccount() {
                 // validate name
-                const errMsg = ChainValidation.is_account_name_error(this.name)
-                if (errMsg) {
-                    this[Actions.PUSH_ALERT](AlertMsg.CommonError(new Error(errMsg), this.locale(this.langKeys.GXC_ACCOUNT_NAME_ERROR)));
+                const errType = validate_account_name(this.name)
+                if (errType) {
+                    this[Actions.PUSH_ALERT](AlertMsg.CommonError(new Error(this.locale('gxc_account_error_'+errType)), this.locale(this.langKeys.GXC_ACCOUNT_NAME_ERROR)));
                     return;
                 }
 
@@ -89,13 +89,19 @@
                 try {
                     keypair = await AccountService.registerAccount(this.name, this.selectedNetwork)
                 } catch (err) {
+                    if (err.error && err.error.base && err.error.base[0].indexOf(
+                        'current_account_itr') > -1) {
+                        err.message = this.locale(this.langKeys.GXC_REGISTER_REPEAT);
+                    }else{
+                        err.message = this.locale(this.langKeys.GXC_REGISTER_FAIL);
+                    }
                     this[Actions.PUSH_ALERT](AlertMsg.CommonError(err));
                     return;
                 }
 
                 this[Actions.PUSH_ALERT](AlertMsg.RegisterSuc(keypair)).then(ret => {
-                    if(ret.hasOwnProperty('accepted')){
-                        this.step ++;
+                    if (ret.hasOwnProperty('accepted')) {
+                        this.step++;
                     }
                 })
                 this.keypair = KeyPair.fromJson({...keypair, name: this.name})
