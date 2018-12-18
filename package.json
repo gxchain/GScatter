@@ -24,6 +24,7 @@
     "ethereumjs-util": "^5.2.0",
     "extension-streams": "^1.0.7",
     "fcbuffer": "^2.2.1",
+    "gxc-frontend-base": "^0.1.0",
     "gxclient": "^1.5.7",
     "lodash": "^4.17.11",
     "ridl": "^0.1.0",
@@ -36,8 +37,7 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "web3": "^1.0.0-beta2",
-    "web3-provider-engine": "^14.1.0",
-    "gxc-frontend-base": "gxchain/gxc-frontend-base"
+    "web3-provider-engine": "^14.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -64,5 +64,8 @@
     "webpack-chrome-extension-reloader": "^1.0.1",
     "webpack-node-externals": "^1.7.2",
     "zip-webpack-plugin": "^2.1.0"
+  },
+  "resolutions":{
+    "gxc-frontend-base": "0.1.0"
   }
 }
