@@ -38,7 +38,7 @@
     import Identity from "../models/Identity";
     import Account from "../models/Account";
     import RIDLService from '../services/RIDLService';
-    import {validate_account_name} from 'gxc-frontend-base/src/script/util'
+    import {validate_account_name} from 'gxc-frontend-base/build/script/util'
     import {RouteNames} from '../vue/Routing'
 
     export default {
