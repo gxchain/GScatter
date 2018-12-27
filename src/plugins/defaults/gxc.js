@@ -329,9 +329,13 @@ export default class GXC extends Plugin {
                                     return res;
                                 }
                             }).catch(err => {
-                                throw new Error(undefined, err.message, undefined, err)
+                                if (err.isError) {
+                                    throw err
+                                } else {
+                                    throw new Error(undefined, err.message, undefined, err)
+                                }
                             })
-                        }else{
+                        } else {
                             // some methods not return promise, like generateKey
                             return ret
                         }
