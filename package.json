@@ -6,8 +6,8 @@
   "scripts": {
     "test": "set SCATTER_ENV=testing&& mocha-webpack --timeout 1000000 --webpack-config webpack.config.js --require tests/setup.js \"tests/**/*.spec.js\"",
     "testfile": "set SCATTER_ENV=testing&& mocha-webpack --timeout 1000000 --webpack-config webpack.config.js --require tests/setup.js ",
-    "start": "set SCATTER_ENV=development&& webpack --watch",
-    "build": "set SCATTER_ENV=production&& webpack"
+    "start": "SCATTER_ENV=development webpack --watch",
+    "build": "SCATTER_ENV=production webpack"
   },
   "author": "GXChain",
   "license": "ISC",
