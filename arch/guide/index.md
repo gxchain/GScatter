@@ -22,7 +22,7 @@
 
 ![img](../images/A51mYEBFBnUDS9sf.png)
 
-打开开发者模式，然后解压步骤一下载的`gscatter.zip`，点击 加载已解压的扩展程序 ，选择解压后的 `build`文件夹完成安装。
+打开开发者模式，然后解压步骤一下载的`gscatter.zip`，点击 加载已解压的扩展程序 ，选择解压后的 `gscatter`文件夹完成安装。
 
  
 
