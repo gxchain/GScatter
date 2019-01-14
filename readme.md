@@ -6,7 +6,14 @@ You can use this to manage your gxchain account, and interact with gxchain dapp.
 
 If you are a developer who want to develop dapp to interact with this extension, you can check [here](https://github.com/gxchain/gscatter-js).
 
-<img width="400px" src='https://raw.githubusercontent.com/gxchain/gxips/master/assets/images/task-extension.png'/>
+<p>
+    <a href="javascript:;">
+        <img width="300px" src='https://raw.githubusercontent.com/gxchain/gxips/master/assets/images/task-extension.png'/>
+    </a>
+    <a href="javascript:;">
+        <img width="300px" src='https://raw.githubusercontent.com/gxchain/gxips/master/assets/images/task-extension-en.png'/>
+    </a>
+</p>
 
 
 ## Install
