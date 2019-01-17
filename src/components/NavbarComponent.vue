@@ -53,25 +53,25 @@
             breadcrumb(){
                 // TODO: Localize
                 switch(this.$route.name){
-                    case RouteNames.LOAD_FROM_BACKUP: return 'Import Keychain';
-                    case RouteNames.SETTINGS: return 'Settings';
-                    case RouteNames.TRANSFER: return 'Transfer';
-                    case RouteNames.IDENTITIES: return 'Identities';
-                    case RouteNames.IDENTITY: return 'Identity';
+                    case RouteNames.LOAD_FROM_BACKUP: return this.locale(this.langKeys.ROUTENAMES_LOAD_FROM_BACKUP);
+                    case RouteNames.SETTINGS: return this.locale(this.langKeys.ROUTENAMES_SETTINGS);
+                    case RouteNames.TRANSFER: return this.locale(this.langKeys.ROUTENAMES_TRANSFER);
+                    case RouteNames.IDENTITIES: return this.locale(this.langKeys.ROUTENAMES_IDENTITIES);
+                    case RouteNames.IDENTITY: return this.locale(this.langKeys.ROUTENAMES_IDENTITY);
                     case RouteNames.PERMISSIONS:
-                    case RouteNames.DOMAIN_PERMISSIONS: return 'Permissions';
-                    case RouteNames.HISTORY: return 'History';
-                    case RouteNames.NETWORKS: return 'Networks';
-                    case RouteNames.NETWORK: return 'Network';
-                    case RouteNames.CHANGE_PASSWORD: return 'Password';
+                    case RouteNames.DOMAIN_PERMISSIONS: return this.locale(this.langKeys.ROUTENAMES_DOMAIN_PERMISSIONS);
+                    case RouteNames.HISTORY: return this.locale(this.langKeys.ROUTENAMES_HISTORY);
+                    case RouteNames.NETWORKS: return this.locale(this.langKeys.ROUTENAMES_NETWORKS);
+                    case RouteNames.NETWORK: return this.locale(this.langKeys.ROUTENAMES_NETWORK);
+                    case RouteNames.CHANGE_PASSWORD: return this.locale(this.langKeys.ROUTENAMES_CHANGE_PASSWORD);
                     case RouteNames.BACKUP:
-                    case RouteNames.EXPORT_JSON: return 'Backup';
-                    case RouteNames.DESTROY: return 'Destroy';
-                    case RouteNames.AUTO_LOCK: return 'Auto Lock';
-                    case RouteNames.LANGUAGE: return 'Language';
-                    case RouteNames.KEYPAIRS: return 'Key Pair';
-                    case RouteNames.KEYS: return 'Key Pairs';
-                    case RouteNames.REGISTER_ACCOUNT: return 'Register';
+                    case RouteNames.EXPORT_JSON: return this.locale(this.langKeys.ROUTENAMES_EXPORT_JSON);
+                    case RouteNames.DESTROY: return this.locale(this.langKeys.ROUTENAMES_DESTROY);
+                    case RouteNames.AUTO_LOCK: return this.locale(this.langKeys.ROUTENAMES_AUTO_LOCK);
+                    case RouteNames.LANGUAGE: return this.locale(this.langKeys.ROUTENAMES_LANGUAGE);
+                    case RouteNames.KEYPAIRS: return this.locale(this.langKeys.ROUTENAMES_KEYPAIRS);
+                    case RouteNames.KEYS: return this.locale(this.langKeys.ROUTENAMES_KEYS);
+                    case RouteNames.REGISTER_ACCOUNT: return this.locale(this.langKeys.ROUTENAMES_REGISTER_ACCOUNT);
                 }
                 return 'Undefined'
             },

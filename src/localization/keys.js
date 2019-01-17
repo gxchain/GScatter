@@ -1,3 +1,22 @@
+export const ROUTENAMES_LOAD_FROM_BACKUP = `导入Keychain`;
+export const ROUTENAMES_SETTINGS = `设置`;
+export const ROUTENAMES_TRANSFER = `转账`;
+export const ROUTENAMES_IDENTITIES = `身份`;
+export const ROUTENAMES_IDENTITY = `身份`;
+export const ROUTENAMES_PERMISSIONS = `权限`;
+export const ROUTENAMES_DOMAIN_PERMISSIONS = `权限`;
+export const ROUTENAMES_HISTORY = `历史`;
+export const ROUTENAMES_NETWORKS = `网络`;
+export const ROUTENAMES_NETWORK = `网络`;
+export const ROUTENAMES_CHANGE_PASSWORD = `密码`;
+export const ROUTENAMES_BACKUP = `备份`;
+export const ROUTENAMES_EXPORT_JSON = `备份`;
+export const ROUTENAMES_DESTROY = `销毁`;
+export const ROUTENAMES_AUTO_LOCK = `自动锁定`;
+export const ROUTENAMES_LANGUAGE = `语言`;
+export const ROUTENAMES_KEYPAIRS = `秘钥对`;
+export const ROUTENAMES_KEYS = `秘钥对`;
+export const ROUTENAMES_REGISTER_ACCOUNT = `注册`;
 
 export const MAINMENU_Identities = 'mm_ids';
 export const MAINMENU_Keys = 'mm_keys';
@@ -128,7 +147,6 @@ export const SETTINGSMENU_Backup = 'sm_back';
 export const SETTINGSMENU_Destroy = 'sm_dest';
 
 
-
 export const LOCK_Header = 'lock_head';
 export const LOCK_Description = 'lock_desc';
 export const LOCK_Minute = 'lock_min';
@@ -161,6 +179,12 @@ export const BACKUP_Description = 'backup_desc';
 
 export const IMPORT_Header = 'import_head';
 export const IMPORT_Description = 'import_desc';
+export const IMPORT_Keypair = 'import_keypair';
+export const IMPORT_Keypair_Description = 'import_keypair_description';
+export const IMPORT_Keypair_Button = 'import_keypair_button';
+export const IMPORT_Success_Title = 'import_success_title';
+export const IMPORT_Success_Description = 'import_success_description';
+export const IMPORT_Success_Button = 'import_success_button';
 
 export const DESTROY_Header = 'destr_head';
 export const DESTROY_Description = 'destr_desc';
@@ -199,7 +223,6 @@ export const PROMPT_SelectAccount = 'prompt_sel_acc';
 export const PROMPT_ClaimIdentity = 'prompt_claim_id';
 
 
-
 export const REQUEST_AddNetwork = 'req_add_net';
 export const REQUEST_Identity = 'req_id';
 export const REQUEST_IdentityNoIdentities = 'req_id_no_ids';
@@ -233,6 +256,8 @@ export const GXC_ACCOUNT_ERROR_NAME_FORMAT_ERROR = `${gxcAccountErrorPrefix}name
 export const GXC_ACCOUNT_ERROR_NAME_ONE_DASH_ERROR = `${gxcAccountErrorPrefix}name_one_dash_error`;
 export const GXC_ACCOUNT_ERROR_NAME_END_ERROR = `${gxcAccountErrorPrefix}name_end_error`;
 export const GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER = `${gxcAccountErrorPrefix}name_segment_should_be_longer`;
+
+export const BACK = 'back';
 
 
 

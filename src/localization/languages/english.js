@@ -2,6 +2,26 @@ import * as KEYS from '../keys';
 import * as AlertTypes from '../../models/alerts/AlertTypes';
 
 export default {
+    [KEYS.ROUTENAMES_LOAD_FROM_BACKUP]:`Import Keychain`,
+    [KEYS.ROUTENAMES_SETTINGS]:`Settings`,
+    [KEYS.ROUTENAMES_TRANSFER]:`Transfer`,
+    [KEYS.ROUTENAMES_IDENTITIES]:`Identities`,
+    [KEYS.ROUTENAMES_IDENTITY]:`Identity`,
+    [KEYS.ROUTENAMES_PERMISSIONS]:`Permissions`,
+    [KEYS.ROUTENAMES_DOMAIN_PERMISSIONS]:`Permissions`,
+    [KEYS.ROUTENAMES_HISTORY]:`History`,
+    [KEYS.ROUTENAMES_NETWORKS]:`Networks`,
+    [KEYS.ROUTENAMES_NETWORK]:`Network`,
+    [KEYS.ROUTENAMES_CHANGE_PASSWORD]:`Password`,
+    [KEYS.ROUTENAMES_BACKUP]:`Backup`,
+    [KEYS.ROUTENAMES_EXPORT_JSON]:`Backup`,
+    [KEYS.ROUTENAMES_DESTROY]:`Destroy`,
+    [KEYS.ROUTENAMES_AUTO_LOCK]:`Auto Lock`,
+    [KEYS.ROUTENAMES_LANGUAGE]:`Language`,
+    [KEYS.ROUTENAMES_KEYPAIRS]:`Key Pair`,
+    [KEYS.ROUTENAMES_KEYS]:`Key Pairs`,
+    [KEYS.ROUTENAMES_REGISTER_ACCOUNT]:`Register`,
+
     [KEYS.GENERIC_New]:`New`,
     [KEYS.GENERIC_Save]:`Save`,
     [KEYS.GENERIC_Ignored]:`Ignored`,
@@ -162,6 +182,22 @@ export default {
         Importing your encrypted keychain file will rebuild you GScatter keychain but it will not import your old networks or 
         accounts. 
     `,
+    [KEYS.IMPORT_Keypair]:`Import Key Pair`,
+    [KEYS.IMPORT_Keypair_Description]:`Import your GXChain private key, we will store it encrypted by your wallet password.`,
+    [KEYS.IMPORT_Keypair_Button]: (blockchain) => {
+        return `Import ${blockchain} Key Pair`
+    },
+    [KEYS.IMPORT_Success_Title]: `That's it!`,
+    [KEYS.IMPORT_Success_Description]: (blockchain) => {
+        return `You now have a GScatter Identity with an ${blockchain} account linked to it.
+                    <br><br>
+                    You can go to your Identity and fill out any extra fields applications might want from you, but none
+                    of the fields in your
+                    Identity are mandatory.
+                    <br><br>
+                    Enjoy using GScatter.`
+    },
+    [KEYS.IMPORT_Success_Button]: `Main Menu`,
 
     [KEYS.PASS_Header]:`Enter a new password`,
     [KEYS.PASS_Description]:`
@@ -511,7 +547,8 @@ export default {
     [KEYS.GXC_ACCOUNT_ERROR_NAME_FORMAT_ERROR]: 'Each account segment should have only letters, digits, or dashes',
     [KEYS.GXC_ACCOUNT_ERROR_NAME_ONE_DASH_ERROR]: 'Each account segment should have only one dash in a row',
     [KEYS.GXC_ACCOUNT_ERROR_NAME_END_ERROR]: 'Each account segment should end with a letter or digit',
-    [KEYS.GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER]: 'Each account segment should be longer'
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER]: 'Each account segment should be longer',
+    [KEYS.BACK]: 'Back',
 }
 
 
