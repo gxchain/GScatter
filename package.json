@@ -1,6 +1,6 @@
 {
   "name": "GScatter-web-extension",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
     "extension-streams": "^1.0.7",
     "fcbuffer": "^2.2.1",
     "gxc-frontend-base": "^0.1.0",
-    "gxclient": "^1.5.8",
+    "gxclient": "^1.5.10",
     "lodash": "^4.17.11",
     "ridl": "^0.1.0",
     "scrypt-async": "^2.0.0",

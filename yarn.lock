@@ -2756,12 +2756,6 @@ growl@1.10.5:
   version "1.10.5"
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.10.5.tgz#f2735dc2283674fa67478b10181059355c369e5e"
 
-gxbjs-ws@^1.1.23:
-  version "1.1.23"
-  resolved "https://registry.yarnpkg.com/gxbjs-ws/-/gxbjs-ws-1.1.23.tgz#69d21a750945157a066329422859d75c8f22cf5f"
-  dependencies:
-    ws "^4.1.0"
-
 gxbjs-ws@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/gxbjs-ws/-/gxbjs-ws-1.2.0.tgz#5fbb8a8261b5e5730c92b75c7d4c159d7ff2b3ca"
@@ -2786,9 +2780,9 @@ gxbjs@^1.2.89:
     secp256k1 "^3.3.0"
     secure-random "^1.1.1"
 
-gxbjs@^1.3.5:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/gxbjs/-/gxbjs-1.3.5.tgz#35360a048c427b081e0cc9e93d37d55e24c55fd2"
+gxbjs@^1.3.11:
+  version "1.3.12"
+  resolved "https://registry.yarnpkg.com/gxbjs/-/gxbjs-1.3.12.tgz#cf03fda13fda4973f8b1edb646aa4cc29df164b5"
   dependencies:
     bigi "^1.4.1"
     bs58 "^3.0.0"
@@ -2799,7 +2793,7 @@ gxbjs@^1.3.5:
     deep-equal "^1.0.1"
     ecurve "^1.0.2"
     event-emitter "^0.3.4"
-    gxbjs-ws "^1.1.23"
+    gxbjs-ws "^1.2.0"
     immutable "^3.7.6"
     secp256k1 "^3.3.0"
     secure-random "^1.1.1"
@@ -2812,15 +2806,15 @@ gxc-frontend-base@0.1.0, gxc-frontend-base@^0.1.0, "gxc-frontend-base@github:gxc
     gxbjs "^1.2.89"
     lodash "^4.17.10"
 
-gxclient@^1.5.8:
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-1.5.8.tgz#26923b8cd02af1bda0d30e1292b37f585b88d1f2"
+gxclient@^1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-1.5.10.tgz#b7183ad3b387487be0d6dc10eef7c69bfcd9c6c9"
   dependencies:
     babel-runtime "^6.26.0"
     chalk "^2.4.1"
     commander "^2.17.1"
     debug "^3.1.0"
-    gxbjs "^1.3.5"
+    gxbjs "^1.3.11"
     gxc-frontend-base "github:gxchain/gxc-frontend-base"
     lodash "^4.17.11"
     superagent "^3.8.3"
