@@ -908,8 +908,10 @@ binaryen@^37.0.0:
   resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-37.0.0.tgz#c392bc784b6d46da8fc918b1a4ed8257a0cd8b08"
 
 bindings@^1.2.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.3.1.tgz#21fc7c6d67c18516ec5aaa2815b145ff77b26ea5"
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.4.0.tgz#909efa49f2ebe07ecd3cb136778f665052040127"
+  dependencies:
+    file-uri-to-path "1.0.0"
 
 bip39@^2.5.0:
   version "2.5.0"
@@ -2481,6 +2483,10 @@ file-loader@^1.1.11:
     loader-utils "^1.0.2"
     schema-utils "^0.4.5"
 
+file-uri-to-path@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
+
 filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
@@ -2813,9 +2819,9 @@ gxc-frontend-base@0.1.0, gxc-frontend-base@^0.1.0:
     gxbjs "^1.2.89"
     lodash "^4.17.10"
 
-gxclient@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-2.0.4.tgz#b4cbf1fc795c6637d00f0b166750ca85eff9d517"
+gxclient@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/gxclient/-/gxclient-2.0.5.tgz#fad8b9898f211ec19dc1409fb3bed092519f4745"
   dependencies:
     axios "^0.18.0"
     chalk "^2.4.1"
