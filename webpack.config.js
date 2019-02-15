@@ -23,7 +23,13 @@ const devPlugins = [
 ];
 const prodPlugins = devPlugins.concat([
     new ZipPlugin({ path: '../', filename: 'gscatter.zip' }),
-    new UglifyJsPlugin(),
+    new UglifyJsPlugin({
+        uglifyOptions: {
+            output: {
+              comments: false
+            }
+          }
+    })
 ])
 
 const productionPlugins = !production ? devPlugins : prodPlugins;
