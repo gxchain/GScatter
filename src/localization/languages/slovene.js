@@ -45,11 +45,11 @@ export default {
     [KEYS.BUTTON_SetAsDefaultLocation]:'Izberi kot privzeto lokacijo',
     [KEYS.BUTTON_RemoveLocation]:'Izbriši lokacijo',
     [KEYS.BUTTON_ChangePassword]:'Zamenjaj geslo',
-    [KEYS.BUTTON_DestroyScatter]:'Uniči GScatter',
-    [KEYS.BUTTON_CreateNewScatter]:'Ustvari nov GScatter',
+    [KEYS.BUTTON_DestroyScatter]:'Uniči GXC Wallet',
+    [KEYS.BUTTON_CreateNewScatter]:'Ustvari nov GXC Wallet',
     [KEYS.BUTTON_LoadFromBackup]:'Naloži iz backup-a',
     [KEYS.BUTTON_Unlock]:'Odkleni',
-    [KEYS.BUTTON_ExportScatter]:'Izvozi GScatter',
+    [KEYS.BUTTON_ExportScatter]:'Izvozi GXC Wallet',
     [KEYS.BUTTON_GenerateKeyPair]:'Generiraj ključa',
     [KEYS.BUTTON_Validate]:'Preveri',
     [KEYS.BUTTON_Copy]:'Kopiraj',
@@ -108,12 +108,12 @@ export default {
 
     [KEYS.HISTORIES_Header]:`Nimate dogodkov za prikaz.`,
     [KEYS.HISTORIES_Description]:`
-        Ko jih boste imeli, boste lahko videli seznam vseh dogodkov, ki potekajo skozi vaš GScatter.
-        Kar ne boste videli so dogodki, ki so se zgodili na vaših računih zunaj GScatter-ja.
+        Ko jih boste imeli, boste lahko videli seznam vseh dogodkov, ki potekajo skozi vaš GXC Wallet.
+        Kar ne boste videli so dogodki, ki so se zgodili na vaših računih zunaj GXC Wallet-ja.
      `,
     [KEYS.HISTORIES_Note]:`
-        Opomba: Če izvažate podatke iz GScatterja v nastavitvah, potem se tej dogodki ne bodo shranili.
-        Ko ponovno uvažate instanco GScatter-ja, bo vaša zgodovina zapisov prazna. Če v prihdonje želite 
+        Opomba: Če izvažate podatke iz GXC Walletja v nastavitvah, potem se tej dogodki ne bodo shranili.
+        Ko ponovno uvažate instanco GXC Wallet-ja, bo vaša zgodovina zapisov prazna. Če v prihdonje želite 
         izvoziti svojo zgodovino lahko to storite z uporabo akcijskih gumbov v navigacijskem meniju.
     `,
 
@@ -127,7 +127,7 @@ export default {
 
     [KEYS.BACKUP_Header]:`Izvozi kriptirano varnostno kopijo`,
     [KEYS.BACKUP_Description]:`
-        Izvoz vašega GScatterja vam omogoča, da ga uvozite v druge naprave. Datoteka, ki jo izvozite bo še vedno šifrirana,
+        Izvoz vašega GXC Walletja vam omogoča, da ga uvozite v druge naprave. Datoteka, ki jo izvozite bo še vedno šifrirana,
         zato poskrbite, da boste imeli mnemonik ali geslo, sicer bo neuporabna. Zasebni ključi iz vaših računov bo tudi 
         pred izvozom odstranjen, edini zasebni ključi, ki bodo ostali v izvozu bo vaš osebni ključ.
     `,
@@ -147,9 +147,9 @@ export default {
          to omrežje boste morali imeti tudi račun tam.
     `,
 
-    [KEYS.DESTROY_Header]:`Uniči GScatter`,
+    [KEYS.DESTROY_Header]:`Uniči GXC Wallet`,
     [KEYS.DESTROY_Description]:`
-        Ste pred uničenjem GScatter-ja. V kolikor bi želeli v bodoče pridobiti stare podatke,
+        Ste pred uničenjem GXC Wallet-ja. V kolikor bi želeli v bodoče pridobiti stare podatke,
         morate le te izvoziti v JSON obliki. Izvoz je dostopen v varnostni kopiji (meni).
     `,
 
@@ -170,7 +170,7 @@ export default {
 
     [KEYS.LOCK_Header]:`Časovnik za samodejno zaklepanje`,
     [KEYS.LOCK_Description]:`
-        Samodejno zaklepanje GScatter aplikacije.
+        Samodejno zaklepanje GXC Wallet aplikacije.
     `,
     [KEYS.LOCK_Minute]:`Minut`,
     [KEYS.LOCK_Minutes]:`Minut`,
@@ -223,7 +223,7 @@ export default {
         'Račun ne obstaja',
 
         `Za vnešeni zasebni ključ ne obstaja noben račun.
-         Če želite uvoziti ključ, ki ni bil generiran s pomočjo GScatter-ja
+         Če želite uvoziti ključ, ki ni bil generiran s pomočjo GXC Wallet-ja
          potem morate najprej ustvariti račun in šele nato uvoziti zasebni ključ.`
     ],
     [KEYS.ALERT_PasswordsDoNotMatch]:[
@@ -270,7 +270,7 @@ export default {
     ],
 
     [KEYS.PROMPT_DestroyingScatter]:[
-        'Uničenje GScatter-ja',
+        'Uničenje GXC Wallet-ja',
 
         'To je vaša zadnja možnost zato še enkrat preverite varnostno kopijo.'
     ],
@@ -321,11 +321,11 @@ export default {
 
 
     [KEYS.REQUEST_AddNetwork]:[
-        /*{DOMAIN}*/ 'želi dodati omrežje v vaš GScatter.',
+        /*{DOMAIN}*/ 'želi dodati omrežje v vaš GXC Wallet.',
 
         'Nekatere aplikacije uporabljajo svoja omrežja.',
 
-        `Akcija ne bo omogočila nikakršnega dostopa do vašega GScatter računa. 
+        `Akcija ne bo omogočila nikakršnega dostopa do vašega GXC Wallet računa. 
          Dodajanje omrežja preko te akcije samo olajša vnos omrežja, da ga ni
          potrebno ročno dodajati preko nastavitvenega panela.`
     ],
@@ -336,7 +336,7 @@ export default {
         elektronska pošta, ime, datum rojstca.`,
 
         `Če tudi posredujete dodatne podatke katere aplikacija ne zahteva,
-        tej ne bodo posredovane iz sistema GScatter.`,
+        tej ne bodo posredovane iz sistema GXC Wallet.`,
 
         `Edina lastnost, ki se vedno posreduje je vaša identiteta (javni ključ in njegovo ime).`,
 
@@ -359,17 +359,17 @@ export default {
         `If you have multiple locations and a transaction requires a location you will always be prompted.`
     ],
     [KEYS.REQUEST_ScatterIsLocked]:[
-        `GScatter je zaklenjen!`,
-        `Preden pričnete uporabljati GScatter, ga morate najprej odkleniti`,
+        `GXC Wallet je zaklenjen!`,
+        `Preden pričnete uporabljati GXC Wallet, ga morate najprej odkleniti`,
         `Nikoli vas ne bomo povprašali ali prikazovali vnosne maske za prijavo.`,
-        `V kolikor opazite okno, ki od vas zahteva vnos gesla, gre lahko za prevaro! GScatter vedno odklenite na strani vtičnika.`
+        `V kolikor opazite okno, ki od vas zahteva vnos gesla, gre lahko za prevaro! GXC Wallet vedno odklenite na strani vtičnika.`
     ],
     [KEYS.REQUEST_UpdateVersion]:[
-        `GScatter je potečen!`,
+        `GXC Wallet je potečen!`,
         /*{DOMAIN}*/ `potrebuje za delovanje novejšo verzijo aplikacije kot jo imate nameščeno na vašem sistemu.`,
-        `To pomeni, da je verjetno zahtevana novejša funkcionalnost, ki jo vaša nameščena verzija programa GScatter še ne podpira.`,
+        `To pomeni, da je verjetno zahtevana novejša funkcionalnost, ki jo vaša nameščena verzija programa GXC Wallet še ne podpira.`,
         `Opozorilo! Preverjanje posodobitev je prepuščena matični aplikaciji, ki vas lahko pripelje tudi na napačno stran,
-        zato se vedno prepričajte, da aplikacijo prenašate iz GScatter spletne strani.`
+        zato se vedno prepričajte, da aplikacijo prenašate iz GXC Wallet spletne strani.`
     ],
 
 }

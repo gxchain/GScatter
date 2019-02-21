@@ -4,7 +4,7 @@
         <section class="head">
             <figure class="type">{{flipWords(camelToTitle(prompt.type))}}</figure>
             <section class="split-tag">
-                <figure class="tag">{{prompt.domain}}</figure>
+                <figure v-if="prompt.domain" class="tag">{{prompt.domain}}</figure>
                 <figure class="tag" v-if="prompt.network && prompt.network.host">{{prompt.network.host}}</figure>
             </section>
 

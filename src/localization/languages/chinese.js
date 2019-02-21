@@ -75,7 +75,7 @@ export default {
     [KEYS.BUTTON_CreateNewScatter]: '创建新的钱包',
     [KEYS.BUTTON_LoadFromBackup]: '从备份中恢复',
     [KEYS.BUTTON_Unlock]: '解锁',
-    [KEYS.BUTTON_ExportScatter]: '导出 GScatter',
+    [KEYS.BUTTON_ExportScatter]: '导出 GXC Wallet',
     [KEYS.BUTTON_GenerateKeyPair]: '生成密钥对',
     [KEYS.BUTTON_Validate]: '验证',
     [KEYS.BUTTON_Copy]: '复制',
@@ -152,11 +152,11 @@ export default {
 
     [KEYS.HISTORIES_Header]: `没有需要显示的历史事件.`,
     [KEYS.HISTORIES_Description]: `
-        在此您能看到所有 GScatter 的事件列表.
-        但在您的 GScatter 外的帐户上发生的事件不会显示.
+        在此您能看到所有 GXC Wallet 的事件列表.
+        但在您的 GXC Wallet 外的帐户上发生的事件不会显示.
      `,
     [KEYS.HISTORIES_Note]: `
-        注意：当从设置面板中的备份选项中导出您的 GScatter 数据时，不会备份这些事件。
+        注意：当从设置面板中的备份选项中导出您的 GXC Wallet 数据时，不会备份这些事件。
         所以当您再次导入时，您的历史记录是空的。如果你想导出这些历史事件，
         将来您可以使用此面板中导航栏上的操作按钮来完成此操作。
     `,
@@ -171,7 +171,7 @@ export default {
 
     [KEYS.BACKUP_Header]: `导出加密备份`,
     [KEYS.BACKUP_Description]: `
-        导出您的 GScatter 后，您将可以将其导入其他设备。导出文件将被加密，
+        导出您的 GXC Wallet 后，您将可以将其导入其他设备。导出文件将被加密，
         所以请注意备份你的助记符和密码。否则将不能导入。
         导出的文件中将只保留你的身份私钥，
         帐户中的其它所有私钥将不会导出。
@@ -179,7 +179,7 @@ export default {
 
     [KEYS.IMPORT_Header]: `导入加密的备份`,
     [KEYS.IMPORT_Description]: `
-        导入你的加密钥匙串文件将重建您的 GScatter 钥匙串，但是它不会导入您原有的网络
+        导入你的加密钥匙串文件将重建您的 GXC Wallet 钥匙串，但是它不会导入您原有的网络
         或帐户设置
     `,
     [KEYS.IMPORT_Keypair]: `导入密钥对`,
@@ -189,11 +189,11 @@ export default {
     },
     [KEYS.IMPORT_Success_Title]: `导入成功`,
     [KEYS.IMPORT_Success_Description]: (blockchain) => {
-        return `你现在已经有一个绑定了${blockchain}账户的GScatter身份了。
+        return `你现在已经有一个绑定了${blockchain}账户的GXC Wallet身份了。
                     <br><br>
                     你可以去身份编辑其他信息，这些信息可能一些dapp会需要，但并不是强制的。
                     <br><br>
-                    请尽情享用GScatter吧！`
+                    请尽情享用GXC Wallet吧！`
     },
     [KEYS.IMPORT_Success_Button]: `返回主页`,
 
@@ -211,14 +211,14 @@ export default {
         需要这个网络上的帐号。
     `,
 
-    [KEYS.DESTROY_Header]: `销毁 GScatter`,
+    [KEYS.DESTROY_Header]: `销毁 GXC Wallet`,
     [KEYS.DESTROY_Description]: `
-        您即将销毁您的整个 GScatter 钥匙串。恢复 GScatter 的唯一方法是
-        导入以前导出的 GScatter JSON 文件。 否则你将没有办法再使用你的身份。
-        请确保在着手这个操作前，已经从备份设置面板中导出了您的 GScatter。
+        您即将销毁您的整个 GXC Wallet 钥匙串。恢复 GXC Wallet 的唯一方法是
+        导入以前导出的 GXC Wallet JSON 文件。 否则你将没有办法再使用你的身份。
+        请确保在着手这个操作前，已经从备份设置面板中导出了您的 GXC Wallet。
     `,
     [KEYS.DESTROY_Confirms]: [
-        `正在销毁GScatter`,
+        `正在销毁GXC Wallet`,
         `请再一次确保你已经完成备份，销毁后恢复的唯一方式是备份文件`
     ],
 
@@ -242,8 +242,8 @@ export default {
 
     [KEYS.LOCK_Header]: `自动锁定设置`,
     [KEYS.LOCK_Description]: `
-        自动锁定能为您自动锁定 GScatter，
-        这样你就不必在离开时记得锁定您的 GScatter。
+        自动锁定能为您自动锁定 GXC Wallet，
+        这样你就不必在离开时记得锁定您的 GXC Wallet。
     `,
     [KEYS.LOCK_Minute]: `分`,
     [KEYS.LOCK_Minutes]: `分`,
@@ -256,7 +256,7 @@ export default {
     [KEYS.MNEMONIC_Description]: `助记词是可以用来生成密钥的一组单词。`,
     [KEYS.MNEMONIC_Note]: `
         请一定要保存在安全的地方。如果您忘记了密码，
-        这是恢复对 GScatter 的访问和解密您的个人信息的唯一途径。
+        这是恢复对 GXC Wallet 的访问和解密您的个人信息的唯一途径。
     `,
     [KEYS.MNEMONIC_Wrote]: `我记录下来了`,
 
@@ -324,7 +324,7 @@ export default {
         '未找到帐户',
 
         `没有找到与此私钥相关联的帐户。
-         如果您导入的不是 GScatter 生成的私钥，
+         如果您导入的不是 GXC Wallet 生成的私钥，
          需要在导入前为这个私钥先建一个帐户`
 
     ],
@@ -363,7 +363,7 @@ export default {
     [KEYS.ALERT_RemovingEndorsedNetwork]: [
         '不能删除支撑网络',
 
-        `您不能删除 GScatter 的支撑网络。`
+        `您不能删除 GXC Wallet 的支撑网络。`
     ],
     //2
     [KEYS.ALERT_NoIdentityWithProperties]: fields => [
@@ -380,7 +380,7 @@ export default {
     ],
     //2
     [KEYS.PROMPT_DestroyingScatter]: [
-        '销毁 GScatter',
+        '销毁 GXC Wallet',
 
         '这是您最后一次检查备份的机会。'
     ],
@@ -454,11 +454,11 @@ export default {
 
     //3
     [KEYS.REQUEST_AddNetwork]: [
-        /*{DOMAIN}*/ '想要将他们的网络添加到 GScatter。',
+        /*{DOMAIN}*/ '想要将他们的网络添加到 GXC Wallet。',
 
         '一些应用使用它们自己的网络。',
 
-        `应用决不会被允许访问您的 GScatter。
+        `应用决不会被允许访问您的 GXC Wallet。
          通过此界面添加网络。
          仅是为了比在控制面板中手工添加更方便`
     ],
@@ -497,7 +497,7 @@ export default {
     ],
     //4
     [KEYS.REQUEST_ScatterIsLocked]: [
-        `GScatter 已锁定!`,
+        `GXC Wallet 已锁定!`,
 
         `需要解锁才能进一步操作.`,
 
@@ -508,13 +508,13 @@ export default {
     ],
     //4
     [KEYS.REQUEST_UpdateVersion]: [
-        `GScatter 需要更新版本!`,
+        `GXC Wallet 需要更新版本!`,
 
         /*{DOMAIN}*/ `要求使用更新后的版本.`,
 
         `使用的应用需要一个已经发布的新的功能，但是你安装的版本不支持.`,
 
-        `注意，我们让应用能够检查 GScatter 的版本，但它们有可能让你下载恶意程序，请确保从正确的地址下载 GScatter.`
+        `注意，我们让应用能够检查 GXC Wallet 的版本，但它们有可能让你下载恶意程序，请确保从正确的地址下载 GXC Wallet.`
     ],
 
     // GXC
@@ -536,9 +536,9 @@ export default {
 
     [KEYS.REGISTER_HEADER]: '注册账户',
     [KEYS.REGISTER_DESCRIPTION]: `在选择的网络下注册GXChain账户。`,
-    [KEYS.REGISTER_TIPS]: '没有账户？请点击GScatter图标到首页注册。',
+    [KEYS.REGISTER_TIPS]: '没有账户？请点击GXC Wallet图标到首页注册。',
     [KEYS.REGISTER_SUC_HEADER]: '注册成功',
-    [KEYS.REGISTER_SUC_DESCRIPTION]: '点击保存，将账户保存在GScatter中。',
+    [KEYS.REGISTER_SUC_DESCRIPTION]: '点击保存，将账户保存在GXC Wallet中。',
 
     [KEYS.GXC_ACCOUNT_ERROR_EMPTY_NAME]: '账户名不可为空',
     [KEYS.GXC_ACCOUNT_ERROR_NAME_SHOULD_BE_LONGER]: `账户名至少3位`,

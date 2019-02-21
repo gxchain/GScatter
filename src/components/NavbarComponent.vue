@@ -1,6 +1,6 @@
 <template>
     <nav :class="navState()">
-        <figure class="logo" v-if="showLogo()">GScatter</figure>
+        <figure class="logo" v-if="showLogo()">GXC Wallet</figure>
         <section class="breadcrumb" v-else>
             <figure class="icon" v-on:click="back">
                 <i class="fa fa-chevron-left"></i>
