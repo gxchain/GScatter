@@ -1,6 +1,6 @@
 ## 安装指南
 
-请在chrome应用商店安装[最新插件](https://chrome.google.com/webstore/detail/gscatter/lcpllopipaconkjoegbeingdedokekap?utm_source=chrome-ntp-icon)，如果您无法安装，可尝试以下步骤安装，但是这种方式不能提供更新，需要您自己关注版本更新。
+请在chrome应用商店安装[最新插件](https://chrome.google.com/webstore/detail/gxc-wallet/pkghkgabkmdkdaoglpemmkooeikdopca)，如果您无法安装，可尝试以下步骤安装，但是这种方式不能提供更新，需要您自己关注版本更新。
 
 
 

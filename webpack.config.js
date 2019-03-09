@@ -93,6 +93,6 @@ module.exports = {
         new ChromeExtensionReloader()
     ].concat(productionPlugins),
     stats: { colors: true },
-    devtool: 'source-map', //inline-
+    devtool: 'eval-source-map', //inline-
     externals
 }

@@ -16,8 +16,10 @@ export default async scatter => {
     if(!scatter.meta.needsUpdating())   return false;
 
     const lastVersion = mathematicalVersion(scatter.meta.lastVersion);
+    // 大于当前版本的所有升级脚本
     const nextVersions = Object.keys(migrators).filter(v => mathematicalVersion(v) > lastVersion);
     if(nextVersions.length) {
+        // 核心逻辑，依次执行升级脚本
         await Promise.all(nextVersions.map(async version => await migrators[version](scatter)));
         scatter.meta.lastVersion = fnToVersion(nextVersions[nextVersions.length-1]);
     }
