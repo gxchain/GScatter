@@ -37,7 +37,7 @@ export default class SignatureService {
                     return false;
                 }
 
-                sendResponse(signature);
+                sendResponse(signature.toString('hex'));
             }, true, payload.isHash)
 
 
