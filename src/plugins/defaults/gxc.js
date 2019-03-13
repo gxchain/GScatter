@@ -1,21 +1,21 @@
 import Plugin from '../Plugin';
 import * as PluginTypes from '../PluginTypes';
-import { Blockchains } from '../../models/Blockchains';
+import {Blockchains} from '../../models/Blockchains';
 import Network from '../../models/Network';
 import Account from '../../models/Account';
 import AlertMsg from '../../models/alerts/AlertMsg';
 import * as Actions from '../../store/constants';
 import ObjectHelpers from '../../util/ObjectHelpers';
 import GXClientFactory from 'gxclient/es/index';
-import { PrivateKey, Signature } from 'gxbjs/es/index';
+import {PrivateKey, Signature} from 'gxbjs/es/index';
 import Error from "../../models/errors/Error";
-import { strippedHost } from '../../util/GenericTools';
+import {strippedHost} from '../../util/GenericTools';
 import handleArgs from './gxc/util/handleArgs';
 import buildDisplayMessages from './gxc/util/buildDisplayMessages';
 import * as NetworkMessageTypes from '../../messages/NetworkMessageTypes';
-import { cloneDeep } from 'lodash';
-import { getWsAddress, isMethodNeedIdentity } from './gxc/util/util';
-import { IdentityRequiredFields } from '../../models/Identity';
+import {cloneDeep} from 'lodash';
+import {getWsAddress, isMethodNeedIdentity} from './gxc/util/util';
+import {IdentityRequiredFields} from '../../models/Identity';
 
 let networkGetter = new WeakMap();
 let messageSender = new WeakMap();
@@ -34,7 +34,7 @@ export default class GXC extends Plugin {
     }
 
     returnableAccount(account) {
-        return { name: account.name, authority: account.authority };
+        return {name: account.name, authority: account.authority};
     }
 
     async getEndorsedNetwork() {
@@ -95,7 +95,7 @@ export default class GXC extends Plugin {
                         //     results.push({ name: acc.name, authority: 'owner' });
                         // }
                         if (acc.active.key_auths.find(k => k[0] === publicKey)) {
-                            results.push({ name: acc.name, authority: 'active' });
+                            results.push({name: acc.name, authority: 'active'});
                         }
                     });
                     return results;
@@ -198,8 +198,7 @@ export default class GXC extends Plugin {
         );
     }
 
-    // TODO
-    signer(bgContext, payload, publicKey, callback, arbitrary = false, isHash = false) {
+    signer(bgContext, payload, publicKey, callback, arbitrary = false) {
         bgContext.publicToPrivate(privateKey => {
             if (!privateKey) {
                 callback(null);
@@ -209,12 +208,7 @@ export default class GXC extends Plugin {
             let sig;
             var private_key = PrivateKey.fromWif(privateKey);
 
-            if (arbitrary && isHash) {
-                // data只能是256位的hash
-                sig = Signature.signBufferSha256V2(Buffer.from(payload.data, 'hex'), private_key);
-            } else {
-                sig = Signature.signBuffer(Buffer.from(payload.data, 'utf8'), private_key);
-            }
+            sig = Signature.signBuffer(Buffer.from(payload.data, 'utf8'), private_key);
 
             callback(sig.toBuffer());
         }, publicKey);
@@ -243,7 +237,7 @@ export default class GXC extends Plugin {
                         let account;
 
                         try {
-                            identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, { domain: strippedHost() });
+                            identity = await messageSender(NetworkMessageTypes.IDENTITY_FROM_PERMISSIONS, {domain: strippedHost()});
                         } catch (err) {
                             // identity not exist
                             if (err == null) {
@@ -270,13 +264,13 @@ export default class GXC extends Plugin {
 
                         const signProvider = async (tr, chain_id) => {
                             const buf = Buffer.concat([Buffer.from(chain_id, "hex"), Buffer.from(tr.tr_buffer)]);
-                            let payload = { data: buf };
+                            let payload = {data: buf};
                             let result;
 
                             // build prompt display messages
                             payload.messages = await buildDisplayMessages(tr, network, account, cloneDeep(args), method, client);
 
-                            payload = Object.assign(payload, { domain: strippedHost(), network, requiredFields });
+                            payload = Object.assign(payload, {domain: strippedHost(), network, requiredFields});
 
                             result = await messageSender(NetworkMessageTypes.REQUEST_SIGNATURE, payload);
 
