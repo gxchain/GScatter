@@ -1,4 +1,4 @@
-# GScatter Web Extension
+# GXC Wallet Web Extension
 
 GXChain web extension, which extends from [GetScatter/ScatterWebExtension](https://github.com/GetScatter/ScatterWebExtension).
 
