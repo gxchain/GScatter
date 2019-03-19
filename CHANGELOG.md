@@ -1,3 +1,14 @@
+## v0.0.7
+1.去掉build注释以通过chrome插件市场审核
+
+## v0.0.6
+1.更新i18n
+2.修复合约方法名称不能为12个字符长度的bug
+
+## v0.0.5
+1.统一gxclient报错归类到 UN_DEF_ERROR: 433，该code暂时用于存放未归类错误，如果之后需要单独处理，会从这里面提取出来。
+2.gxc添加getObjects方法
+
 ## v0.0.4
 developer: lanhaoxiang@gxb.io liuzongyuan@gxb.io
 
@@ -24,6 +35,3 @@ developer: lanhaoxiang@gxb.io liuzongyuan@gxb.io
 ​	7.4 scatter身份授权下若有子授权，删除报错
 
 ​	...
-
-
-

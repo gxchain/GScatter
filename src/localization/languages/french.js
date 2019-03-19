@@ -51,11 +51,11 @@ export default {
     [KEYS.BUTTON_SetAsDefaultLocation]:'Définir comme emplacement par défaut',
     [KEYS.BUTTON_RemoveLocation]:'Supprimer l\'emplacement',
     [KEYS.BUTTON_ChangePassword]:'Changer le mot de passe',
-    [KEYS.BUTTON_DestroyScatter]:'Détruire GScatter',
-    [KEYS.BUTTON_CreateNewScatter]:'Créer Nouveau GScatter',
+    [KEYS.BUTTON_DestroyScatter]:'Détruire GXC Wallet',
+    [KEYS.BUTTON_CreateNewScatter]:'Créer Nouveau GXC Wallet',
     [KEYS.BUTTON_LoadFromBackup]:'Charger Depuis une Sauvegarde',
     [KEYS.BUTTON_Unlock]:'Déverrouiller',
-    [KEYS.BUTTON_ExportScatter]:'Exporter GScatter',
+    [KEYS.BUTTON_ExportScatter]:'Exporter GXC Wallet',
     [KEYS.BUTTON_GenerateKeyPair]:'Générer une Paire de Clés',
     [KEYS.BUTTON_Validate]:'Valider',
     [KEYS.BUTTON_Copy]:'Copier',
@@ -141,13 +141,13 @@ export default {
     [KEYS.HISTORIES_Header]:`Vous n'avez aucun évènement passé à afficher.`,
     [KEYS.HISTORIES_Description]:`
         Quand vous en aurez, vous pourrez voir une liste de tous les évènements qui se seront déroulés sur votre 
-        GScatter. Par contre, vous ne verrez pas les évènements qui se sont déroulés sur votre compte en dehors de 
-        GScatter.
+        GXC Wallet. Par contre, vous ne verrez pas les évènements qui se sont déroulés sur votre compte en dehors de 
+        GXC Wallet.
      `,
 
     [KEYS.HISTORIES_Note]:`
-        Note: Exporter les données de votre GScatter depuis l'option Sauvegarder dans le panneau de configuration ne
-        sauvegarde pas ces évènements. Lorsque vous importerez cette instance de GScatter, vos historiques seront vides.
+        Note: Exporter les données de votre GXC Wallet depuis l'option Sauvegarder dans le panneau de configuration ne
+        sauvegarde pas ces évènements. Lorsque vous importerez cette instance de GXC Wallet, vos historiques seront vides.
         Si vous voulez exporter vos historiques, utilisez les boutons d'action situés dans la barre de navigation de ce panneau.  
     `,
 
@@ -161,7 +161,7 @@ export default {
 
     [KEYS.BACKUP_Header]:`Exporter une sauvegarde encryptée`,
     [KEYS.BACKUP_Description]:`
-        Exporter votre GScatter vous permet de l'importer sur d'autres appareils. Le fichier exporté sera encrypté donc 
+        Exporter votre GXC Wallet vous permet de l'importer sur d'autres appareils. Le fichier exporté sera encrypté donc 
         assurez-vous bien d'avoir accès à votre code mnémonique ou à votre mot de passe, faute de quoi le fichier sera inutilisable. 
         Les clés privées de vos comptes seront supprimées pendant l'export, les seules clés privées restantes dans le fichier exporté
         seront les clés relatives à vos Identités.
@@ -169,7 +169,7 @@ export default {
 
     [KEYS.IMPORT_Header]:`Importer sauvegarde encryptée`,
     [KEYS.IMPORT_Description]:`
-        L'importation du fichier encrypté contenant votre porte-clés restaurera votre porte-clés GScatter mais vos anciens réseaux ou
+        L'importation du fichier encrypté contenant votre porte-clés restaurera votre porte-clés GXC Wallet mais vos anciens réseaux ou
         comptes ne seront pas importés.
     `,
 
@@ -187,11 +187,11 @@ export default {
         Afin d'interagir avec un tel réseau, vous devez vous devriez y avoir un compte.
     `,
 
-    [KEYS.DESTROY_Header]:`Destruction de GScatter`,
+    [KEYS.DESTROY_Header]:`Destruction de GXC Wallet`,
     [KEYS.DESTROY_Description]:`
-        Vous êtes sur le point de détruire votre porte-clés GScatter en totalité. La seule façon de retrouver votre GScatter
-        en l'état actuel serait d'importer un GScatter JSON exporté. Vous ne serez pas en mesure de revendiquer vos
-        identités autrement. Assurez-vous de bien avoir exporté votre GScatter depuis le panneau de configuration avant
+        Vous êtes sur le point de détruire votre porte-clés GXC Wallet en totalité. La seule façon de retrouver votre GXC Wallet
+        en l'état actuel serait d'importer un GXC Wallet JSON exporté. Vous ne serez pas en mesure de revendiquer vos
+        identités autrement. Assurez-vous de bien avoir exporté votre GXC Wallet depuis le panneau de configuration avant
         de procéder à sa destruction.
     `,
 
@@ -209,15 +209,15 @@ export default {
         privée et la clé publique associée sera générée automatiquement.
     `,
 
-    [KEYS.KEYPAIR_Important]:`Sauvegardez votre clé privée ailleurs! Vous ne pourrez pas extraire vos clés privées de GScatter.`,
+    [KEYS.KEYPAIR_Important]:`Sauvegardez votre clé privée ailleurs! Vous ne pourrez pas extraire vos clés privées de GXC Wallet.`,
     [KEYS.KEYPAIR_Validation_Header]:`Générer une nouvelle Paire de Clés`,
     [KEYS.KEYPAIR_Validation_Valid]:`La clé privée est valide et la clé publique associée correspond à la clé publique renseignée.`,
     [KEYS.KEYPAIR_Validation_Invalid]:`La clé publique associée à la clé privée ne correspond pas à la clé publique renseignée !`,
 
     [KEYS.LOCK_Header]:`Minuterie de Verrouillage Automatique`,
     [KEYS.LOCK_Description]:`
-        Le Verrouillage Automatique gère le verrouillage de GScatter pour vous
-        afin que vous ne vous souciez pas de verrouiller votre GScatter lorsque
+        Le Verrouillage Automatique gère le verrouillage de GXC Wallet pour vous
+        afin que vous ne vous souciez pas de verrouiller votre GXC Wallet lorsque
         vous vous éloignez de votre appareil.
     `,
 
@@ -232,7 +232,7 @@ export default {
     [KEYS.MNEMONIC_Description]:`Le code mnémonique est un ensemble de mots qui font office de graine aléatoire cryptographique.`,
     [KEYS.MNEMONIC_Note]:`
         Assurez-vous de bien sauvegarder le votre en un endroit sûr. C'est la seule façon de restaurer l'accès
-        à votre GScatter et déchiffrer vos informations privées si vous oubliez votre mot de passe.
+        à votre GXC Wallet et déchiffrer vos informations privées si vous oubliez votre mot de passe.
     `,
     [KEYS.MNEMONIC_Wrote]:`I Wrote It Down`,
 
@@ -296,7 +296,7 @@ export default {
 
         `Aucun compte associé à cette clé privée n'a été trouvé.
          Si vous désirez importer une clé qui n'a pas été générée
-         par GScatter, vous devez créer un compte pour la clé avant
+         par GXC Wallet, vous devez créer un compte pour la clé avant
          de l'importer.`
     ],
     //2
@@ -334,7 +334,7 @@ export default {
     [KEYS.ALERT_RemovingEndorsedNetwork]:[
         'Impossible de Supprimer le Réseau Approuvé',
 
-        `Vous ne pouvez pas supprimer les Réseaux Approuvés par GScatter.`
+        `Vous ne pouvez pas supprimer les Réseaux Approuvés par GXC Wallet.`
     ],
     //2
     [KEYS.ALERT_NoIdentityWithProperties]:fields => [
@@ -351,7 +351,7 @@ export default {
     ],
     //2
     [KEYS.PROMPT_DestroyingScatter]:[
-        'Destruction de GScatter',
+        'Destruction de GXC Wallet',
 
         'C\'est votre dernière chance de vérifier vos sauvegardes.'
     ],
@@ -429,11 +429,11 @@ export default {
 
     //3
     [KEYS.REQUEST_AddNetwork]:[
-        /*{DOMAIN}*/ 'veut ajouter son réseau à votre GScatter.',
+        /*{DOMAIN}*/ 'veut ajouter son réseau à votre GXC Wallet.',
 
         'Certaines applications utilisent leur propre Réseau.',
 
-        `Ceci ne donne à l'application aucun accès à votre GScatter.
+        `Ceci ne donne à l'application aucun accès à votre GXC Wallet.
          Ajouter un réseau depuis cette interface vous évite simplement
          l'effort de l'ajouter manuellement depuis votre panneau de 
          configuration.`
@@ -482,28 +482,28 @@ export default {
     ],
     //4
     [KEYS.REQUEST_ScatterIsLocked]:[
-        `Votre GScatter est verrouillé!`,
+        `Votre GXC Wallet est verrouillé!`,
 
         `Avant que vous ne puissiez faire quoi que ce soit, vous devez le déverrouiller.`,
 
         `Nous faisons exprès de ne jamais afficher une fenêtre ou un popup vous demandant de vous identifier.`,
 
         `Si vous voyez une fenêtre ou un popup vous demandant votre mot de passe, c'est un site web malveillant essayant de
-         voler votre mot de passe. Veuillez à toujours déverrouiller GScatter depuis le popup de l'extension en cliquant sur
+         voler votre mot de passe. Veuillez à toujours déverrouiller GXC Wallet depuis le popup de l'extension en cliquant sur
          l'icône dans la barre de votre navigateur.`
     ],
     //4
     [KEYS.REQUEST_UpdateVersion]:[
-        `Vous n'avez pas la dernière version de GScatter!`,
+        `Vous n'avez pas la dernière version de GXC Wallet!`,
 
-        /*{DOMAIN}*/ `exige une version plus récente de GScatter.`,
+        /*{DOMAIN}*/ `exige une version plus récente de GXC Wallet.`,
 
-        `Ceci veut généralement dire que de nouvelles fonctionnalités ont été ajoutées à GScatter et une application 
+        `Ceci veut généralement dire que de nouvelles fonctionnalités ont été ajoutées à GXC Wallet et une application 
          essaie de les utiliser alors qu'elles ne sont pas inclues dans la version installée sur votre appareil.`,
 
-        `Merci de bien vouloir noter que nous laissons le soin aux applications de vérifier la version de GScatter.
+        `Merci de bien vouloir noter que nous laissons le soin aux applications de vérifier la version de GXC Wallet.
         Celles-ci pourraient essayer de vous faire télécharger un logiciel malveillant. Veuillez à télécharger
-        GScatter depuis une source de confiance.`
+        GXC Wallet depuis une source de confiance.`
     ],
 
 }

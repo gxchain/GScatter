@@ -2,6 +2,26 @@ import * as KEYS from '../keys';
 import * as AlertTypes from '../../models/alerts/AlertTypes';
 
 export default {
+    [KEYS.ROUTENAMES_LOAD_FROM_BACKUP]:`Import Keychain`,
+    [KEYS.ROUTENAMES_SETTINGS]:`Settings`,
+    [KEYS.ROUTENAMES_TRANSFER]:`Transfer`,
+    [KEYS.ROUTENAMES_IDENTITIES]:`Identities`,
+    [KEYS.ROUTENAMES_IDENTITY]:`Identity`,
+    [KEYS.ROUTENAMES_PERMISSIONS]:`Permissions`,
+    [KEYS.ROUTENAMES_DOMAIN_PERMISSIONS]:`Permissions`,
+    [KEYS.ROUTENAMES_HISTORY]:`History`,
+    [KEYS.ROUTENAMES_NETWORKS]:`Networks`,
+    [KEYS.ROUTENAMES_NETWORK]:`Network`,
+    [KEYS.ROUTENAMES_CHANGE_PASSWORD]:`Password`,
+    [KEYS.ROUTENAMES_BACKUP]:`Backup`,
+    [KEYS.ROUTENAMES_EXPORT_JSON]:`Backup`,
+    [KEYS.ROUTENAMES_DESTROY]:`Destroy`,
+    [KEYS.ROUTENAMES_AUTO_LOCK]:`Auto Lock`,
+    [KEYS.ROUTENAMES_LANGUAGE]:`Language`,
+    [KEYS.ROUTENAMES_KEYPAIRS]:`Key Pair`,
+    [KEYS.ROUTENAMES_KEYS]:`Key Pairs`,
+    [KEYS.ROUTENAMES_REGISTER_ACCOUNT]:`Register`,
+
     [KEYS.GENERIC_New]:`New`,
     [KEYS.GENERIC_Save]:`Save`,
     [KEYS.GENERIC_Ignored]:`Ignored`,
@@ -53,11 +73,11 @@ export default {
     [KEYS.BUTTON_SetAsDefaultLocation]:'Set As Default Location',
     [KEYS.BUTTON_RemoveLocation]:'Remove Location',
     [KEYS.BUTTON_ChangePassword]:'Change Password',
-    [KEYS.BUTTON_DestroyScatter]:'Destroy GScatter',
-    [KEYS.BUTTON_CreateNewScatter]:'Create New GScatter',
+    [KEYS.BUTTON_DestroyScatter]:'Destroy GXC Wallet',
+    [KEYS.BUTTON_CreateNewScatter]:'Create New GXC Wallet',
     [KEYS.BUTTON_LoadFromBackup]:'Load From Backup',
     [KEYS.BUTTON_Unlock]:'Unlock',
-    [KEYS.BUTTON_ExportScatter]:'Export GScatter',
+    [KEYS.BUTTON_ExportScatter]:'Export GXC Wallet',
     [KEYS.BUTTON_GenerateKeyPair]:'Generate Key Pair',
     [KEYS.BUTTON_Validate]:'Validate',
     [KEYS.BUTTON_Copy]:'Copy',
@@ -134,12 +154,12 @@ export default {
 
     [KEYS.HISTORIES_Header]:`You don't have any historic events to display.`,
     [KEYS.HISTORIES_Description]:`
-        Once you have them, you will be able to see a list of all of the events that pass through your GScatter.
-        What you will not see is events that occurred on your accounts outside of GScatter.
+        Once you have them, you will be able to see a list of all of the events that pass through your GXC Wallet.
+        What you will not see is events that occurred on your accounts outside of GXC Wallet.
      `,
     [KEYS.HISTORIES_Note]:`
-        Note: Exporting your GScatter data from the backup option in the settings panel does not save these events.
-        When you import that GScatter instance again your histories will be empty. If you would like to export your histories
+        Note: Exporting your GXC Wallet data from the backup option in the settings panel does not save these events.
+        When you import that GXC Wallet instance again your histories will be empty. If you would like to export your histories
         in the future you can do so using the action buttons on the navbar within this panel.
     `,
 
@@ -153,15 +173,31 @@ export default {
 
     [KEYS.BACKUP_Header]:`Export encrypted backup`,
     [KEYS.BACKUP_Description]:`
-        Exporting your GScatter allows you to import it into other devices. The file will still be encrypted when it is 
+        Exporting your GXC Wallet allows you to import it into other devices. The file will still be encrypted when it is 
         exported so make sure you have either your mnemonic or your password, otherwise it will be useless. 
     `,
 
     [KEYS.IMPORT_Header]:`Import encrypted backup`,
     [KEYS.IMPORT_Description]:`
-        Importing your encrypted keychain file will rebuild you GScatter keychain but it will not import your old networks or 
+        Importing your encrypted keychain file will rebuild you GXC Wallet keychain but it will not import your old networks or 
         accounts. 
     `,
+    [KEYS.IMPORT_Keypair]:`Import Key Pair`,
+    [KEYS.IMPORT_Keypair_Description]:`Import your GXChain private key, we will store it encrypted by your wallet password.`,
+    [KEYS.IMPORT_Keypair_Button]: (blockchain) => {
+        return `Import ${blockchain} Key Pair`
+    },
+    [KEYS.IMPORT_Success_Title]: `That's it!`,
+    [KEYS.IMPORT_Success_Description]: (blockchain) => {
+        return `You now have a GXC Wallet Identity with an ${blockchain} account linked to it.
+                    <br><br>
+                    You can go to your Identity and fill out any extra fields applications might want from you, but none
+                    of the fields in your
+                    Identity are mandatory.
+                    <br><br>
+                    Enjoy using GXC Wallet.`
+    },
+    [KEYS.IMPORT_Success_Button]: `Main Menu`,
 
     [KEYS.PASS_Header]:`Enter a new password`,
     [KEYS.PASS_Description]:`
@@ -177,11 +213,11 @@ export default {
         that network you will need to have an account there as well.
     `,
 
-    [KEYS.DESTROY_Header]:`Destroying GScatter`,
+    [KEYS.DESTROY_Header]:`Destroying GXC Wallet`,
     [KEYS.DESTROY_Description]:`
-        You are about to destroy your entire GScatter keychain. The only way to get this exact GScatter back is by 
-        importing an exported GScatter JSON. You will not be able to claim your identities otherwise. Make sure you 
-        have exported your GScatter from the backup settings panel before hand.
+        You are about to destroy your entire GXC Wallet keychain. The only way to get this exact GXC Wallet back is by 
+        importing an exported GXC Wallet JSON. You will not be able to claim your identities otherwise. Make sure you 
+        have exported your GXC Wallet from the backup settings panel before hand.
     `,
     [KEYS.DESTROY_Confirms]:[
         'Destroying Scatter',
@@ -200,7 +236,7 @@ export default {
         You can use this panel to generate key pairs. These key pairs are generated locally on your machine 
         and are never sent anywhere. You can also paste in a private key and it will automatically generate the public key.
     `,
-    [KEYS.KEYPAIR_Important]:`Save your private key elsewhere! You can not take private keys back out of GScatter.`,
+    [KEYS.KEYPAIR_Important]:`Save your private key elsewhere! You can not take private keys back out of GXC Wallet.`,
     [KEYS.KEYPAIR_Validation_Header]:`Generate a new Key Pair`,
     [KEYS.KEYPAIR_Validation_Valid]:`The private key is valid and the public key generated from it matches the public key provided.`,
     [KEYS.KEYPAIR_Validation_Invalid]:`The public key generated from the private key did not match the public key provided!`,
@@ -208,8 +244,8 @@ export default {
 
     [KEYS.LOCK_Header]:`Auto Lock Timer`,
     [KEYS.LOCK_Description]:`
-        Auto Lock handles GScatter's locking for you so that you don't have to 
-        remember to lock your GScatter when you step away.
+        Auto Lock handles GXC Wallet's locking for you so that you don't have to 
+        remember to lock your GXC Wallet when you step away.
     `,
     [KEYS.LOCK_Minute]:`Minute`,
     [KEYS.LOCK_Minutes]:`Minutes`,
@@ -219,10 +255,10 @@ export default {
 
 
     [KEYS.MNEMONIC_Header]:`Mnemonic`,
-    [KEYS.MNEMONIC_Description]:`Mnemonics in GScatter are only used for password recovery.`,
+    [KEYS.MNEMONIC_Description]:`Mnemonics in GXC Wallet are only used for password recovery.`,
     [KEYS.MNEMONIC_Note]:`
         Be sure to save yours somewhere safe. It is the only way to regain access to your 
-        GScatter and decrypt your private information if you forget your password.
+        GXC Wallet and decrypt your private information if you forget your password.
     `,
     [KEYS.MNEMONIC_Wrote]:`I Wrote It Down`,
 
@@ -321,7 +357,7 @@ export default {
     [KEYS.ALERT_RemovingEndorsedNetwork]:[
         'Cannot Remove Endorsed Network',
 
-        `You cannot remove GScatter's endorsed Networks.`
+        `You cannot remove GXC Wallet's endorsed Networks.`
     ],
     //2
     [KEYS.ALERT_NoIdentityWithProperties]:fields => [
@@ -338,7 +374,7 @@ export default {
     ],
     //2
     [KEYS.PROMPT_DestroyingScatter]:[
-        'Destroying GScatter',
+        'Destroying GXC Wallet',
 
         'This is your last chance to double check your backups.'
     ],
@@ -412,11 +448,11 @@ export default {
 
     //3
     [KEYS.REQUEST_AddNetwork]:[
-        /*{DOMAIN}*/ 'wants to add their network to your GScatter.',
+        /*{DOMAIN}*/ 'wants to add their network to your GXC Wallet.',
 
         'Some applications use their own Networks.',
 
-        `This in no way gives the application any access to your GScatter. 
+        `This in no way gives the application any access to your GXC Wallet. 
          Adding a network through this interface simply saves you
          the effort of manually adding it from your Settings panel.`
     ],
@@ -458,26 +494,26 @@ export default {
     ],
     //4
     [KEYS.REQUEST_ScatterIsLocked]:[
-        `Your GScatter is locked!`,
+        `Your GXC Wallet is locked!`,
 
-        `Before you can do anything with your GScatter you will need to unlock it.`,
+        `Before you can do anything with your GXC Wallet you will need to unlock it.`,
 
         `We will purposely never show a prompt/popup which requires you to log in.`,
 
         `If you see a prompt/popup which is requesting your password, it is a malicious website trying to get your password.
-         Always only unlock GScatter from the extension's popup by clicking on the icon in your browser tray.`
+         Always only unlock GXC Wallet from the extension's popup by clicking on the icon in your browser tray.`
     ],
     //4
     [KEYS.REQUEST_UpdateVersion]:[
-        `Your GScatter is out of date!`,
+        `Your GXC Wallet is out of date!`,
 
-        /*{DOMAIN}*/ `is requiring you have a version of GScatter that is newer than the one installed.`,
+        /*{DOMAIN}*/ `is requiring you have a version of GXC Wallet that is newer than the one installed.`,
 
         `This usually means that new functionality was released and an application is trying to use it but it's not
          currently included in the build you have installed.`,
 
         `Please Note, we leave version checking up to the applications themselves. They could be maliciously trying to
-         get you to download something. Make sure you always download GScatter from the proper location.`
+         get you to download something. Make sure you always download GXC Wallet from the proper location.`
     ],
 
     // GXC
@@ -499,9 +535,9 @@ export default {
 
     [KEYS.REGISTER_HEADER]: 'Register',
     [KEYS.REGISTER_DESCRIPTION]: `Register GXChain account on selected network.`,
-    [KEYS.REGISTER_TIPS]: 'No account？Please click GScatter logo to register on the main menu.',
+    [KEYS.REGISTER_TIPS]: 'No account？Please click GXC Wallet logo to register on the main menu.',
     [KEYS.REGISTER_SUC_HEADER]: 'Register Success',
-    [KEYS.REGISTER_SUC_DESCRIPTION]: `Click 'Save' button to save your account on GScatter.`,
+    [KEYS.REGISTER_SUC_DESCRIPTION]: `Click 'Save' button to save your account on GXC Wallet.`,
 
     [KEYS.GXC_ACCOUNT_ERROR_EMPTY_NAME]: 'Account name should not be empty',
     [KEYS.GXC_ACCOUNT_ERROR_NAME_SHOULD_BE_LONGER]: `Account name be longer`,
@@ -511,7 +547,8 @@ export default {
     [KEYS.GXC_ACCOUNT_ERROR_NAME_FORMAT_ERROR]: 'Each account segment should have only letters, digits, or dashes',
     [KEYS.GXC_ACCOUNT_ERROR_NAME_ONE_DASH_ERROR]: 'Each account segment should have only one dash in a row',
     [KEYS.GXC_ACCOUNT_ERROR_NAME_END_ERROR]: 'Each account segment should end with a letter or digit',
-    [KEYS.GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER]: 'Each account segment should be longer'
+    [KEYS.GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER]: 'Each account segment should be longer',
+    [KEYS.BACK]: 'Back',
 }
 
 

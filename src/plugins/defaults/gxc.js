@@ -198,21 +198,18 @@ export default class GXC extends Plugin {
         );
     }
 
-    // TODO
-    signer(bgContext, payload, publicKey, callback) {
+    signer(bgContext, payload, publicKey, callback, arbitrary = false) {
         bgContext.publicToPrivate(privateKey => {
             if (!privateKey) {
                 callback(null);
                 return false;
             }
-            var buf = Buffer.concat([new Buffer(payload.chain_id, "hex"), new Buffer(payload.tr_buffer)]);
+
+            let sig;
             var private_key = PrivateKey.fromWif(privateKey);
-            var public_key = private_key.toPublicKey();
-            var sig = Signature.signBuffer(
-                buf,
-                private_key,
-                public_key
-            );
+
+            sig = Signature.signBuffer(Buffer.from(payload.data, 'utf8'), private_key);
+
             callback(sig.toBuffer());
         }, publicKey);
     }
@@ -266,7 +263,8 @@ export default class GXC extends Plugin {
                         if (!requiredFields.isValid()) throw Error.malformedRequiredFields();
 
                         const signProvider = async (tr, chain_id) => {
-                            let payload = {tr_buffer: tr.tr_buffer, chain_id};
+                            const buf = Buffer.concat([Buffer.from(chain_id, "hex"), Buffer.from(tr.tr_buffer)]);
+                            let payload = {data: buf};
                             let result;
 
                             // build prompt display messages
@@ -329,9 +327,13 @@ export default class GXC extends Plugin {
                                     return res;
                                 }
                             }).catch(err => {
-                                throw new Error(undefined, err.message, undefined, err)
+                                if (err.isError) {
+                                    throw err
+                                } else {
+                                    throw new Error(undefined, err.message, undefined, err)
+                                }
                             })
-                        }else{
+                        } else {
                             // some methods not return promise, like generateKey
                             return ret
                         }

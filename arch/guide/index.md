@@ -1,6 +1,6 @@
 ## 安装指南
 
-由于chrome应用商店的插件正在审核，暂时不能下载，请先通过如下步骤安装。
+请在chrome应用商店安装[最新插件](https://chrome.google.com/webstore/detail/gxc-wallet/pkghkgabkmdkdaoglpemmkooeikdopca)，如果您无法安装，可尝试以下步骤安装，但是这种方式不能提供更新，需要您自己关注版本更新。
 
 
 
@@ -22,7 +22,7 @@
 
 ![img](../images/A51mYEBFBnUDS9sf.png)
 
-打开开发者模式，然后解压步骤一下载的`gscatter.zip`，点击 加载已解压的扩展程序 ，选择解压后的 `build`文件夹完成安装。
+打开开发者模式，然后解压步骤一下载的`gscatter.zip`，点击 加载已解压的扩展程序 ，选择解压后的 `gscatter`文件夹完成安装。
 
  
 

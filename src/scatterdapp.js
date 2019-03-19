@@ -191,16 +191,13 @@ export default class Scatterdapp {
      * @param publicKey
      * @param data - The data to be signed
      * @param whatfor
-     * @param isHash - True if the data requires a hash signature
      */
-    // remove for temp
-    // getArbitrarySignature(publicKey, data, whatfor = '', isHash = false) {
-    //     return _send(NetworkMessageTypes.REQUEST_ARBITRARY_SIGNATURE, {
-    //         publicKey,
-    //         data,
-    //         whatfor,
-    //         isHash
-    //     }, true);
-    // }
+    getArbitrarySignature(publicKey, data, whatfor = '') {
+        return _send(NetworkMessageTypes.REQUEST_ARBITRARY_SIGNATURE, {
+            publicKey,
+            data,
+            whatfor
+        }, true);
+    }
 
 }

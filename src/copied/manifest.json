@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "GScatter",
+  "name": "GXC Wallet",
   "description": "Decentralized signature, identity and authentication system.",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "browser_action": {
     "default_icon": "icon.png",

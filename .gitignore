@@ -5,3 +5,4 @@ build/
 .DS_Store
 *.iml
 yarn-error.log
+.vscode

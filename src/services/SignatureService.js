@@ -31,13 +31,18 @@ export default class SignatureService {
                 return false;
             }
 
+            if(Buffer.from(data).length > 64){
+                sendResponse(new Error(undefined, 'limit data size is 64 byte'));
+                return false;
+            }
+
             PluginRepository.plugin(KeyPair.blockchain(publicKey)).signer(context, payload, publicKey, signature => {
                 if(!signature){
                     sendResponse(Error.maliciousEvent());
                     return false;
                 }
 
-                sendResponse(signature);
+                sendResponse(signature.toString('hex'));
             }, true, payload.isHash)
 
 

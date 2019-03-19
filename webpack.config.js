@@ -22,8 +22,14 @@ const devPlugins = [
     })
 ];
 const prodPlugins = devPlugins.concat([
-    new ZipPlugin({ path: '../', filename: 'scatter.zip' }),
-    new UglifyJsPlugin(),
+    new ZipPlugin({ path: '../', filename: 'gscatter.zip' }),
+    new UglifyJsPlugin({
+        uglifyOptions: {
+            output: {
+              comments: false
+            }
+          }
+    })
 ])
 
 const productionPlugins = !production ? devPlugins : prodPlugins;
@@ -87,6 +93,6 @@ module.exports = {
         new ChromeExtensionReloader()
     ].concat(productionPlugins),
     stats: { colors: true },
-    devtool: 'source-map', //inline-
+    devtool: 'eval-source-map', //inline-
     externals
 }
