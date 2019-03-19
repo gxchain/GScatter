@@ -49,4 +49,4 @@
 
 ![img](../images/useSteps/step3.png)
 
-导入后gxc_wallet会帮你创建一个身份，然后就可以开始使用gxc_wallet啦
+导入后GXC Wallet会帮你创建一个身份，然后就可以开始使用GXC Wallet浏览器扩展啦
