@@ -24,7 +24,7 @@ Chrome extension market, click [here](https://chrome.google.com/webstore/detail/
 
 ### Way 2
 
-1.Click [here](https://github.com/gxchain/GScatter/raw/master/gscatter.zip) to download latest `gscatter.zip`
+1.Click [here](https://github.com/gxchain/GScatter/raw/master/gxc_wallet.zip) to download latest `gxc_wallet.zip`
 
 2.Go to [chrome extension manage panel](chrome://extensions/) chrome://extensions/
 

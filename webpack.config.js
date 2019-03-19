@@ -22,7 +22,7 @@ const devPlugins = [
     })
 ];
 const prodPlugins = devPlugins.concat([
-    new ZipPlugin({ path: '../', filename: 'gscatter.zip' }),
+    new ZipPlugin({ path: '../', filename: 'gxc_wallet.zip' }),
     new UglifyJsPlugin({
         uglifyOptions: {
             output: {
