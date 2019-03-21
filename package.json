@@ -1,6 +1,6 @@
 {
   "name": "GScatter-web-extension",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,8 @@
   "author": "GXChain",
   "license": "ISC",
   "dependencies": {
-    "@babel/runtime": "^7.3.4",
     "@babel/parser": "^7.2.3",
+    "@babel/runtime": "^7.3.4",
     "aes-oop": "^1.0.4",
     "bip39": "^2.5.0",
     "dotenv-webpack": "^1.5.7",
@@ -27,7 +27,7 @@
     "extension-streams": "^1.0.7",
     "fcbuffer": "^2.2.1",
     "gxc-frontend-base": "^0.1.5",
-    "gxclient": "^2.1.6",
+    "gxclient": "^2.1.7",
     "lodash": "^4.17.11",
     "ridl": "^0.1.0",
     "scrypt-async": "^2.0.0",
