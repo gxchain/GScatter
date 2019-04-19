@@ -49,6 +49,18 @@ export default class GXC extends Plugin {
         });
     }
 
+    async getEndorsedTestNetwork() {
+        return new Promise((resolve, reject) => {
+            resolve(new Network(
+                'GXChain Testnet', 'https',
+                'testnet.gxchain.org',
+                443,
+                Blockchains.GXC,
+                'c2af30ef9340ff81fd61654295e98a1ff04b23189748f86727d0b26b40bb0ff4'
+            ));
+        });
+    }
+
     async isEndorsedNetwork(network) {
         const endorsedNetwork = await this.getEndorsedNetwork();
         return network.hostport() === endorsedNetwork.hostport();

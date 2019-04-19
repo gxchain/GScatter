@@ -3,6 +3,7 @@ import Hasher from '../util/Hasher'
 import Mnemonic from '../util/Mnemonic'
 import Scatter from '../models/Scatter'
 import Identity from '../models/Identity'
+import {Blockchains} from '../models/Blockchains';
 import Meta from '../models/Meta'
 import Network from '../models/Network'
 import InternalMessage from '../messages/InternalMessage'
@@ -12,6 +13,7 @@ import RIDLService from '../services/RIDLService'
 import StorageService from '../services/StorageService'
 import IdGenerator from '../util/IdGenerator'
 import ridl from 'ridl';
+
 
 export const actions = {
     [Actions.SET_SCATTER]:({commit}, scatter) => commit(Actions.SET_SCATTER, scatter),
@@ -97,6 +99,10 @@ export const actions = {
             await Promise.all(PluginRepository.signatureProviders().map(async plugin => {
                 const network = await plugin.getEndorsedNetwork();
                 scatter.settings.networks.push(network);
+                if(network.blockchain === Blockchains.GXC){
+                    const testNetwork = await plugin.getEndorsedTestNetwork();
+                    scatter.settings.networks.push(testNetwork);
+                }
             }));
 
 
