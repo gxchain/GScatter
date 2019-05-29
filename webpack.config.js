@@ -1,13 +1,13 @@
 const path = require('path');
-const webpack = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const ZipPlugin = require('zip-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const nodeExternals = require('webpack-node-externals')
+const nodeExternals = require('webpack-node-externals');
 const Dotenv = require('dotenv-webpack');
-const ChromeExtensionReloader  = require('webpack-chrome-extension-reloader');
+const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 
 console.log(process.env.SCATTER_ENV);
 
@@ -22,34 +22,34 @@ const devPlugins = [
     })
 ];
 const prodPlugins = devPlugins.concat([
-    new ZipPlugin({ path: '../', filename: 'gxc_wallet.zip' }),
+    new ZipPlugin({path: '../', filename: 'gxc_wallet.zip'}),
     new UglifyJsPlugin({
         uglifyOptions: {
             output: {
-              comments: false
+                comments: false
             }
-          }
+        }
     })
-])
+]);
 
 const productionPlugins = !production ? devPlugins : prodPlugins;
 
 const runningTests = process.env.SCATTER_ENV === 'testing';
 const externals = runningTests ? [nodeExternals()] : [];
 
-function replaceSuffixes(file){
+function replaceSuffixes(file) {
     return file
-        .replace('scss', 'css')
+        .replace('scss', 'css');
 }
 
 const filesToPack = [
-  'background.js',
-  'popup.js',
-  'content.js',
-  'inject.js',
-  'prompt.js',
-  'scatterdapp.js',
-  'styles.scss',
+    'background.js',
+    'popup.js',
+    'content.js',
+    'inject.js',
+    'prompt.js',
+    'scatterdapp.js',
+    'styles.scss',
 ];
 const entry = filesToPack.reduce((o, file) => Object.assign(o, {[replaceSuffixes(file)]: `./src/${file}`}), {});
 
@@ -65,25 +65,27 @@ module.exports = {
             'extension-streams': 'extension-streams/dist/index.js',
             'aes-oop': 'aes-oop/dist/AES.js',
         },
-        modules: [ path.join(__dirname, "node_modules") ]
+        modules: [path.join(__dirname, "node_modules")]
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2015', 'stage-3'] }, exclude: /node_modules/ }
+            {test: /\.js$/, loader: 'babel-loader', query: {presets: ['es2015', 'stage-3']}, exclude: /node_modules/}
         ],
-        rules:[
-            { test: /\.(sass|scss)$/, loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']) },
-            { test: /\.(html|png)$/, loader: 'file-loader', options: { name: '[name].[ext]' } },
-            { test: /\.vue$/, loader: 'vue-loader', options: {
-                loaders: {
-                    js: 'babel-loader',
-                    scss: 'vue-style-loader!css-loader!sass-loader'
+        rules: [
+            {test: /\.(sass|scss)$/, loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])},
+            {test: /\.(html|png)$/, loader: 'file-loader', options: {name: '[name].[ext]'}},
+            {
+                test: /\.vue$/, loader: 'vue-loader', options: {
+                    loaders: {
+                        js: 'babel-loader',
+                        scss: 'vue-style-loader!css-loader!sass-loader'
+                    }
                 }
-            } }
+            }
         ]
     },
     plugins: [
-        new ExtractTextPlugin({ filename: '[name]', allChunks: true }),
+        new ExtractTextPlugin({filename: '[name]', allChunks: true}),
         new IgnoreEmitPlugin(/\.omit$/),
         new CopyWebpackPlugin([`./src/copied`]),
         new Dotenv({
@@ -92,7 +94,7 @@ module.exports = {
         }),
         new ChromeExtensionReloader()
     ].concat(productionPlugins),
-    stats: { colors: true },
-    devtool: 'eval-source-map', //inline-
+    stats: {colors: true},
+    devtool: production ? false : 'eval-source-map', //inline-
     externals
-}
+};

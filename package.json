@@ -1,6 +1,6 @@
 {
   "name": "GScatter-web-extension",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "build": "SCATTER_ENV=production webpack"
   },
   "author": "GXChain",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@babel/parser": "^7.2.3",
     "@babel/runtime": "^7.3.4",
