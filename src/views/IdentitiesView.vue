@@ -82,15 +82,15 @@
                 <!-- Actions -->
                 <section class="panel">
                     <section class="actions">
-                        <figure v-on:click="goToIdentity(identity)" class="action tooltip"><i class="fa fa-pencil"></i><span class="tooltiptext" style="margin-left:10px;">edit</span></figure>
+                        <figure v-on:click="goToIdentity(identity)" class="action tooltip"><i class="fa fa-pencil"></i><span class="tooltiptext tip1">{{locale(langKeys.TIP_Edit)}}</span></figure>
                         <section v-if="Object.keys(identity.accounts).length">
                             <figure class="action tooltip" @click="showingTokens = identity" v-if="!showingTokensFor(identity)">
-                                <i class="fa fa-circle-thin"></i><span class="tooltiptext" style="margin-left:12px;">load</span></figure>
+                                <i class="fa fa-circle-thin"></i><span class="tooltiptext tip1">{{locale(langKeys.TIP_Load)}}</span></figure>
                             <figure class="action tooltip" @click="showingTokens = null" v-else><i
-                                    class="fa fa-times-circle"></i><span class="tooltiptext" style="margin-left:12px;width:60px;">cancel</span></figure>
+                                    class="fa fa-times-circle"></i><span class="tooltiptext tip2">{{locale(langKeys.TIP_Cancel)}}</span></figure>
                         </section>
                         <figure class="action red right tooltip" v-on:click="removeIdentity(identity)"><i
-                                class="fa fa-minus-square"></i><span class="tooltiptext" style="margin-left:-82px;width:60px;">remove</span></figure>
+                                class="fa fa-minus-square"></i><span class="tooltiptext tip3">{{locale(langKeys.TIP_Remove)}}</span></figure>
                     </section>
                 </section>
 
@@ -246,10 +246,9 @@
     .tooltip {
          position: relative;
     }
-
     .tooltip .tooltiptext {
         visibility: hidden;
-        width: 40px;
+        min-width: 40px;
         background-color: black;
         color: #fff;
         text-align: center;
@@ -257,9 +256,19 @@
         position: absolute;
         z-index: 1;
     }
-     
     .tooltip:hover .tooltiptext {
         visibility: visible;
+    }
+    .tip1 {
+        margin-left:12px;
+    }
+    .tip2 {
+        margin-left:12px;
+        width:60px;
+    }
+    .tip3 {
+        margin-left:-82px;
+        width:60px;
     }
 
 </style>

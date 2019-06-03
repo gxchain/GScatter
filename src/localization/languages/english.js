@@ -163,6 +163,11 @@ export default {
         in the future you can do so using the action buttons on the navbar within this panel.
     `,
 
+    [KEYS.TIP_Edit]: `edit`,
+    [KEYS.TIP_Cancel]: `cancel`,
+    [KEYS.TIP_Remove]: `remove`,
+    [KEYS.TIP_Load]: `load`,
+
     [KEYS.SETTINGSMENU_Networks]:'Networks',
     [KEYS.SETTINGSMENU_Keypairs]:'Key Pairs',
     [KEYS.SETTINGSMENU_Language]:'Language',

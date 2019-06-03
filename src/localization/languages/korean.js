@@ -141,6 +141,12 @@ export default {
 		나중에 내역을 내보내려면 이 패널에서 내비게이션 막대의 작업 버튼을 사용하십시오.
     `,
 
+    [KEYS.TIP_Edit]: `편집하다`,
+    [KEYS.TIP_Cancel]: `취소`,
+    [KEYS.TIP_Remove]: `풀다`,
+    [KEYS.TIP_Load]: `하중`,
+
+
     [KEYS.SETTINGSMENU_Networks]:'네트워크',
     [KEYS.SETTINGSMENU_Keypairs]:'키 쌍',
     [KEYS.SETTINGSMENU_Language]:'언어',
