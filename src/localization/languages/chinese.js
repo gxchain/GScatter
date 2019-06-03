@@ -526,6 +526,11 @@ export default {
         `请复制并保管好您的私钥，一旦丢失将无法找回。`,
         ``
     ],
+    [KEYS.GXC_PASSWORD]: [
+        `密码`,
+        ``,
+        ``
+    ],
     [KEYS.GXC_REGISTER_FAIL]: `注册失败`,
     [KEYS.GXC_REGISTER_REPEAT]: `该账户已注册`,
     [KEYS.GXC_ALERT_NOT_REGISTER]: [

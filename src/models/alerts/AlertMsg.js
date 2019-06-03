@@ -223,6 +223,13 @@ export default class AlertMsg {
         );
     }
 
+    static Password(){
+        return new AlertMsg(
+            AlertTypes.Password,
+            ...locale(LANG_KEYS.GXC_PASSWORD)
+        );
+    }
+
     static NotRigister(){
         return new AlertMsg(
             AlertTypes.Error,
