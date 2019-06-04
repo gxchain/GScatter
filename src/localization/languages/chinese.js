@@ -161,6 +161,12 @@ export default {
         将来您可以使用此面板中导航栏上的操作按钮来完成此操作。
     `,
 
+    [KEYS.TIP_Edit]: `修改`,
+    [KEYS.TIP_Cancel]: `取消`,
+    [KEYS.TIP_Remove]: `删除`,
+    [KEYS.TIP_Load]: `加载`,
+
+
     [KEYS.SETTINGSMENU_Networks]: '网络',
     [KEYS.SETTINGSMENU_Keypairs]: '密匙对',
     [KEYS.SETTINGSMENU_Language]: '语言',

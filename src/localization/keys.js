@@ -114,6 +114,11 @@ export const IDENTITY_PersonalDescription = 'id_pers_desc';
 export const IDENTITY_LocationHeader = 'id_loc_head';
 export const IDENTITY_LocationDescription = 'id_loc_desc';
 
+export const TIP_Edit = 'id_tip_edit';
+export const TIP_Cancel = 'id_tip_cancel';
+export const TIP_Remove = 'id_tip_remove';
+export const TIP_Load = 'id_tip_load';
+
 
 export const PERMISSIONS_Header = 'perms_head';
 export const PERMISSIONS_Description = 'perms_desc';

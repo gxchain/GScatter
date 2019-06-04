@@ -129,6 +129,11 @@ export default {
         en el futuro puedes hacerlo usando los botones de acción en la barra de navegación dentro de este panel.
     `,
 
+    [KEYS.TIP_Edit]: `Uredi`,
+    [KEYS.TIP_Cancel]: `cancelar`,
+    [KEYS.TIP_Remove]: `retirar`,
+    [KEYS.TIP_Load]: `carga`,
+
     [KEYS.SETTINGSMENU_Networks]:'Redes',
     [KEYS.SETTINGSMENU_Keypairs]:'Pares de Llaves',
     [KEYS.SETTINGSMENU_Language]:'Idioma',

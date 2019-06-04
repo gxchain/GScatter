@@ -117,6 +117,11 @@ export default {
         izvoziti svojo zgodovino lahko to storite z uporabo akcijskih gumbov v navigacijskem meniju.
     `,
 
+    [KEYS.TIP_Edit]: `Uredi`,
+    [KEYS.TIP_Cancel]: `prekliči`,
+    [KEYS.TIP_Remove]: `odstraniti`,
+    [KEYS.TIP_Load]: `obremenitve`,
+
     [KEYS.SETTINGSMENU_Networks]:'Omrežja',
     [KEYS.SETTINGSMENU_Keypairs]:'Ključ (zasebni/javni)',
     [KEYS.SETTINGSMENU_Language]:'Jezik',
