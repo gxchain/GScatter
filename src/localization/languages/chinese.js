@@ -169,6 +169,7 @@ export default {
     [KEYS.TIP_Copy_Pri]: `复制私钥`,
 
 
+
     [KEYS.SETTINGSMENU_Networks]: '网络',
     [KEYS.SETTINGSMENU_Keypairs]: '密匙对',
     [KEYS.SETTINGSMENU_Language]: '语言',

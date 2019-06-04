@@ -151,6 +151,11 @@ export default {
         Si vous voulez exporter vos historiques, utilisez les boutons d'action situés dans la barre de navigation de ce panneau.  
     `,
 
+    [KEYS.TIP_Edit]: `edit`,
+    [KEYS.TIP_Cancel]: `annuler`,
+    [KEYS.TIP_Remove]: `supprimer`,
+    [KEYS.TIP_Load]: `charge`,
+
     [KEYS.SETTINGSMENU_Networks]:'Réseaux',
     [KEYS.SETTINGSMENU_Keypairs]:'Paires de Clés',
     [KEYS.SETTINGSMENU_Language]:'Langues',

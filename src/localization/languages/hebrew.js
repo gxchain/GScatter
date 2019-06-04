@@ -136,6 +136,11 @@ export default {
         תוכל לעשות זאת בעזרת כפתורי הפעולות בתפריט בפנל הזה.
     `,
 
+    [KEYS.TIP_Edit]: `ערוך`,
+    [KEYS.TIP_Cancel]: `ביטול`,
+    [KEYS.TIP_Remove]: `להסיר`,
+    [KEYS.TIP_Load]: `עומס`,
+
     [KEYS.SETTINGSMENU_Networks]:'רשתות',
     [KEYS.SETTINGSMENU_Keypairs]:'זוגות מפתחות',
     [KEYS.SETTINGSMENU_Language]:'שפה',

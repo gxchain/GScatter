@@ -170,7 +170,6 @@ export default {
     [KEYS.TIP_Copy_Pub]: `copy pub`,
     [KEYS.TIP_Copy_Pri]: `copy pri`,
 
-
     [KEYS.SETTINGSMENU_Networks]:'Networks',
     [KEYS.SETTINGSMENU_Keypairs]:'Key Pairs',
     [KEYS.SETTINGSMENU_Language]:'Language',

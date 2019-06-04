@@ -140,6 +140,11 @@ export default {
         exportieren möchtest kannst du dies mit den Buttons in der Navigationsleiste hier tun.
     `,
 
+    [KEYS.TIP_Edit]: `edit`,
+    [KEYS.TIP_Cancel]: `stornieren`,
+    [KEYS.TIP_Remove]: `entfernen`,
+    [KEYS.TIP_Load]: `laden`,
+
     [KEYS.SETTINGSMENU_Networks]:'Netzwerke',
     [KEYS.SETTINGSMENU_Keypairs]:'Schlüsselpaare',
     [KEYS.SETTINGSMENU_Language]:'Sprache',

@@ -122,6 +122,7 @@ export const TIP_Copy_Pub = 'id_tip_copy_pub';
 export const TIP_Copy_Pri = 'id_tip_copy_pri';
 
 
+
 export const PERMISSIONS_Header = 'perms_head';
 export const PERMISSIONS_Description = 'perms_desc';
 export const PERMISSION_RevokeIdentity = 'perm_rev_id';

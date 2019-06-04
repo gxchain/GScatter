@@ -73,7 +73,7 @@ module.exports = {
         ],
         rules: [
             {test: /\.(sass|scss)$/, loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])},
-            {test: /\.(html|png)$/, loader: 'file-loader', options: {name: '[name].[ext]'}},
+            {test: /\.(html|png|gif)$/, loader: 'file-loader', options: {name: '[name].[ext]'}},
             {
                 test: /\.vue$/, loader: 'vue-loader', options: {
                     loaders: {

@@ -126,6 +126,11 @@ export default {
         no futuro, você pode fazer isso usando os botões de ação na barra de navegação desse painel.
     `,
 
+    [KEYS.TIP_Edit]: `editar`,
+    [KEYS.TIP_Cancel]: `cancelar`,
+    [KEYS.TIP_Remove]: `remover`,
+    [KEYS.TIP_Load]: `carga`,
+
     [KEYS.SETTINGSMENU_Networks]:'Redes',
     [KEYS.SETTINGSMENU_Keypairs]:'Pares de Chave',
     [KEYS.SETTINGSMENU_Language]:'Língua',
