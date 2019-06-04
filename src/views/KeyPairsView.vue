@@ -20,12 +20,12 @@
                 <!-- Actions -->
                 <section class="panel">
                     <section class="actions">
-                        <figure class="action blue tooltip" v-on:click="copyKeypair(keypair)"><i class="fa fa-copy"></i><span class="tooltiptext" style="margin-left:10px;">copy pub</span></figure>
+                        <figure class="action blue tooltip" v-on:click="copyKeypair(keypair)"><i class="fa fa-copy"></i><span class="tooltiptext tip1" >{{locale(langKeys.TIP_Copy_Pub)}}</span></figure>
 
                         <section  v-if="loadingCopyPri && loadingCopyPri === keypair.publicKey" class="item">
-                            Waiting
+                            {{locale(langKeys.TIP_Load)}}
                         </section>
-                        <figure v-else class="action blue tooltip" v-on:click="copyKeypair2(keypair)"><i class="fa fa-copy"></i><span class="tooltiptext" style="margin-left:10px;">copy pri</span></figure>
+                        <figure v-else class="action blue tooltip" v-on:click="copyKeypair2(keypair)"><i class="fa fa-copy"></i><span class="tooltiptext tip1" >{{locale(langKeys.TIP_Copy_Pri)}}</span></figure>
 
                         <figure class="action red right" v-on:click="deleteKeypair(keypair)"><i class="fa fa-ban"></i></figure>
                     </section>
@@ -144,7 +144,6 @@
     .tooltip {
          position: relative;
     }
-
     .tooltip .tooltiptext {
         visibility: hidden;
         width: 100px;
@@ -155,8 +154,10 @@
         position: absolute;
         z-index: 1;
     }
-     
     .tooltip:hover .tooltiptext {
         visibility: visible;
+    }
+    .tip1 {
+        margin-left:10px;
     }
 </style>

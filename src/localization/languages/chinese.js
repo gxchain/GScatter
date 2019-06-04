@@ -139,7 +139,7 @@ export default {
         地址信息可以添加到需要它的应用程序的帐户中。
         例如，为了知道您购买的商品的送货地点，购物网站可能
         需要这些信息以便知道送货地点
-     `,
+     `,
 
     [KEYS.PERMISSIONS_Header]: `没有需要显示的授权.`,
     [KEYS.PERMISSIONS_Description]: `
@@ -160,6 +160,14 @@ export default {
         所以当您再次导入时，您的历史记录是空的。如果你想导出这些历史事件，
         将来您可以使用此面板中导航栏上的操作按钮来完成此操作。
     `,
+
+    [KEYS.TIP_Edit]: `修改`,
+    [KEYS.TIP_Cancel]: `取消`,
+    [KEYS.TIP_Remove]: `删除`,
+    [KEYS.TIP_Load]: `加载`,
+    [KEYS.TIP_Copy_Pub]: `复制公钥`,
+    [KEYS.TIP_Copy_Pri]: `复制私钥`,
+
 
     [KEYS.SETTINGSMENU_Networks]: '网络',
     [KEYS.SETTINGSMENU_Keypairs]: '密匙对',
@@ -428,7 +436,7 @@ export default {
 
         `您即将删除网络。 删除该网络后
          您将不能再在该网络上创建新帐户，
-         但你可以重新添加它。
+         但你可以重新添加它。
          已经使用此网络的帐户将不会被修改或删除。`
     ],
     //2
@@ -437,7 +445,7 @@ export default {
 
         `将基于货币的合约列入白名单是危险的，永远不应该这样做。
          但在某些情况下，可以这样做，但除非您确定，否则您不应将此合约操作列入白名单。
-         您确定想将此列入白名单吗？`
+         您确定想将此列入白名单吗？`
     ],
     //2
     [KEYS.PROMPT_SelectAccount]: [

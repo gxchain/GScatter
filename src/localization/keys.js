@@ -17,7 +17,7 @@ export const ROUTENAMES_LANGUAGE = `语言`;
 export const ROUTENAMES_KEYPAIRS = `秘钥对`;
 export const ROUTENAMES_KEYS = `秘钥对`;
 export const ROUTENAMES_REGISTER_ACCOUNT = `注册`;
-
+export const GXC_PASSWORD = 'gxc_password';
 export const MAINMENU_Identities = 'mm_ids';
 export const MAINMENU_Keys = 'mm_keys';
 export const MAINMENU_Register = 'mm_register';
@@ -113,6 +113,13 @@ export const IDENTITY_PersonalHeader = 'id_pers_head';
 export const IDENTITY_PersonalDescription = 'id_pers_desc';
 export const IDENTITY_LocationHeader = 'id_loc_head';
 export const IDENTITY_LocationDescription = 'id_loc_desc';
+
+export const TIP_Edit = 'id_tip_edit';
+export const TIP_Cancel = 'id_tip_cancel';
+export const TIP_Remove = 'id_tip_remove';
+export const TIP_Load = 'id_tip_load';
+export const TIP_Copy_Pub = 'id_tip_copy_pub';
+export const TIP_Copy_Pri = 'id_tip_copy_pri';
 
 
 export const PERMISSIONS_Header = 'perms_head';
@@ -235,7 +242,6 @@ export const GXC_TRANSFER_CODE = 'gxc_transfer_code';
 export const GXC_TRANSFER_TYPE = 'gxc_transfer_type';
 export const GXC_TRANSFER_RICARDIAN = 'gxc_transfer_ricardian';
 export const GXC_REGISTER_SUC = 'gxc_register_suc';
-export const GXC_PASSWORD = 'gxc_password';
 export const GXC_REGISTER_FAIL = 'gxc_register_fail';
 export const GXC_REGISTER_REPEAT = 'gxc_register_repeat';
 export const GXC_ALERT_NOT_REGISTER = 'gxc_alert_not_register';
@@ -259,7 +265,6 @@ export const GXC_ACCOUNT_ERROR_NAME_END_ERROR = `${gxcAccountErrorPrefix}name_en
 export const GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER = `${gxcAccountErrorPrefix}name_segment_should_be_longer`;
 
 export const BACK = 'back';
-
 
 
 
