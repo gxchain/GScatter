@@ -17,6 +17,10 @@
             </figure>
         </section>
 
+        <section class="tip-img">
+            <img src='../copied/unlock.gif' />
+        </section>
+
     </section>
 </template>
 
@@ -47,6 +51,13 @@
 
     .prompt-body {
         padding:20px;
+    }
+
+    .tip-img {
+        margin:20px;
+    }
+    .tip-img img {
+        height:200px;
     }
 
 </style>
