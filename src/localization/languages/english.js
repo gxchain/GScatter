@@ -42,6 +42,7 @@ export default {
     [KEYS.GENERIC_ChainID]:'Chain ID',
     [KEYS.GENERIC_Blockchain]:'Blockchain',
     [KEYS.GENERIC_Account]:'Account',
+    [KEYS.OVERWRITE_Vote]: `overwrite vote`,
 
     [KEYS.PLACEHOLDER_Name]:'Name',
     [KEYS.PLACEHOLDER_PublicKey]:'Public Key',

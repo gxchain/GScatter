@@ -22,7 +22,15 @@
 
                     <!-- Contract Name -->
                     <figure class="label">{{locale(langKeys.GENERIC_Contract)}} & {{locale(langKeys.GENERIC_Action)}}</figure>
-                    <figure class="value big" v-for="message in messages">{{message.code}} -> {{message.type}}</figure>
+                    <figure class="value big" v-for="message in messages">
+                        <template v-if="message.type === '投票'">
+                            {{message.code}} -> {{message.type}}
+                            <figure v-if="message.data.options && message.data.options.append===false" class="label">{{locale(langKeys.OVERWRITE_Vote)}}</figure>
+                        </template>
+                        <template v-else>
+                            {{message.code}} -> {{message.type}}
+                        </template>
+                    </figure>
 
                     <section v-if="!requiredFields.isEmpty()">
                         <section class="key-value">

@@ -69,7 +69,7 @@ handlerMap.vote = async (tr, network, account, originalArgs, client) => {
     data.fee = await getFeeDescription(client, ops.fee)
     data.from = account.name
     data.accounts = originalArgs[0].join(',')
-
+    data.options = originalArgs[2]
     return {
         code: '无',
         type: '投票',
