@@ -43,6 +43,7 @@ export default {
     [KEYS.GENERIC_Blockchain]:'Blockchain',
     [KEYS.GENERIC_Account]:'Account',
     [KEYS.OVERWRITE_Vote]: `overwrite vote`,
+    [KEYS.GXC_Vote_Dispaly_Message]: `Vote`,
 
     [KEYS.PLACEHOLDER_Name]:'Name',
     [KEYS.PLACEHOLDER_PublicKey]:'Public Key',
