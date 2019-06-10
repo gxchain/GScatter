@@ -72,7 +72,7 @@ handlerMap.vote = async (tr, network, account, originalArgs, client) => {
     data.options = originalArgs[2]
     return {
         code: '无',
-        type: 'gxc_vote_dispaly_message',
+        type: 'gen_vote_type',
         ricardian: '开发者向您申请投票，请谨慎操作！',
         data: data
     }

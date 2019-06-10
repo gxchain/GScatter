@@ -41,8 +41,8 @@ export default {
     [KEYS.GENERIC_ChainID]: 'Chain ID',
     [KEYS.GENERIC_Blockchain]: '区块链',
     [KEYS.GENERIC_Account]: '帐户',
-    [KEYS.OVERWRITE_Vote]: `覆盖投票`,
-    [KEYS.GXC_Vote_Dispaly_Message]: `投票`,
+    [KEYS.GENERIC_Vote_Overwrite]: `覆盖投票`,
+    [KEYS.GENERIC_Vote_Type]: `投票`,
 
     [KEYS.PLACEHOLDER_Name]: '名称',
     [KEYS.PLACEHOLDER_PublicKey]: '公钥',
