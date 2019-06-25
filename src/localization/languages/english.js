@@ -532,7 +532,7 @@ export default {
         `Please copy and keep safe with your private key, if lost can not retrieve back.`,
         ``
     ],
-    [KEYS.GXC_PASSWORD]: [
+    [KEYS.KEYPAIRS_Password]: [
         `Password`,
         ``,
         ``

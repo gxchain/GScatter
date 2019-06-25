@@ -535,7 +535,7 @@ export default {
         `请复制并保管好您的私钥，一旦丢失将无法找回。`,
         ``
     ],
-    [KEYS.GXC_PASSWORD]: [
+    [KEYS.KEYPAIRS_Password]: [
         `密码`,
         ``,
         ``

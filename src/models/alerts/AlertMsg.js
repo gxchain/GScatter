@@ -226,7 +226,7 @@ export default class AlertMsg {
     static Password(){
         return new AlertMsg(
             AlertTypes.Password,
-            ...locale(LANG_KEYS.GXC_PASSWORD)
+            ...locale(LANG_KEYS.KEYPAIRS_Password)
         );
     }
 
