@@ -45,6 +45,8 @@ export const GENERIC_Import = 'gen_import';
 export const GENERIC_ChainID = 'gen_chain_id';
 export const GENERIC_Blockchain = 'gen_blockchain';
 export const GENERIC_Account = 'gen_account';
+export const GENERIC_Vote_Overwrite = 'gen_vote_overwrite';
+export const GENERIC_Vote_Type = 'gen_vote_type';
 
 export const PLACEHOLDER_Name = 'plc_name';
 export const PLACEHOLDER_PublicKey = 'plc_pubk';

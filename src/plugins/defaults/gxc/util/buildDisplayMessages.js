@@ -69,10 +69,10 @@ handlerMap.vote = async (tr, network, account, originalArgs, client) => {
     data.fee = await getFeeDescription(client, ops.fee)
     data.from = account.name
     data.accounts = originalArgs[0].join(',')
-
+    data.options = originalArgs[2]
     return {
         code: '无',
-        type: '投票',
+        type: 'gen_vote_type',
         ricardian: '开发者向您申请投票，请谨慎操作！',
         data: data
     }
