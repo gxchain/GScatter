@@ -17,7 +17,7 @@ export const ROUTENAMES_LANGUAGE = `语言`;
 export const ROUTENAMES_KEYPAIRS = `秘钥对`;
 export const ROUTENAMES_KEYS = `秘钥对`;
 export const ROUTENAMES_REGISTER_ACCOUNT = `注册`;
-
+export const KEYPAIRS_Password = 'keypairs_password';
 export const MAINMENU_Identities = 'mm_ids';
 export const MAINMENU_Keys = 'mm_keys';
 export const MAINMENU_Register = 'mm_register';
@@ -120,6 +120,9 @@ export const TIP_Edit = 'id_tip_edit';
 export const TIP_Cancel = 'id_tip_cancel';
 export const TIP_Remove = 'id_tip_remove';
 export const TIP_Load = 'id_tip_load';
+export const TIP_Copy_Pub = 'id_tip_copy_pub';
+export const TIP_Copy_Pri = 'id_tip_copy_pri';
+
 
 
 export const PERMISSIONS_Header = 'perms_head';
@@ -265,7 +268,6 @@ export const GXC_ACCOUNT_ERROR_NAME_END_ERROR = `${gxcAccountErrorPrefix}name_en
 export const GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER = `${gxcAccountErrorPrefix}name_segment_should_be_longer`;
 
 export const BACK = 'back';
-
 
 
 

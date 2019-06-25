@@ -223,6 +223,13 @@ export default class AlertMsg {
         );
     }
 
+    static Password(){
+        return new AlertMsg(
+            AlertTypes.Password,
+            ...locale(LANG_KEYS.KEYPAIRS_Password)
+        );
+    }
+
     static NotRigister(){
         return new AlertMsg(
             AlertTypes.Error,

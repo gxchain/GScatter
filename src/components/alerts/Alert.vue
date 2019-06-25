@@ -47,6 +47,16 @@
                 <cin :placeholder="`${locale(langKeys.GENERIC_Account)} ${locale(langKeys.GENERIC_Name)}`" v-on:changed="changed => bind(changed, 'returnedText')"></cin>
             </section>
 
+            <!-- password -->
+            <section style="padding:10px;" v-if="alerts[0].type === alertTypes.Password">
+                <cin :placeholder="`${locale(langKeys.PLACEHOLDER_Password)}`" type="password"  v-on:changed="changed => bind(changed, 'currentPassword')"></cin>
+
+
+                <!--点击确认-->
+                <btn style="margin-top:10px;" :text="locale(langKeys.PLACEHOLDER_ConfirmPassword)" is-blue="true" v-on:clicked="confirmPassword()"></btn>
+
+            </section>
+
             <!-- Claim Identity -->
             <section style="padding:10px;" v-if="alerts[0].type === alertTypes.ClaimIdentity">
                 <cin :placeholder="locale(langKeys.PLACEHOLDER_PrivateKey)" v-on:changed="changed => bind(changed, 'returnedText')"></cin>
@@ -83,6 +93,7 @@
             selectedItem:null,
             selectionError:null,
             returnedText:'',
+            currentPassword:'',
             returnedTextError:null,
         }},
         computed: {
@@ -129,6 +140,10 @@
 
                 this[Actions.PULL_ALERT]();
                 this[Actions.PUSH_ALERT_RESULT]({accepted:true});
+            },
+            confirmPassword(){
+                this[Actions.PULL_ALERT]();
+                this[Actions.PUSH_ALERT_RESULT]({text:this.currentPassword});
             },
             ...mapActions([
                 Actions.PULL_ALERT,

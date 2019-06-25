@@ -169,6 +169,8 @@ export default {
     [KEYS.TIP_Cancel]: `cancel`,
     [KEYS.TIP_Remove]: `remove`,
     [KEYS.TIP_Load]: `load`,
+    [KEYS.TIP_Copy_Pub]: `copy pub`,
+    [KEYS.TIP_Copy_Pri]: `copy pri`,
 
     [KEYS.SETTINGSMENU_Networks]:'Networks',
     [KEYS.SETTINGSMENU_Keypairs]:'Key Pairs',
@@ -532,6 +534,11 @@ export default {
         `Please copy and keep safe with your private key, if lost can not retrieve back.`,
         ``
     ],
+    [KEYS.KEYPAIRS_Password]: [
+        `Password`,
+        ``,
+        ``
+    ],
     [KEYS.GXC_REGISTER_FAIL]:`Register fail.`,
     [KEYS.GXC_REGISTER_REPEAT]:`The account has been registered.`,
     [KEYS.GXC_ALERT_NOT_REGISTER]: [
@@ -557,7 +564,6 @@ export default {
     [KEYS.GXC_ACCOUNT_ERROR_NAME_SEGMENT_SHOULD_BE_LONGER]: 'Each account segment should be longer',
     [KEYS.BACK]: 'Back',
 }
-
 
 
 

@@ -20,7 +20,13 @@
                 <!-- Actions -->
                 <section class="panel">
                     <section class="actions">
-                        <figure class="action blue" v-on:click="copyKeypair(keypair)"><i class="fa fa-copy"></i></figure>
+                        <figure class="action blue tooltip" v-on:click="copyKeypair(keypair)"><i class="fa fa-copy"></i><span class="tooltiptext tip1" >{{locale(langKeys.TIP_Copy_Pub)}}</span></figure>
+
+                        <section  v-if="loadingCopyPri && loadingCopyPri === keypair.publicKey" class="item">
+                            {{locale(langKeys.TIP_Load)}}
+                        </section>
+                        <figure v-else class="action blue tooltip" v-on:click="copyKeypair2(keypair)"><i class="fa fa-copy"></i><span class="tooltiptext tip1" >{{locale(langKeys.TIP_Copy_Pri)}}</span></figure>
+
                         <figure class="action red right" v-on:click="deleteKeypair(keypair)"><i class="fa fa-ban"></i></figure>
                     </section>
                 </section>
@@ -44,10 +50,13 @@
     import {RouteNames} from '../vue/Routing'
     import Scatter from '../models/Scatter'
     import AlertMsg from '../models/alerts/AlertMsg'
+    import AuthenticationService from '../services/AuthenticationService'
+    import Mnemonic from '../util/Mnemonic'
 
     export default {
         data(){ return {
-            searchText:''
+            searchText:'',
+            loadingCopyPri:null
         }},
         computed: {
             ...mapState([
@@ -67,6 +76,25 @@
                 document.execCommand("copy");
             },
             createKeyPair(){ this.$router.push({ name:RouteNames.KEYPAIRS }) },
+
+            copyKeypair2(keypair){ 
+                this.loadingCopyPri = keypair.publicKey;
+                this[Actions.PUSH_ALERT](AlertMsg.Password()).then(ret => {
+                    AuthenticationService.verifyPassword(ret.text, this).then(() => {
+                        this.decryptKey(ret.text,keypair);
+                    })
+                })
+            },
+            async decryptKey(currentPassword,keypair){
+                const [m, s] = await Mnemonic.generateMnemonic(currentPassword);
+                keypair.decrypt(s);
+                const copier = this.$refs.copier;
+                copier.value = keypair.privateKey;
+                copier.select();
+                document.execCommand("copy");
+                copier.value = '';
+                this.loadingCopyPri = false;
+            },
             filterBySearch(){ return this.keypairs.filter(keypair => JSON.stringify(keypair).indexOf(this.searchText) > -1) },
             deleteKeypair(keypair){
                 const usedInIdentities = [];
@@ -98,6 +126,9 @@
             ...mapActions([
                 Actions.UPDATE_STORED_SCATTER,
                 Actions.PUSH_ALERT,
+                Actions.SET_SEED,
+                Actions.SET_MNEMONIC,
+                Actions.IS_UNLOCKED
             ])
         }
     }
@@ -109,5 +140,24 @@
             display:inline-block;
             margin-right:8px;
         }
+    }
+    .tooltip {
+         position: relative;
+    }
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 100px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+    }
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+    .tip1 {
+        margin-left:10px;
     }
 </style>
