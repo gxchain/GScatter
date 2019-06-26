@@ -82,10 +82,10 @@ const buildDisplayMessages = async (tr, network, account, originalArgs, method, 
     const handler = handlerMap[method] || function () { }
     let ret
     try {
-        if(!handler){
+        ret = await handler(tr, network, account, originalArgs, client);
+        if(!ret){
             console.log(handlerMap,handler,method)
         }
-        ret = await handler(tr, network, account, originalArgs, client);
     } catch (err) {
         throw Error.buildDisplayMessageError(err.message)
     }
