@@ -83,7 +83,7 @@ const buildDisplayMessages = async (tr, network, account, originalArgs, method, 
     let ret
     try {
         if(!handler){
-            console.log(handler,method)
+            console.log(handlerMap,handler,method)
         }
         ret = await handler(tr, network, account, originalArgs, client);
     } catch (err) {
