@@ -6,7 +6,7 @@ import Account from '../../models/Account';
 import AlertMsg from '../../models/alerts/AlertMsg';
 import * as Actions from '../../store/constants';
 import ObjectHelpers from '../../util/ObjectHelpers';
-import GXClientFactory from 'gxclient/es/index';
+import {GXClient} from 'gxclient/es/index';
 import {PrivateKey, Signature} from 'gxbjs/es/index';
 import Error from "../../models/errors/Error";
 import {strippedHost} from '../../util/GenericTools';
@@ -71,9 +71,7 @@ export default class GXC extends Plugin {
     }
 
     async registerAccount(name, network) {
-        const client = GXClientFactory.instance({
-            network: network.fullhost()
-        });
+        var client = new GXClient("", "", `${getWsAddress(network)}`);
 
         const keypair = client.generateKey();
 
@@ -95,9 +93,7 @@ export default class GXC extends Plugin {
 
     importAccount(keypair, network, context, accountSelected) {
         const getAccountsFromPublicKey = (publicKey, network) => {
-            let client = GXClientFactory.instance({
-                network: network.fullhost()
-            });
+            var client = new GXClient("", "", `${getWsAddress(network)}`);
             return client.getAccountByPublicKey(publicKey).then(account_ids => {
                 return client._query("get_objects", [account_ids]).then(accounts => {
                     let results = [];
@@ -150,30 +146,22 @@ export default class GXC extends Plugin {
     }
 
     privateToPublic(privateKey) {
-        let client = GXClientFactory.instance({
-            network: ''
-        });
+        var client = new GXClient();
         return client.privateToPublic(privateKey);
     }
 
     validPrivateKey(privateKey) {
-        let client = GXClientFactory.instance({
-            network: ''
-        });
+        var client = new GXClient();
         return client.isValidPrivate(privateKey);
     }
 
     validPublicKey(publicKey) {
-        let client = GXClientFactory.instance({
-            network: ''
-        });
+        var client = new GXClient();
         return client.isValidPublic(publicKey);
     }
 
     randomPrivateKey() {
-        let client = GXClientFactory.instance({
-            network: ''
-        });
+        var client = new GXClient();
         return new Promise((resolve) => {
             resolve(client.generateKey().privateKey);
         });
@@ -188,9 +176,7 @@ export default class GXC extends Plugin {
     }
 
     async getBalances(account, network) {
-        let client = GXClientFactory.instance({
-            network: network.fullhost()
-        });
+        var client = new GXClient("", "", `${getWsAddress(network)}`);
         return client.getAccountBalances(account.name).then(balances => {
             return client._query("get_objects", [balances.map(b => b.asset_id)]).then(assets => {
                 let result = balances.map(b => {
@@ -312,19 +298,13 @@ export default class GXC extends Plugin {
                             throw err;
                         }
 
-                        // var client = new GXClient("", account.name ? account.name : '', `${getWsAddress(network)}`, signProvider);
-
-                        var client = GXClientFactory.instance({
-                            account: account.name,
-                            network: network.fullhost(),
-                            signatureProvider: signProvider
-                        });
+                        var client = new GXClient("", account.name ? account.name : '', `${getWsAddress(network)}`, signProvider);
 
                         let ret;
                         try {
                             ret = client[method].apply(client, handledArgs);
                         } catch (err) {
-                            throw new Error(undefined, err.message, undefined, err)
+                            throw new Error(undefined, err.message, undefined, err);
                         }
 
                         if (ret.then) {
@@ -340,14 +320,14 @@ export default class GXC extends Plugin {
                                 }
                             }).catch(err => {
                                 if (err.isError) {
-                                    throw err
+                                    throw err;
                                 } else {
-                                    throw new Error(undefined, err.message, undefined, err)
+                                    throw new Error(undefined, err.message, undefined, err);
                                 }
-                            })
+                            });
                         } else {
                             // some methods not return promise, like generateKey
-                            return ret
+                            return ret;
                         }
                     };
                 }
