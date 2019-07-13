@@ -23,9 +23,11 @@
             <section v-for="identity in filterBySearch()" class="panel-box">
 
                 <!-- Header -->
+                <!--
                 <section class="panel">
                     <figure class="header big">{{identity.name}}</figure>
                 </section>
+                -->
 
                 <!-- Account information -->
                 <section class="panel" v-if="Object.keys(identity.accounts).length">
