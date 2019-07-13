@@ -175,7 +175,7 @@
         }
 
         &.main-menu-nav {
-            background:#f9f9f9;
+            background:#83baff;
         }
     }
 </style>
